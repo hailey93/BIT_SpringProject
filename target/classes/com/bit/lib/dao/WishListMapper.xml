@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.my.dao.WishListDAO">
+
+<select id="getWishList" resultType="">
+select b.number, b.title, b.image, r.rentStatus from book b
+
+inner join wishlist w on b.number=w.book_no
+inner join rental r on w.book_no=r.book_no
+</select>
+
+</mapper>
