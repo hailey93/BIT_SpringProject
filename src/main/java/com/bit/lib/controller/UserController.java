@@ -42,7 +42,7 @@ public class UserController {
 		
 		session.setAttribute("id", user.getId());
 		session.setAttribute("user", user);
-		String nextPage = userService.loginProc(user)? "user/welcome":"user/login";
+		String nextPage = userService.loginProc(user)? "user/main":"user/login";
 		
 		return nextPage;
 	}
@@ -50,7 +50,7 @@ public class UserController {
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "user/welcome";
+		return "user/login";
 	}
 	
 	
