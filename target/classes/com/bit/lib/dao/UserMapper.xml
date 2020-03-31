@@ -5,7 +5,7 @@
 
 	
 
-	<select id="loginProc" parameterType="com.bit.lib.dto.User" resultType="com.bit.lib.dto.User">
+	<select id="loginProc" parameterType="com.bit.lib.domain.User" resultType="com.bit.lib.domain.User">
 		select *
 		from library.user where ID=	#{id} and PW=#{pw}
 	</select>
