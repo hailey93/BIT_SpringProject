@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bit.lib.dao.UserDAO;
-import com.bit.lib.dto.User;
+import com.bit.lib.domain.User;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -28,6 +28,18 @@ public class UserServiceImpl implements UserService {
 
 		@Override
 		public void joinProc(User user) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean loginProc(com.bit.lib.domain.User user) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void joinProc(com.bit.lib.domain.User user) {
 			// TODO Auto-generated method stub
 			
 		}
