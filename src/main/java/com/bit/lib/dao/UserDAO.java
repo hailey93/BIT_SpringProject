@@ -2,7 +2,7 @@ package com.bit.lib.dao;
 
 import javax.servlet.http.HttpSession;
 
-import com.bit.lib.dto.User;
+import com.bit.lib.domain.User;
 
 public interface UserDAO {
 	

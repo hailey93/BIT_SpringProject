@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bit.lib.dto.User;
+import com.bit.lib.domain.User;
 import com.bit.lib.service.UserService;
 import com.bit.lib.service.UserServiceImpl;
 

@@ -2,11 +2,17 @@ package com.bit.lib.domain;
 
 import java.sql.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+@Getter
+@Setter
+@ToString
 public class RentHistory {
-	int historyCode;
-	String bookNo;
-	Date returnDueDate;
-	Date returnDate;
-	Date rentDate;
+	private int historyCode;
+	private String bookNo;
+	private Date returnDueDate;
+	private Date returnDate;
+	private Date rentDate;
 
 }

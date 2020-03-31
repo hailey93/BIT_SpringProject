@@ -1,13 +1,21 @@
 package com.bit.lib.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+
 public class Book {
 
-	int bookcode;
-	String bookTitle;
-	String author;
-	String type;
-	String publisher;
-	String imagePath;
-	int bookQty;
+	private int bookcode;
+	private String bookTitle;
+	private String author;
+	private String type;
+	private String publisher;
+	private String imagePath;
+	private int bookQty;
 	
 }
