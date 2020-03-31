@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: bitcamp
+=======
+Built-By: palyo
+>>>>>>> 8b99570127275294e67af5086c8b698ef30705ef
 Build-Jdk: 1.8.0_231
 Created-By: Maven Integration for Eclipse
 
