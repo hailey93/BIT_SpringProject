@@ -9,7 +9,7 @@ import com.bit.lib.service.WishListService;
 @Controller
 public class WishListController {
 
-	@Autowired
+	@Autowired(required = false)
 	private WishListService wishListService;
 	
 	@RequestMapping("wishList.do")
