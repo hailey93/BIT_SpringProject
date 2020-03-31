@@ -5,14 +5,14 @@
 
 	
 
-	<select id="loginProc" parameterType="com.bit.lib.dto.User" resultType="com.bit.lib.dto.User">
+	<select id="loginProc" parameterType="com.bit.lib.domain.User" resultType="com.bit.lib.domain.User">
 		select *
 		from library.user where ID=	#{id} and PW=#{pw}
 	</select>
 	
 
 	
-	<insert id="joinProc" parameterType="com.bit.lib.dto.User">
+	<insert id="joinProc" parameterType="com.bit.lib.domain.User">
 		insert into User(ID,NAME,PW,BIRTH,GENDER,PHONE)
 		values(#{id},#{name},#{pw},#{birth},#{gender},#{phone})
 	</insert>
