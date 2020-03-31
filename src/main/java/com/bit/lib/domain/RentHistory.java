@@ -14,5 +14,5 @@ public class RentHistory {
 	private Date returnDueDate;
 	private Date returnDate;
 	private Date rentDate;
-
+	private String id;
 }
