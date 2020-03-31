@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.lib.dao.ReserveDAO">
+
+	<insert id="insertReserve" parameterType="Reserve">
+		insert into Reserve
+		(id, bookNo, reserveDate)
+		values
+		(#{id}, #{bookNo}, #{curDate})
+	</insert>
+	
+	<select id="getReserveList"  resultMap="Reserve">
+		select re.bookNo, b.bookTitle, re.reserveDate, 
+			reh.returnDueDate, reh.returnDate, re.reserveFinDate, 
+			bst.rentStatus, MAX(reh.historyCode) 
+		from reserve re inner join bookStatus bst 
+		on re.bookNo = bst.bookNo
+ 		inner join book b on bst.bookCode = b.bookCode
+ 		inner join renthistory reh on re.bookNo = reh.bookNo 
+ 		where re.bookNo=?;
+	</select>
+	
+	
+	
+	
+
+</mapper>
