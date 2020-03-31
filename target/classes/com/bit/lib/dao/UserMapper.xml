@@ -12,7 +12,7 @@
 	
 
 	
-	<insert id="joinProc" parameterType="com.bit.lib.dto.User">
+	<insert id="joinProc" parameterType="com.bit.lib.domain.User">
 		insert into User(ID,NAME,PW,BIRTH,GENDER,PHONE)
 		values(#{id},#{name},#{pw},#{birth},#{gender},#{phone})
 	</insert>
