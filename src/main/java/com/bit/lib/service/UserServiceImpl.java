@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bit.lib.dao.UserDAO;
-import com.bit.lib.dto.User;
+import com.bit.lib.domain.User;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {

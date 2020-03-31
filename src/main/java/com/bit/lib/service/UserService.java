@@ -3,7 +3,7 @@ package com.bit.lib.service;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bit.lib.dto.User;
+import com.bit.lib.domain.User;
 
 public interface UserService {
 	boolean loginProc(User user);
