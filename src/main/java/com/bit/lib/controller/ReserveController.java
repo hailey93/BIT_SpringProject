@@ -15,25 +15,22 @@ public class ReserveController {
 	@Autowired
 	private ReserveService reserveService;
 	String rentmsg;
-	
-	@RequestMapping(value="/reserve.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/reserve.do", method = RequestMethod.GET)
 	public String getinsertReserve(Model model, String data) {
-		
+
 		/* model.addAttribute("insert", reserveService.reserveList()); */
-		
-		
+
 		return "insert";
 	}
 
-	
-	@RequestMapping(value="/reserveList.do")
-	public String getReserveList(Model model, String bookNo) {
-		bookNo = "BC1";
-		model.addAttribute("rentst", reserveService.getReserveList(bookNo));
-		System.out.println(reserveService.getReserveList(bookNo));
-		
+	@RequestMapping(value = "/reserveList.do")
+	public String getReserveList(Model model, String id) {
+		id = "hyun123";
+		model.addAttribute("rentst", reserveService.getReserveList(id));
+		System.out.println(reserveService.getReserveList(id));
+
 		return "mypage/reserve/reserveList";
 	}
-	
-	
+
 }

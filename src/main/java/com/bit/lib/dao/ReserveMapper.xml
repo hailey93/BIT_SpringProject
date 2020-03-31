@@ -19,7 +19,7 @@
 		on re.bookNo = bst.bookNo
  		inner join book b on bst.bookCode = b.bookCode
  		inner join renthistory reh on re.bookNo = reh.bookNo 
- 		where re.bookNo=#{bookNo};
+ 		where re.id=#{id};
 	</select>
 	
 	

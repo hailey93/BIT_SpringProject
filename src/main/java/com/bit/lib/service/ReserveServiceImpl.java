@@ -15,6 +15,7 @@ import com.bit.lib.domain.BookStatus;
 import com.bit.lib.domain.RentHistory;
 import com.bit.lib.domain.Reserve;
 import com.bit.lib.domain.User;
+import com.bit.lib.dto.ReserveListDto;
 
 @Service("reserveService")
 public class ReserveServiceImpl implements ReserveService {
@@ -40,9 +41,9 @@ public class ReserveServiceImpl implements ReserveService {
 	 */
 
 
-	public List<Reserve> getReserveList(String bookNo) {
-		// TODO Auto-generated method stub
-		return reserveDao.getReserveList(bookNo);
+	public List<ReserveListDto> getReserveList(String id) {
+		
+		return reserveDao.getReserveList(id);
 	}
 
 

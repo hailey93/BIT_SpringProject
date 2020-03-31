@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bit.lib.dao.BookDetailDAO;
 import com.bit.lib.domain.Book;
 import com.bit.lib.domain.BookStatus;
+import com.bit.lib.dto.ReserveListDto;
 
 
 
@@ -24,8 +25,6 @@ public class BookDetailServiceImpl implements BookDetailService {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 
 }
