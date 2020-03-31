@@ -32,20 +32,5 @@ public class UserServiceImpl implements UserService {
 			
 		}
 
-		@Override
-		public boolean loginProc(com.bit.lib.domain.User user) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public void joinProc(com.bit.lib.domain.User user) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		
-
-		
 		
 }
