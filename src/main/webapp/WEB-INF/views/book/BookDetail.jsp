@@ -9,6 +9,6 @@
 <body>
 등록번호 : ${rentst.bookNo}<br>
 도서상태 : ${rentst.rentStatus}<br>
-<a href="./reserveList.do?bookTitle=${rentst.bookTitle}"></a>
+<%-- <a href="./reserveList.do?bookTitle=${rentst.bookTitle}"></a> --%>
 </body>
 </html>

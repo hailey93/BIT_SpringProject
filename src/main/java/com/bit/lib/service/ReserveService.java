@@ -11,6 +11,7 @@ public interface ReserveService {
 
 	
 	void insertReserve(Reserve reserve);
-	List<Reserve> reserveList(String bookTitle);
+	List<Reserve> getReserveList(String bookNo);
+	
 	
 }

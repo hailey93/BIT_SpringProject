@@ -9,7 +9,9 @@
 		(#{id}, #{bookNo}, #{curDate})
 	</insert>
 	
-	<select id="getReserveList"  resultMap="Reserve">
+
+	
+	<select id="getReserveList"  parameterType="string" resultType="map">
 		select re.bookNo, b.bookTitle, re.reserveDate, 
 			reh.returnDueDate, reh.returnDate, re.reserveFinDate, 
 			bst.rentStatus, MAX(reh.historyCode) 
@@ -17,7 +19,7 @@
 		on re.bookNo = bst.bookNo
  		inner join book b on bst.bookCode = b.bookCode
  		inner join renthistory reh on re.bookNo = reh.bookNo 
- 		where re.bookNo=?;
+ 		where re.bookNo=#{bookNo};
 	</select>
 	
 	

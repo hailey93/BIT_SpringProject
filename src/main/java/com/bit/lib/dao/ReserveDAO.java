@@ -10,6 +10,6 @@ import com.bit.lib.domain.Reserve;
 public interface ReserveDAO {
 
 		void insertReserve(Reserve reserve);
-		List<Reserve> getReservList(String BookTitle);
+		List<Reserve> getReserveList(String bookNo);
 		
 }

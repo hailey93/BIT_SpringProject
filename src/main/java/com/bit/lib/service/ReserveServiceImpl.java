@@ -33,18 +33,21 @@ public class ReserveServiceImpl implements ReserveService {
 
 
 
-	public List<Reserve> reserveList( String bookTitle) {
-		
-		return reserveDao.getReservList(bookTitle);
-	}
+	/*
+	 * public List<Reserve> reserveList( String bookTitle) {
+	 * 
+	 * return reserveDao.getReservList(bookTitle); }
+	 */
 
 
-
-	public List<Reserve> reserveList() {
+	public List<Reserve> getReserveList(String bookNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return reserveDao.getReserveList(bookNo);
 	}
 
+
+
+	
 
 
 }
