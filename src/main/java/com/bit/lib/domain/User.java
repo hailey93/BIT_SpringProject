@@ -2,7 +2,7 @@ package com.bit.lib.domain;
 
 import java.sql.Date;
 
-public class user {
+public class User {
 	
 	String id;
 	String name;

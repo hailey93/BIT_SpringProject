@@ -2,7 +2,7 @@ package com.bit.lib.domain;
 
 import java.sql.Date;
 
-public class reserve {
+public class Reserve {
 	
 	int reserveCode;
 	String id;

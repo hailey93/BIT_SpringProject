@@ -14,7 +14,7 @@ public class WishListController {
 	
 	@RequestMapping("wishList.do")
 	public String getWishList() {
-		System.out.println("ddd");
+		
 		return "wishList/wishList";
 	}
 	

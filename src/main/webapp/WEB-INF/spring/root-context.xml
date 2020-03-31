@@ -13,11 +13,12 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<!-- DataSource -->
+	<context:property-placeholder location="classpath:config/jdbc.properties" />
 	<bean id="dataSource"
-		class="org.apache.commons.dbcp2.BasicDataSource"
-		p:driverClassName="com.mysql.cj.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/library?"
-		p:username="root" p:password="1234"/>
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${jdbc.mysql.driverClassName}"
+		p:url="${jdbc.mysql.url}" p:username="${jdbc.mysql.username}"
+		p:password="${jdbc.mysql.password}"/>
 
 	<!-- DB Transaction Manager 빈 설정 -->
 
