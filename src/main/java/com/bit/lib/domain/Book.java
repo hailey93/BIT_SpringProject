@@ -1,6 +1,6 @@
 package com.bit.lib.domain;
 
-public class book {
+public class Book {
 
 	int bookcode;
 	String bookTitle;

@@ -1,6 +1,6 @@
 package com.bit.lib.domain;
 
-public class wishList {
+public class WishList {
 	
 	int wishListCode;
 	String bookNo;
