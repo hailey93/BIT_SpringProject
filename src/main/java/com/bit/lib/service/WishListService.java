@@ -1,5 +1,12 @@
 package com.bit.lib.service;
 
-public interface WishListService {
+import java.util.List;
 
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import com.bit.lib.dto.WishListDTO;
+
+public interface WishListService {
+	List<WishListDTO> selectWishList(@SessionAttribute("id") String id);
+	void addWishList(WishListDTO wishListDTO);
 }

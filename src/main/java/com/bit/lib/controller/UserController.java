@@ -42,7 +42,7 @@ public class UserController {
 		
 		session.setAttribute("id", user.getId());
 		session.setAttribute("user", user);
-		String nextPage = userService.loginProc(user)? "user/welcome":"user/login";
+		String nextPage = userService.loginProc(user)? "main":"user/login";
 		
 		return nextPage;
 	}

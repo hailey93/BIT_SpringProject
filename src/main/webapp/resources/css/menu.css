@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/* divTabMenu */
+#divTabMenu{width:1200px;height:40px;margin:40px 0 20px 0;border-bottom:1px solid #7e7e7e;padding:0}
+#divTabMenu p{display:none}
+#divTabMenu > div{height:40px;padding:0;background-color:#fff}
+#divTabMenu ul li{float:left;min-width:113px;height: 39px;margin:0;border:1px solid #d8d8d8;border-left:none;border-bottom:none;background-color:#fff;font-size:16px;line-height:39px;text-align:center;}
+#divTabMenu ul li:first-child{border-left:1px solid #d8d8d8}
+#divTabMenu ul li.selected{border:1px solid #7e7e7e;border-bottom:1px solid #fff;}
+#divTabMenu ul li a{display:block;min-width:65px;padding:0 13px;letter-spacing:-1px;background-color:#f6f6f6;color:#888;font-family:NotoSansKR;font-size:16px;}
+#divTabMenu ul li.selected a{background-color:#fff;color:#333;}
+#divTabMenu > div.long{padding:0 40px;}
+
+/*TabMenu2 */
+#divTabMenu2{height:44px;margin-top:30px;margin-bottom:20px;padding:0;background-color:#fff;border-top:2px solid #c9c9c9;border-bottom:1px solid #c9c9c9;}
+#divTabMenu2 > div{height:44px;background-color:#fff;}
+#divTabMenu2 ul li{float: left; margin:0; border-left:none; border-bottom:none;  font-size:16px; line-height:40px; text-align:center}
+#divTabMenu2.wd ul li{width:109px;}
+#divTabMenu2 ul li a{display: block;height: 42px;padding:0 15px;line-height: 43px; text-align: center; font-size: 15px; color: #6a6a6a;font-family:NotoSansKR;}
+#divTabMenu2 ul li.selected a{height:42px;margin-top:-2px;border-top:2px solid #005490;border-bottom:2px solid #005490;color: #005490;}
+
+/* TabMenu */
+#divTabMenu{width:auto;margin:40px 0 20px;}
+#divTabMenu2 > div{margin:0 40px;}
+#divTabMenu2 ul li.selected a{height:42px;margin-top:0;}
+#divTabMenu2 .mTSWrapper{height:46px;top:-2px;}
