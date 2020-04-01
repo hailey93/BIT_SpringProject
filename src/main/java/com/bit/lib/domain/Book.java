@@ -10,7 +10,7 @@ import lombok.ToString;
 
 public class Book {
 
-	private int bookcode;
+	private int bookCode;
 	private String bookTitle;
 	private String author;
 	private String type;

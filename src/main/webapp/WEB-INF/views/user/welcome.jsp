@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +11,9 @@
 
 <form action="logout">
 <a href="login.do">로그아웃</a>
+
+
+<a href="wishList.do">위시리스트</a>
 </form>
 </body>
 </html>
