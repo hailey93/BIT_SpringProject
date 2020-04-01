@@ -16,14 +16,13 @@ public class BookDetailController {
 	private ReserveService reserveService;
 	String rentmsg;
 
-	/*
-	 * @RequestMapping(value="/reserveList.do") public String getReserveList(Model
-	 * model, String bookNo) { bookNo = "BC1"; model.addAttribute("rentst",
-	 * reserveService.getReserveList(bookNo));
-	 * System.out.println(reserveService.getReserveList(bookNo));
-	 * 
-	 * return "mypage/reserve/reserveList"; }
-	 */
-	
-	
+	@RequestMapping(value = "/BookDetail.do")
+	public String getReserveList(Model model, String bookNo) {
+		bookNo = "BC1";
+		model.addAttribute("rentst", reserveService.getReserveList(bookNo));
+		System.out.println(reserveService.getReserveList(bookNo));
+
+		return "mypage/reserve/BookDetail";
+	}
+
 }
