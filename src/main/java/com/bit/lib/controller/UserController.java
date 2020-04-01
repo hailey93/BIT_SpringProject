@@ -43,8 +43,14 @@ public class UserController {
 	@RequestMapping(value = "loginProc", method = RequestMethod.POST)
 	public String loginProc(User user, HttpSession session) {
 		session.setAttribute("id", user.getId());
+<<<<<<< HEAD
 		session.setAttribute("user", user);  
 		String nextPage = userService.loginProc(user)? "user/welcome":"user/login";
+=======
+		session.setAttribute("user", user);
+		String nextPage = userService.loginProc(user)? "main":"user/login";
+		
+>>>>>>> d959cc0eb6d43d53ac5581c224491ed9cb256a7b
 		return nextPage;
 	}
 	@RequestMapping("logout.do")

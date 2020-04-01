@@ -1,2 +1,6 @@
 *.MF
+<<<<<<< HEAD
 *.class
+=======
+*.class
+>>>>>>> d959cc0eb6d43d53ac5581c224491ed9cb256a7b
