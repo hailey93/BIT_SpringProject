@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bit.my.dao.WishListDAO">
+<mapper namespace="com.bit.lib.dao.WishListDAO">
 
-<!-- <select id="selectWishList" resultType="">
-select b.number, b.title, b.image, r.rentStatus from book b
+<select id="selectWishList" parameterType="String" resultType="wishListDTO">
+select w.bookNo, w.id, b.bookTitle, b.imagePath, bs.rentStatus from wishlist w
+inner join bookStatus bs on w.bookNo=bs.bookNo
+inner join book b on bs.bookCode=b.bookCode
+where w.id=#{id}
+</select>
 
-inner join wishlist w on b.number=w.book_no
-inner join rental r on w.book_no=r.book_no
-</select> -->
+<insert id="addWishList" parameterType="wishListDTO">
+insert into wishlist (id, bookNo) values (#{id}, #{bookNo})
+</insert>
 
 </mapper>
