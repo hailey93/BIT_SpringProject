@@ -14,13 +14,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>비트 도서관</title>
 
-<link rel="stylesheet" type="text/css" href="/css/common.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/main(1).css"
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/common.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/main.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/main(1).css"
 	media="screen and (min-width:768px) and (max-width:1024px)">
-<link rel="stylesheet" href="/css/main(2).css"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/main(2).css"
 	media="screen and (max-width:767px)">
-<link rel="stylesheet" href="/css/slick.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/slick.css">
 
 </head>
 
@@ -32,8 +37,9 @@
 	<div class="headerBtm">
 		<div>
 			<h2 class="logo">
-				<a href="" title="비트 도서관"><img src="/img/webimg/bitlogo.png"
-					alt=""></a>
+				<a href="" title="비트 도서관"> <img
+					src="${pageContext.request.contextPath}/img/webimg/bitlogo.png" />
+				</a>
 			</h2>
 			<div id="globalMenu">
 				<ul>
@@ -44,18 +50,15 @@
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form name="searchForm" action="" method="get">
+				<form action="mainSearch" method="get" id="mainSearch" >
 					<!-- 검색어 넘겨주기 -->
-					<input type="hidden" name="si" value="TOTAL"> <input
-						type="hidden" name="st" value="KWRD">
 					<fieldset>
 						<legend>검색</legend>
 						<div class="search">
 							<p class="searchBox">
-								<input type="text" class="searchInput" id="type1q" name="q"
-									title="검색어를 입력하세요." placeholder="검색어를 입력하세요."> <input
-									type="image" class="searchBtn" src="/img/webimg/btnSrch.png"
-									alt="검색" title="검색">
+								<input type="text" class="searchInput" id = "query" name="query" 
+								title="검색어를 입력하세요." placeholder="검색어를 입력하세요."> 
+								<input type="image" class="searchBtn" src="${pageContext.request.contextPath}/img/webimg/btnSrch.png" alt="검색" title="검색">
 							</p>
 						</div>
 					</fieldset>
