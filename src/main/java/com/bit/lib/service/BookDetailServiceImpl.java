@@ -11,7 +11,7 @@ import com.bit.lib.dao.BookDetailDAO;
 import com.bit.lib.domain.Book;
 import com.bit.lib.domain.BookStatus;
 import com.bit.lib.dto.BookDetailDTO;
-import com.bit.lib.dto.ReserveListDto;
+import com.bit.lib.dto.ReserveListDTO;
 
 
 
@@ -25,8 +25,15 @@ public class BookDetailServiceImpl implements BookDetailService {
 	public List<BookDetailDTO> bookPage(String bookTitle) {
 		// TODO Auto-generated method stub
 		return bookdetailDao.bookPage(bookTitle);
-		
 	}
+
+	@Override
+	public List<BookDetailDTO> bookDetail(String bookTitle) {
+		// TODO Auto-generated method stub
+		return bookdetailDao.bookDetail(bookTitle);
+	}
+
 	
+
 
 }

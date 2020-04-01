@@ -6,13 +6,14 @@ import com.bit.lib.domain.Book;
 import com.bit.lib.domain.BookStatus;
 import com.bit.lib.domain.RentHistory;
 import com.bit.lib.domain.Reserve;
-import com.bit.lib.dto.ReserveListDto;
+import com.bit.lib.dto.ReserveListDTO;
 
 public interface ReserveService {
 
 	
 	void insertReserve(Reserve reserve);
-	List<ReserveListDto> getReserveList(String id);
+	
+	List<ReserveListDTO> getReserveList(String id);
 	
 	
 }

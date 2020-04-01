@@ -15,6 +15,7 @@ public class Book {
 	private String author;
 	private String type;
 	private String publisher;
+	private String pubYear;
 	private String imagePath;
 	private int bookQty;
 	

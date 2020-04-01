@@ -11,7 +11,6 @@ import lombok.ToString;
 public class RentHistory {
 	private int historyCode;
 	private String bookNo;
-	private Date returnDueDate;
 	private Date returnDate;
 	private Date rentDate;
 	private String id;

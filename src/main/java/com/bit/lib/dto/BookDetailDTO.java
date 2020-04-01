@@ -15,8 +15,9 @@ public class BookDetailDTO {
 	private String author;
 	private String type;
 	private String publisher;
-	private Date pubYear;
+	private String pubYear;
 	private String imagePath;
 	private String bookNo;
 	private int rentStatus;
+	private int reserveStatus;
 }

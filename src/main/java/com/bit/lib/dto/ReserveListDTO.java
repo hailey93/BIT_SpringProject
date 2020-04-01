@@ -6,10 +6,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @ToString
-public class ReserveListDto {
+public class ReserveListDTO {
 	private String bookNo;
 	private String bookTitle;
 	private Date reserveDate;
