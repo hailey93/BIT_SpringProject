@@ -10,11 +10,18 @@
 		from library.user where ID=	#{id} and PW=#{pw}
 	</select>
 	
-
+	<select id="joinIdCheck" parameterType="com.bit.lib.domain.User" resultType="com.bit.lib.domain.User">
+		select ID from library.user where ID=#{id}
+	</select>
 	
-	<insert id="joinProc" parameterType="com.bit.lib.domain.User">
-		insert into User(ID,NAME,PW,BIRTH,GENDER,PHONE)
-		values(#{id},#{name},#{pw},#{birth},#{gender},#{phone})
+	<!-- 	select count(*) from library.user where ID = #{id} -->
+	<insert id="joinMember" parameterType="com.bit.lib.domain.User">
+		insert into library.user(id,name,pw,birth,gender,phone) values(#{id},#{name},#{pw},#{birth},#{gender},#{phone})
 	</insert>
+	
+	
+	
+	
+	
 		
 </mapper>
