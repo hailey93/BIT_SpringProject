@@ -11,7 +11,12 @@
 	
 	</select>
 	
+	<select id="mainView" resultType="book">
 
+		SELECT * FROM library.book
+	
+	</select>
+	
 	
 		
 </mapper>

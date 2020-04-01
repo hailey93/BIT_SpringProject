@@ -15,15 +15,20 @@ public class MainController {
 	MainDAO mainDAO;
 	
 	@GetMapping("/main")
-	public String main() {
+	public String main(Model model) {
+		System.out.println(mainDAO.mainView());
+		model.addAttribute("mainView", mainDAO.mainView());
 		return "main";
 	}
 	
 	@GetMapping("/mainSearch")
-	public String mainSearch(Model model, @RequestParam("query") String query) {
+	public String mainSearch(Model model, @RequestParam("keyWord") String keyWord) {
 		
-		model.addAttribute("searchBook", mainDAO.searchBook(query));
-		System.out.println(mainDAO.searchBook(query));
+
+		model.addAttribute("keyWord", keyWord);
+		model.addAttribute("searchBook", mainDAO.searchBook(keyWord));
+		System.out.println(mainDAO.searchBook(keyWord));
+		
 		return "book/mainSearch";
 		
 	}

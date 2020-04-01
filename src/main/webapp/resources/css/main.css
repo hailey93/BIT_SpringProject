@@ -3290,7 +3290,7 @@
 	width: 66px;
 	height: 66px;
 	text-indent: -9999px;
-	background-image: url(../../../../image/ko/local/btnTop.png);
+	background-image: url(../img/webimg/btnTop.png);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: #ff8678;
@@ -3418,4 +3418,28 @@
 	padding: 4px 8px;
 	height: 176px;
 	overflow-y: scroll;
+}
+#container{
+	height:5000px;
+}
+#content{
+	color:gray;
+	height:5000px;
+}
+#log{
+	position:fixed;
+	top:0;
+	left:0;
+ 	right:0;
+	margin:0;
+	height:200px;	
+	background-color:rgba(0,0,0,0.7);	
+	text-align:center;
+	line-height:50px;
+}
+#container span{
+	color:white;
+}
+#b{
+	display:none;
 }

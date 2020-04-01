@@ -6,7 +6,7 @@ import com.bit.lib.domain.Book;
 
 public interface MainDAO {
 	
-	List<Book> searchBook(String qeury);
-
+	List<Book> searchBook(String keyWord);
+	List<Book> mainView();
 	
 }
