@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
 <table border="0">
@@ -42,6 +43,7 @@
 		</tr>
 
 		<c:forEach var="bookdtList" items="${bookdtList }">
+				
 			<c:set var="reservest" value="${bookdtList.reserveStatus}"/>
 			<c:set var="bookst" value="${bookdtList.rentStatus}" />
 			<c:choose>
@@ -69,15 +71,29 @@
 			</c:choose>
 
 			<tr>
-				<td><input type="checkbox"></td>
+				<!-- <td><input type="radio" class="bookdtList" name="bookdtList"/></td> -->
+				<!-- <td><input type="checkbox" class="bookdtList" name="bookdtList"/></td> -->
+				<td><input type="checkbox" name="chkbox" value="${bookdtList.bookNo}" onclick="check_only(this)"></td>
 				<td>${bookdtList.bookNo}</td>
 				<td><c:out value="${bookstat}" /></td>
 				<td><c:out value="${reservestat}" /></td>
 			</tr>
 		</c:forEach>
-		<input type="button" value="대여" Onclick="대여controller">
-		<input type="button" value="위시리스트" Onclick="위시리스트controller">
-		<input type="button" value="예약" Onclick="예약controller">
+		<input type="button" value="대여" Onclick="location.href='/lib/bookRent.do'">
+		<input type="button" value="위시리스트" Onclick="location.href='lib/addwishlist.do'">
+		<input type="button" value="예약" Onclick="location.href='/lib/reserve.do'">
 	</table>
+
+<script type="text/javascript">
+	function check_only(chk){
+        var obj = document.getElementsByName("chkbox");
+        for(var i=0; i<obj.length; i++){
+            if(obj[i] != chk){
+                obj[i].checked = false;
+            }
+        }
+    }
+
+</script>
 </body>
 </html>

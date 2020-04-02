@@ -77,7 +77,7 @@ table {
 		</div>
 	</div>
 	<a href="wishList.do" title="대여현황">대여현황</a>
-	<a href="wishList.do" title="예약목록">예약목록</a>
+	<a href="reserveList.do" title="예약목록">예약목록</a>
 	<a href="wishList.do" title="연체현황">연체현황</a>
 	<a href="wishList.do" title="대여이력">대여이력</a>
 	<a href="wishList.do" title="위시리스트">위시리스트</a>

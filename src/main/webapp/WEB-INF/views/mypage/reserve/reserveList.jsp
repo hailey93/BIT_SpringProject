@@ -38,7 +38,7 @@
 			</c:choose>
 
 			<tr>
-				<td><input type="checkbox"></td>
+				<td><input type="checkbox" name="chk" value="${rentst.bookNo}"></td>
 				<td>${rentst.bookNo}</td>
 				<td>${rentst.bookTitle}</td>
 				<td>${rentst.reserveDate}</td>
@@ -48,8 +48,46 @@
 				<%-- <td>${rentst.rentStatus}</td> --%>
 			</tr>
 		</c:forEach>
-		<input type="button" value="대여" Onclick="대여controller">
-		<input type="button" value="예약취소" Onclick="취소cotroller">
+		<input type="button" value="대여" Onclick="location.href='/lib/bookRent.do'">
 	</table>
+		<button type="button" class="delete">예약취소</button>
+	
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+	
+	<script>
+		$(".delete").click(
+				function() {
+					var count = $("input[name=chk]:checked").length;
+					var chkArray = [];
+					$("input[name=chk]:checked").each(function(){
+						chkArray.push($(this).val);
+					});
+					console.log(chkArray);
+					if(count == 0){
+						alert("선택된 목록이 없습니다.")
+					} else{
+						jQuery.ajaxSettings.traditional = true;
+						
+						$.ajax({
+							url : "/lib/reserveCancel.do",
+							type : "post",
+							data : JSON.stringify(chkArray),
+							dataType : "json",
+							contentType : "application/json; charset=UTF-8",
+							success : function(data){
+								alert("삭제되었습니다");
+								console.log(JSON.stringify(chkArray));
+							},
+							error : function(request, status, error){
+								alert("code:" + request.status + "\n"
+										+ "message : " + request.responseText
+										+ "\n" + "error : " +error);
+								console.log('184', JSON.stringify(chkArray));
+								location.reload();
+							},
+						})
+					}
+				})
+	</script>
 </body>
 </html>

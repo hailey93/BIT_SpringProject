@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +27,7 @@ public class ReserveServiceImpl implements ReserveService {
 	
 
 	
-	@Override
-	public void insertReserve(Reserve reserve) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	public List<ReserveListDTO> getReserveList(String id) {
 		
 		/*
@@ -38,6 +35,52 @@ public class ReserveServiceImpl implements ReserveService {
 		 */
 		return reserveDao.getReserveList(id);
 	}
+
+
+
+
+	@Override
+	public void insertReserve( String id, String bookNo) {
+		// TODO Auto-generated method stub
+		
+		reserveDao.insertReserve(id, bookNo);
+	}
+
+
+
+
+	@Override
+	public void insertReserveup(String bookNo) {
+		// TODO Auto-generated method stub
+		reserveDao.insertReserveup(bookNo);
+	}
+
+
+
+
+	@Override
+	public void reserveCancel(List<String> chkItems) {
+		// TODO Auto-generated method stub
+		for(String bookNo:chkItems) {
+	         System.out.println(bookNo);
+	         reserveDao.reserveCancel(bookNo);
+		}
+		
+	}
+
+
+
+
+	@Override
+	public void reserveCancelup(List<String> chkItems) {
+		// TODO Auto-generated method stub
+		for(String bookNo:chkItems) {
+	         System.out.println(bookNo);
+	         reserveDao.reserveCancel(bookNo);
+		}
+		
+	}
+	
 
 
 
