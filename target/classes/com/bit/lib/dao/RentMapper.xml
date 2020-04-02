@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.lib.dao.RentDAO">
+
+
+	<select id="getRentHistoryList" parameterType="String" resultType="RentDTO">
+		<!-- select b.bookTitle, b.author, r.bookNo, r.rentDate, r.returnDate
+		from renthistory as r
+		inner join bookstatus as bs on r.bookNo=bs.bookNo
+		inner join user as u on r.id=u.id
+		inner join book as b on b.bookcode=bs.bookCode
+		where u.id=#{id} and r.rentdate<if test="rentDate!=null or rentDate!=''"/> -->
+		select b.bookTitle, b.author, r.bookNo, r.rentDate, r.returnDate
+		from renthistory as r
+		inner join bookstatus as bs on r.bookNo=bs.bookNo
+		inner join user as u on r.id=u.id
+		inner join book as b on b.bookcode=bs.bookCode
+		where u.id=#{id} and not r.rentDate is null
+		
+	</select>
+
+	<!-- selectRentNow -->
+	<select id="selectRentNow" parameterType="String" resultType="RentDTO">
+		select b.bookTitle, b.author, r.bookNo, r.rentDate, bs.returnDueDate
+		from renthistory as r
+		inner join bookstatus as bs on r.bookNo=bs.bookNo
+		inner join user as u on r.id=u.id
+		inner join book as b on b.bookcode=bs.bookCode
+		where (bs.rentStatus=0 or bs.rentStatus=1) and u.id='hyun123'
+	</select>
+
+	<update id="renew" parameterType="rentDTO">
+		update bookStatus as bs 
+		inner join reserve as rs on rs.bookNo=bs.bookNo
+		set bs.rentStatus =1 , returnDueDate=date_add(returnDueDate, interval 7 day)
+		where bs.rentStatus=0 and reserveStatus=0
+		
+	</update>
+
+</mapper>
