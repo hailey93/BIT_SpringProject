@@ -15,7 +15,7 @@ import com.bit.lib.domain.User;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-		@Autowired
+		@Autowired(required=false)
 		UserDAO userDAO;
 
 		@Override

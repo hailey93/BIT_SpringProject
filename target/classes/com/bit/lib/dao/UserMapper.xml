@@ -14,9 +14,15 @@
 		select ID from library.user where ID=#{id}
 	</select>
 	
+<<<<<<< HEAD
 	<!-- 	select count(*) from library.user where ID = #{id} -->
 	<insert id="joinMember" parameterType="com.bit.lib.domain.User">
 		insert into library.user(id,name,pw,birth,gender,phone) values(#{id},#{name},#{pw},#{birth},#{gender},#{phone})
+=======
+	<insert id="joinProc" parameterType="com.bit.lib.domain.User">
+		insert into library.user(ID, NAME, PW, BIRTH, GENDER, PHONE)
+		values(#{id}, #{name}, #{pw}, #{birth}, #{gender}, #{phone})
+>>>>>>> 068ba9fab6fa06e5681d17dbbdeb79a47c4b2e5b
 	</insert>
 	
 	

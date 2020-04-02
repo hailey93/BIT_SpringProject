@@ -1,19 +1,22 @@
 package com.bit.lib.dto;
 
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @ToString
-public class WishListDTO {
-
-	private int wishListCode;
+public class ReserveListDTO {
 	private String bookNo;
-	private String id;
 	private String bookTitle;
-	private String imagePath;
+	private Date reserveDate;
+	private Date returnDueDate;
+	private Date returnDate;
+	private Date reserveFinDate;
 	private int rentStatus;
 	
 }
