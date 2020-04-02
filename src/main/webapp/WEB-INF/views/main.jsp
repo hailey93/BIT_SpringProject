@@ -38,7 +38,7 @@
 			<div>
 				<h2 class="logo">
 					<a href="/lib/main" title="비트 도서관"> <img
-						src="${pageContext.request.contextPath}/img/webimg/bitlogo.png" />
+						src="webimg/bitlogo.png" />
 					</a>
 				</h2>
 				<div id="globalMenu">
@@ -59,7 +59,7 @@
 									<input type="text" class="searchInput" id="keyWord"
 										name="keyWord" title="검색어를 입력하세요." placeholder="검색어를 입력하세요.">
 									<input type="image" class="searchBtn"
-										src="${pageContext.request.contextPath}/img/webimg/btnSrch.png"
+										src="webimg/btnSrch.png"
 										alt="검색" title="검색">
 								</p>
 							</div>
@@ -71,45 +71,56 @@
 	</div>
 
 	<!-- 메인 출력 페이지-->
-	<div id="divContents">
-	
-	${mainView }
-	
-	
-	
-		<!-- <div>
-			<div id="container">
-				<div id="log">
+	<div>
+	<!-- <div id="contents2"> -->
 
-					<span>scrollHeight: <b id="scrollHeight">0</b></span><br> <span>scrollPosition:
-						<b id="scrollPosition">0</b>
-					</span><br> <span>from bottom : <b id="bottom"></b></span><br> <span
-						id="b">scroll 500px</span>
 
-				</div>
+		<article>
+			<div class="block">
+				<p>
+					<c:forEach items="${mainView }" var="mainView" varStatus="status">
+
+
+						<img id="${mainView.author }" src="${mainView.imagePath }"
+							width="300" height="400" alt="${mainView.bookTitle}" />
+							
+						<!-- onerror="this.src='/image/ko/solution/common/ico/typeM.png'" width="75" height="103"  -->
+					</c:forEach>
+				</p>
 			</div>
-		</div> -->
+			<div class="block">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Voluptatem mollitia accusamus sequi ipsa, rerum nam laboriosam,
+					ipsam aperiam deleniti beatae expedita id quisquam veritatis
+					corporis, voluptates ducimus molestiae eum adipisci.</p>
+			</div>
+			<!-- 반복 -->
+			
+		</article>
+		<script>
+			var count = 0;
+			//스크롤 바닥 감지
+			window.onscroll = function(e) {
+				//추가되는 임시 콘텐츠
+				//window height + window scrollY 값이 document height보다 클 경우,
+				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+					//실행할 로직 (콘텐츠 추가)
+					 alert("you're at the bottom of the page");
+					/* count++;
+					var addContent = '<div class="block"><p>' + count
+							+ '번째로 추가된 콘텐츠</p></div>';
+					//article에 추가되는 콘텐츠를 append
+					$('article').append(addContent); */
+				}
+			};
+		</script>
+
+
 	</div>
 
-	<script type="text/javascript">
-		$(window).on("scroll", function() {
-			var scrollHeight = $(document).height();
-			var scrollPosition = $(window).height() + $(window).scrollTop();
-
-			$("#scrollHeight").text(scrollHeight);
-			$("#scrollPosition").text(scrollPosition);
-			$("#bottom").text(scrollHeight - scrollPosition);
-
-			if (scrollPosition > scrollHeight - 500) {
-				//todo
-				$("body").append('<div id="content"></div>');
-			}
-		});
-	</script>
-
 	<div id="divFooter">
-		<div class="footer">			
-			<a href="https://www.nowonlib.kr/#" class="btnTop">페이지 맨 위로 이동</a>
+		<div class="footer">
+			<a href="main#" class="btnTop">페이지 맨 위로 이동</a>
 		</div>
 		<!-- //divFooter -->
 	</div>

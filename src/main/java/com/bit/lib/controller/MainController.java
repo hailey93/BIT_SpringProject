@@ -16,7 +16,6 @@ public class MainController {
 	
 	@GetMapping("/main")
 	public String main(Model model) {
-		System.out.println(mainDAO.mainView());
 		model.addAttribute("mainView", mainDAO.mainView());
 		return "main";
 	}
