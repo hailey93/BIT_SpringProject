@@ -3,7 +3,7 @@
 <mapper namespace="com.bit.lib.dao.WishListDAO">
 
 <select id="selectWishList" parameterType="String" resultType="wishListDTO">
-select w.bookNo, w.id, b.bookTitle, b.imagePath, bs.rentStatus from wishlist w
+select w.wishListCode, w.bookNo, w.id, b.bookTitle, b.imagePath, bs.rentStatus from wishlist w
 inner join bookStatus bs on w.bookNo=bs.bookNo
 inner join book b on bs.bookCode=b.bookCode
 where w.id=#{id}
@@ -12,5 +12,9 @@ where w.id=#{id}
 <insert id="addWishList" parameterType="wishListDTO">
 insert into wishlist (id, bookNo) values (#{id}, #{bookNo})
 </insert>
+
+<delete id="deleteWishList" parameterType="int">
+	delete from wishList where wishListCode=#{wishListCode}
+</delete>
 
 </mapper>
