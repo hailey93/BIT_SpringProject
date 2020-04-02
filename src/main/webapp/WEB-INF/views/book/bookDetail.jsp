@@ -75,6 +75,9 @@
 				<td><c:out value="${reservestat}" /></td>
 			</tr>
 		</c:forEach>
+		<input type="button" value="대여" Onclick="대여controller">
+		<input type="button" value="위시리스트" Onclick="위시리스트controller">
+		<input type="button" value="예약" Onclick="예약controller">
 	</table>
 </body>
 </html>
