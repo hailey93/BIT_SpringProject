@@ -81,8 +81,9 @@ table {
 	<a href="wishList.do" title="연체현황">연체현황</a>
 	<a href="wishList.do" title="대여이력">대여이력</a>
 	<a href="wishList.do" title="위시리스트">위시리스트</a>
-	<a href="wishList.do" title="회원정보수정">회원정보수정</a> <br>
-	
+	<a href="wishList.do" title="회원정보수정">회원정보수정</a>
+	<br>
+
 
 	<button type="button" class="delete">삭제</button>
 
@@ -109,15 +110,19 @@ table {
 
 				<tr>
 					<td class="checkbox"><input type="checkbox" name="check"
-						id="check" value="${myWishList.wishListCode }"></td>
+						id="check" value="${myWishList.wishListCode}"></td>
 
 					<td class="image"><a href=""><img
 							src="${myWishList.imagePath }"></a></td>
 
 					<td class="bookTitle"><a href="">${myWishList.bookTitle }</a></td>
+<td class="bookStatus">
+<c:choose>
+<c:when test="${myWishList.rentStatus==2 }">대여가능</c:when>
+<c:otherwise>대여중</c:otherwise>
 
-					<td class="bookStatus">${myWishList.rentStatus }</td>
-
+					
+</c:choose></td>
 				</tr>
 
 
@@ -147,42 +152,46 @@ table {
 					$("input[name=check]").prop("checked", true);
 				} else {
 					$("input[name=check]").prop("checked", false);
-				}	
+				}
 			});
 		});
 	</script>
 
 	<script>
-		$(".delete").click(function() {//삭제버튼 누르면 삭제 컨트롤러로 체크된 값 넘겨주기
-			var count = $("input[name=check]:checked").length;
-			var chkArray = [];
-			$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
-				chkArray.push($(this).val()); //체크된 것만 뽑아서 배열에 넣기
-			});
-			console.log(JSON.stringify(chkArray));
+		$(".delete").click(
+				function() {//삭제버튼 누르면 삭제 컨트롤러로 체크된 값 넘겨주기
+					var count = $("input[name=check]:checked").length;
+					var chkArray = [];
+					$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
+						chkArray.push($(this).val()); //체크된 것만 뽑아서 배열에 넣기
+					});
+					console.log(chkArray);
+					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+						alert("선택된 위시리스트가 없습니다.")
+					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+						jQuery.ajaxSettings.traditional = true;
 
-			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-				alert("선택된 위시리스트가 없습니다.")
-			} else {//선택된 것이 있으면 controller로 값 넘겨주기
-				 jQuery.ajaxSettings.traditional = true;
+						$.ajax({
+							url : "/lib/deleteWishList.do",
+							type : "post",
+							data : JSON.stringify(chkArray),
+							dataType : "json",
+							contentType : "application/json; charset=UTF-8",
+							success : function(data) {
+								alert('삭제되었습니다!');
+								console.log(JSON.stringify(chkArray));
+							},
+							error : function(request, status, error) {
+								alert("code:" + request.status + "\n"
+										+ "message:" + request.responseText
+										+ "\n" + "error:" + error);
+								console.log('184',JSON.stringify(chkArray));
+								location.reload();
+							},
+						});
+					}
 
-				$.ajax({
-					url : '/lib/deleteWishList.do',
-					type : 'post',
-					data : JSON.stringify(chkArray),
-					dataType : 'json',
-					contentType:'application/json; charset=UTF-8',
-					success : function(data) {
-						alert('삭제되었습니다!');
-						location.reload();
-					},
-					error : function() {
-						alert('삭제되지 않았습니다!');
-					},
 				});
-			}
-
-		});
 	</script>
 </body>
 </html>

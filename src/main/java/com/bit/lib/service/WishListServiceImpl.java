@@ -1,6 +1,5 @@
 package com.bit.lib.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +26,12 @@ public class WishListServiceImpl implements WishListService {
 	}
 
 	@Override
-	public void deleteWishList(ArrayList<String> deleteArray) {
-		//컨트롤러에서 전달한 ArrayList를 for문으로 돌려 고유값을 하나씩 꺼내어 delete문을 돌린다.
-		System.out.println(deleteArray);
-		for(int i=0;i<deleteArray.size();i++) {
-			int wishListCode=Integer.parseInt(deleteArray.get(i));
+	public void deleteWishList(List<String> chkItems) {
+		//컨트롤러에서 전달한 List를 for문으로 돌려 고유값을 하나씩 꺼내어 delete문을 돌리기
+		
+		for(String delItems:chkItems) {
+			int wishListCode=Integer.parseInt(delItems);
+			System.out.println(wishListCode);
 			wishListDAO.deleteWishList(wishListCode);
 		}
 	}
