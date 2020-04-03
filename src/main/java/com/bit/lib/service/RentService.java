@@ -14,5 +14,5 @@ public interface RentService {
 	
 	 void renew(RentDTO rentDTO);
 
-	
+	 
 }

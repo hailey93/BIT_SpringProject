@@ -1,5 +1,7 @@
 package com.bit.lib.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +27,24 @@ public class Rentcontroller {
 		return "mypage/rentHistory/rentHistory";
 	}
 
-	@RequestMapping(value = "rentNow.do")
+	@RequestMapping(value = "rentNow.do", method = RequestMethod.GET)
 	public String selectRentNow(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		model.addAttribute("selectRentNow", rentService.selectRentNow(id));
-		System.out.println(rentService.selectRentNow(id));
+		List<RentDTO> rentDtos = rentService.selectRentNow(id);
+		model.addAttribute("selectRentNow", rentDtos);
+		System.out.println(rentDtos);
 		return "mypage/rentNow/rentNow";
 	}
-	@RequestMapping(value="renew.do")
+
+	@RequestMapping(value = "renew.do", method = RequestMethod.GET)
 	public String renew(@ModelAttribute RentDTO rentDTO, HttpSession session) {
-		//String id=(String)session.getAttribute("id");
+		//@PathVariable : 
+		String id = (String) session.getAttribute("id"); // 세션에서 아이디 가져오기
+		if (id == null) { // 로그인안했을때
+			return "redirect:/login.do";
+		}
 		rentService.renew(rentDTO);
 		return "mypage/rentNow/renew";
 	}
-	
-	
-}
 
+}
