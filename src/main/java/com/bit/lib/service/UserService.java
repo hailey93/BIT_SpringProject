@@ -19,4 +19,7 @@ public interface UserService {
 	//회원정보보기
 	User viewUser(String id);
 	
+	//회원정보 수정
+	void updateUser(User user);
+	
 }

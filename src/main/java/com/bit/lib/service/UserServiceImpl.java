@@ -45,12 +45,16 @@ public class UserServiceImpl implements UserService {
 		@Override
 		public User viewUser(String id) {
 			
-			return null;
+			return userDAO.viewUser(id);
 		}
 
-	
-		
-		//회원정보 조회
+		@Override
+		public void updateUser(User user) {
+			// TODO Auto-generated method stub
+			userDAO.updateUser(user);
+		}
+
+
 		
 
 		

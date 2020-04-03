@@ -14,7 +14,7 @@
 <body>
 	<h1>회원가입</h1>
 	<hr>
-	<form id="signFrm" name="signFrm" action="joinProcess">
+	<form action="joinProcess" id="signFrm" name="signFrm">
 		<table>
 			<tbody>
 				<tr>
@@ -53,7 +53,11 @@
 				</tr>
 				
 				<tr>
-					<td colspan="3"><input type="button" id="signUp" value="회원가입"></td>
+					<td colspan="3"><input type="button" id="signUp" value="회원가입 완료"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="3"><input type="button" value="로그인" onclick="location.href='login.do'"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -97,6 +101,8 @@
 				alert("핸드폰번호 입력.");
 				$('#phone').focus();
 				return;
+			}else{
+				alert("가입완료");
 			}
 			
 			

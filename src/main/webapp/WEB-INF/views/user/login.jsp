@@ -13,6 +13,6 @@
 		
 			<input type="submit" value = "로그인">
 			
-	</form> <a href="join.do"><input type="submit" value="회원가입"></a>
+	</form> <a href="join.do">회원가입</a>
 </body>
 </html>

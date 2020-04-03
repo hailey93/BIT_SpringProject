@@ -98,7 +98,11 @@ public class UserController {
 	
 	
 	//회원정보 수정
-	
+	@RequestMapping("/updateUser.do")
+	public String updateUser(@ModelAttribute User user) {
+		userService.updateUser(user);
+		return "mypage/userInfo/userUpdateView";
+	}
 	
 	
 	

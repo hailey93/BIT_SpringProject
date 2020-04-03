@@ -15,5 +15,6 @@ public interface UserDAO {
 	void logout(HttpSession session);
 	void joinUser(User user);	
 	int idCheck(String id);
-	User viewUser(User user);
+	User viewUser(String id);
+	void updateUser(User user);
 }
