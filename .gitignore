@@ -1,2 +1,5 @@
 *.MF
 *.class
+*.calss
+*/pom.properties
+*.class~*

@@ -60,7 +60,12 @@ a:active{color:#1a96d9;text-decoration:none}
 .paging > a img{width:28px;height:28px;vertical-align: middle}
 .paging > a.firstPage{border-right:none}
 .paging > a.lastPage{border-left:none}
-.paging > span{margin:0 10px}
+.paging > span {
+    margin: auto;
+    width: 650px;
+    padding: 0 10px;
+    float: left;
+}
 .paging > span span{padding:0 10px;color:#000;text-decoration:underline}
 .paging > span a{color:#747474}
 
