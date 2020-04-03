@@ -20,8 +20,6 @@ public class MainController {
 		return "main";
 	}
 	
-<<<<<<< HEAD
-=======
 	@GetMapping("/mainSearch")
 	public String mainSearch(Model model, @RequestParam("keyWord") String keyWord) {
 		
@@ -33,6 +31,4 @@ public class MainController {
 		return "book/mainSearch";
 		
 	}
-	
->>>>>>> YouHJ
 }
