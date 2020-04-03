@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.lib.dto.BookDetailDTO;
 import com.bit.lib.service.ReserveService;
 
 @Controller
@@ -45,7 +46,7 @@ public class ReserveController {
 		
 		System.out.println(reserveService.getReserveList(id));
 
-		return "mypage/reserve/reserveList";
+		return "mypage/reserve/reserveList2";
 	}
 	//도서 예약 취소
 	@RequestMapping(value="/reserveCancel.do", method = RequestMethod.POST)
@@ -54,6 +55,18 @@ public class ReserveController {
 		System.out.println(chkItems);
 		reserveService.reserveCancel(chkItems);
 		reserveService.reserveCancelup(chkItems);
+		
+		System.out.println("reserveCancel Ok");
+		return "mypage/reserve/reserveList";
+	}
+	@RequestMapping(value="/reserveCancel1.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String reserveCancel1(@RequestBody BookDetailDTO bookDetailDTO) {
+		System.out.println(bookDetailDTO);
+		/*
+		 * reserveService.reserveCancel(bookDetailDTO.getBookNo());
+		 * reserveService.reserveCancelup(chkItems);
+		 */
 		
 		System.out.println("reserveCancel Ok");
 		return "mypage/reserve/reserveList";
