@@ -58,31 +58,33 @@
 		$(".delete").click(
 				function() {
 					var count = $("input[name=chk]:checked").length;
-					var chkArray = [];
+						var chk;
 					$("input[name=chk]:checked").each(function(){
-						chkArray.push($(this).val);
+						 chk=($(this).val());
 					});
-					console.log(chkArray);
+					console.log("input[name=chk]:checked");
 					if(count == 0){
 						alert("선택된 목록이 없습니다.")
 					} else{
 						jQuery.ajaxSettings.traditional = true;
 						
 						$.ajax({
-							url : "/lib/reserveCancel.do",
+							url : "/lib/reserveCancel1.do",
 							type : "post",
-							data : JSON.stringify(chkArray),
+							data : JSON.stringify({
+								'bookNo' : chk
+							}),
 							dataType : "json",
 							contentType : "application/json; charset=UTF-8",
 							success : function(data){
 								alert("삭제되었습니다");
-								console.log(JSON.stringify(chkArray));
+								console.log(JSON.stringify(chk));
 							},
 							error : function(request, status, error){
 								alert("code:" + request.status + "\n"
 										+ "message : " + request.responseText
 										+ "\n" + "error : " +error);
-								console.log('184', JSON.stringify(chkArray));
+								console.log('184', JSON.stringify(chk));
 								location.reload();
 							},
 						})

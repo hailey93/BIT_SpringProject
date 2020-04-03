@@ -55,30 +55,21 @@ public class ReserveServiceImpl implements ReserveService {
 		reserveDao.insertReserveup(bookNo);
 	}
 
-
-
-
 	@Override
-	public void reserveCancel(List<String> chkItems) {
+	public void reserveCancel(String bookNo) {
 		// TODO Auto-generated method stub
-		for(String bookNo:chkItems) {
-	         System.out.println(bookNo);
-	         reserveDao.reserveCancel(bookNo);
-		}
 		
+		reserveDao.reserveCancel(bookNo);
 	}
 
 
 
 
 	@Override
-	public void reserveCancelup(List<String> chkItems) {
+	public void reserveCancelup(String bookNo) {
 		// TODO Auto-generated method stub
-		for(String bookNo:chkItems) {
-	         System.out.println(bookNo);
-	         reserveDao.reserveCancel(bookNo);
-		}
 		
+		reserveDao.reserveCancelup(bookNo);
 	}
 	
 
