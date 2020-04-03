@@ -1,6 +1,7 @@
 *.MF
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.class
 =======
 *.class
@@ -12,3 +13,9 @@
 =======
 *.class
 >>>>>>> 578a1ed44d7218c9c770ef2a28235346cb4bcecb
+=======
+*.class
+*.calss
+*/pom.properties
+*.class~*
+>>>>>>> da0a43af7f9a817756084775147582599fe993f5
