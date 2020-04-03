@@ -11,8 +11,12 @@ import com.bit.lib.domain.User;
 public interface UserService {
 	boolean loginProc(User user);
 	void logout(HttpSession session);
-	void joinMember(User user);
-	void joinIdCheck(String id, HttpServletResponse res) throws IOException;
+	//회원가입
+	void joinUser(User user);
+	//아이디 중복 체크
+	int idCheck(String id);
 	
+	//회원정보보기
+	User viewUser(String id);
 	
 }

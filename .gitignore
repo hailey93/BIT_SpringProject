@@ -1,5 +1,6 @@
 *.MF
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.class
 =======
 *.class
@@ -8,3 +9,6 @@
 =======
 >>>>>>> 3cfa192cdf3b04b36f04e3e59e7c5beae9cfb9f1
 >>>>>>> 068ba9fab6fa06e5681d17dbbdeb79a47c4b2e5b
+=======
+*.class
+>>>>>>> 578a1ed44d7218c9c770ef2a28235346cb4bcecb

@@ -15,7 +15,7 @@ import com.bit.lib.domain.User;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-		@Autowired(required=false)
+		@Autowired
 		UserDAO userDAO;
 
 		@Override
@@ -31,25 +31,29 @@ public class UserServiceImpl implements UserService {
 		}
 
 		@Override
-		public void joinMember(User user) {
+		public void joinUser(User user) {
 			// TODO Auto-generated method stub
+			userDAO.joinUser(user);
 		}
 
 		@Override
-		public void joinIdCheck(String id, HttpServletResponse res) throws IOException {
-			User  user = new User();
-			user = userDAO.joinIdCheck(id);
-			
-			if(user == null) {
-				res.getWriter().print("1");
-			} else {
-				res.getWriter().print("0");
-			}
-			
+		public int idCheck(String id) {
+			int result = userDAO.idCheck(id);
+			return result;
 		}
 
+		@Override
+		public User viewUser(String id) {
+			
+			return null;
+		}
+
+	
+		
+		//회원정보 조회
 		
 
+		
 		
 		
 }

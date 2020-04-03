@@ -6,20 +6,139 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
 <title>join</title>
 </head>
 <body>
-<h1>회원가입</h1>
-	<form action="joinProcess" method="post" >
-		<input type="text" name = "id" placeholder="ID"><br>
-		<input type="text" name = "name" placeholder="이름"><br>
-		<input type="password" name = "pw" placeholder="비밀번호 입력"><br>
-		<input type="date" name = "birth" placeholder="생년월일"><br>
-		<input type="text" name = "gender" placeholder="성별"><br>
-		<input type="text" name = "phone" placeholder="휴대폰번호"><br>
-		<button type="submit">가입하기</button>
+	<h1>회원가입</h1>
+	<hr>
+	<form id="signFrm" name="signFrm" action="joinProcess">
+		<table>
+			<tbody>
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" id="id" name="id" ></td>
+					<td><input type="button" id="check" value="중복체크"></td>
+				</tr>
+				<tr>
+					<td colspan=3 id="idCheck"></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" id="name" name="name" ></td>
+					
+				</tr>
+				<tr>
+					<td>패스워드</td>
+					<td colspan="2"><input id="pw" name="pw" type="password"></td>
+				</tr>
+				<tr>
+					<td>패스워드 확인</td>
+					<td colspan="2"><input id="pwCheck" name="pwCheck" type="password"></td>
+				</tr>
+				
+				<tr>
+					<td>생일</td>
+					<td><input type="date" id="birth" name="birth" ></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td><input type="text" id="gender" name="gender" ></td>
+				</tr>
+				<tr>
+					<td>핸드폰번호</td>
+					<td><input type="text" id="phone" name="phone" ></td>
+				</tr>
+				
+				<tr>
+					<td colspan="3"><input type="button" id="signUp" value="회원가입"></td>
+				</tr>
+			</tbody>
+		</table>
 	</form>
-		<input type="button" value="로그인페이지로" onclick="location.href='login.do'">
-
 </body>
+<script type="text/javascript">
+	$(document).ready(function(e){
+		
+		var idx = false;
+		
+		$('#signUp').click(function(){
+			if($.trim($('#id').val()) == ''){
+				alert("아이디 입력.");
+				$('#id').focus();
+				return;
+				
+			}else if($.trim($('#name').val()) == ''){
+				alert("이름 입력.");
+				$('#name').focus();
+				return;
+			}
+			else if($.trim($('#pw').val()) == ''){
+				alert("패스워드 입력.");
+				$('#pw').focus();
+				return;
+			}//패스워드 확인
+			else if($('#pw').val() != $('#pwCheck').val()){
+				alert('패스워드가 다릅니다.');
+				$('#pw').focus();
+				return;
+			}
+			else if($.trim($('#birth').val()) == ''){
+				alert("생년월일 입력.");
+				$('#birth').focus();
+				return;
+			}else if($.trim($('#gender').val()) == ''){
+				alert("성별 입력.");
+				$('#gender').focus();
+				return;
+			}else if($.trim($('#phone').val()) == ''){
+				alert("핸드폰번호 입력.");
+				$('#phone').focus();
+				return;
+			}
+			
+			
+			
+			if(idx==false){
+				alert("아이디 중복체크를 해주세요.");
+				return;
+			}else{
+				$('#signFrm').submit();
+			}
+		});
+		
+		$('#check').click(function(){
+			$.ajax({
+				url: "${pageContext.request.contextPath}/idCheck.do",
+				type: "GET",
+				data:{
+					"id":$('#id').val()
+				},
+				success: function(data){
+					if(data == 0 && $.trim($('#id').val()) != '' ){
+						idx=true;
+						$('#id').attr("readonly",true);
+						var html="<tr><td colspan='3' style='color: green'>사용가능</td></tr>";
+						$('#idCheck').empty();
+						$('#idCheck').append(html);
+					}else{
+
+						var html="<tr><td colspan='3' style='color: red'>사용불가능한 아이디 입니다.</td></tr>";
+						$('#idCheck').empty();
+						$('#idCheck').append(html);
+					}
+				},
+				error: function(){
+					alert("서버에러");
+				}
+			});
+			
+
+		});
+		
+	});
+</script>
+
 </html>
