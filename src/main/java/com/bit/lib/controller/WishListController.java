@@ -1,17 +1,22 @@
 package com.bit.lib.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.lib.dto.WishListDTO;
 import com.bit.lib.service.WishListService;
@@ -46,13 +51,32 @@ public class WishListController {
 		return "mypage/wishList/addSuccessPopup";
 	}
 
-	@RequestMapping(value = "/deleteWishList.do", method = RequestMethod.POST)
+	@PostMapping(value = "/deleteWishList.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public void getDeleteWishList(@RequestBody List<String> chkItems) {
-		//jsp에서 List로 받은 chkItems service단으로 넘기기
-		System.out.println(chkItems);
-		wishListService.deleteWishList(chkItems);
+	public void getDeleteWishList(@RequestParam List<String> chkcodes) {
+
+        wishListService.deleteWishList(chkcodes);
+
+	}
+	
+	@PostMapping(value = "/rent.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public int getRent(@RequestParam List<String> chknos) {
+		//누가 빌려갔으면 대출불가하므로 result를 달리해서 보내야함 1이면 대여가능
+		int result=0;
 		
+			System.out.println(chknos);
+			return result;
+	}
+	
+	@PostMapping(value = "/reserve.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public int getReserve(@RequestParam List<String> chknos) {
+		//반납중인 책이면 바로 대여 가능하므로 result달리해서 보내야함 1이면 예약가능
+		int result=0;
+		
+		System.out.println(chknos);
+		return result;
 	}
 	
 	
