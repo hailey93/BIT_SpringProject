@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.lib.dao.UserDAO">
+
+	
+
+	<select id="loginProc" parameterType="com.bit.lib.domain.User" resultType="com.bit.lib.domain.User">
+		select *
+		from library.user where ID=	#{id} and PW=#{pw}
+	</select>
+	
+
+	
+	<insert id="joinProc" parameterType="com.bit.lib.domain.User">
+		insert into library.user(ID, NAME, PW, BIRTH, GENDER, PHONE)
+		values(#{id}, #{name}, #{pw}, #{birth}, #{gender}, #{phone})
+	</insert>
+		
+</mapper>
