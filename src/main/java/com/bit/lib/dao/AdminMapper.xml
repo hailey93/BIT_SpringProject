@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.lib.dao.AdminDAO">
+
+<select id="loginProc" parameterType="user" resultType="user">
+select *
+from user where ID=	#{id} and PW=#{pw}
+</select>
+
+<insert id="newBookProc" parameterType="newBookDTO">
+insert into book (bookTitle, author, type, publisher, pubYear, imagePath, bookQty)
+values(#{bookTitle}, #{author}, #{type}, #{publisher}, #{pubYear}, #{imagePath}, #{bookQty})
+</insert>
+
+<select id="newBookInfo" parameterType="newBookDTO" resultType="newBookDTO">
+select bookCode, bookQty from book where bookTitle=#{bookTitle}
+</select>
+
+<insert id="newBookProc2" parameterType="newBookDTO">
+insert into bookstatus (bookNo, bookCode, rentStatus) values(#{bookNo}, #{bookCode}, 2)
+</insert>
+
+</mapper>
