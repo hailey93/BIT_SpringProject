@@ -61,22 +61,18 @@ public class WishListController {
 	
 	@PostMapping(value = "/rent.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public int getRent(@RequestParam List<String> chknos) {
-		//누가 빌려갔으면 대출불가하므로 result를 달리해서 보내야함 1이면 대여가능
-		int result=0;
+	public void getRent(@RequestParam List<String> chknos) {
 		
-			System.out.println(chknos);
-			return result;
+		System.out.println(chknos);
+			
 	}
 	
 	@PostMapping(value = "/reserve.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public int getReserve(@RequestParam List<String> chknos) {
-		//반납중인 책이면 바로 대여 가능하므로 result달리해서 보내야함 1이면 예약가능
-		int result=0;
+	public void getReserve(@RequestParam List<String> chknos) {
 		
 		System.out.println(chknos);
-		return result;
+		
 	}
 	
 	

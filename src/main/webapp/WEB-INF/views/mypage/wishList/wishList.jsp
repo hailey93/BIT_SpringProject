@@ -32,9 +32,6 @@ table {
 	width: 100%;
 }
 </style>
-
-
-
 </head>
 <body>
 
@@ -94,7 +91,8 @@ table {
 
 								<li class="mTSThumbContainer"><a href="">회원정보</a></li>
 
-					</ul></div>
+					</ul>
+					</div>
 				</div>
 			</div>	
 	
@@ -123,7 +121,8 @@ table {
 
 				<tr>
 					<td class="num footable-first-column"><input type="checkbox" name="check" 
-					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"></td>
+					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
+					value="${myWishList.rentStatus }"></td>
 
 					<td class="image"><a href=""><img src="${myWishList.imagePath }"></a></td>
 
@@ -170,7 +169,8 @@ table {
 	</script>
 
 	<script>
-		$(".delete").click(function() {//삭제버튼 누르면 삭제 컨트롤러로 체크된 값 넘겨주기
+		$(".delete").click(function() {//삭제버튼 누르면 컨트롤러로 체크된 값 넘겨주기
+				
 					var count = $("input[name=check]:checked").length;
 					var code=new Array();
 					$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
@@ -192,65 +192,67 @@ table {
 							
 						});
 					}
-
+				
 				});
-		$(".rent").click(function() {//삭제버튼 누르면 삭제 컨트롤러로 체크된 값 넘겨주기
-			var count = $("input[name=check]:checked").length;
-			var no=new Array();
-			$("input[name=check]:checked").each(function() {
-				no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+		$(".rent").click(function() {
+			$("input[name=check]:checked").each(function() {	 
+					if(this.value!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
+						alert('선택하신 도서가 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
+					} else{
+					var count = $("input[name=check]:checked").length;
+					var no=new Array();
+					$("input[name=check]:checked").each(function() {
+					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+					});
+					console.log(no); 
+					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+						alert("선택된 위시리스트가 없습니다.")
+					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+					$.ajaxSettings.traditional = true;
+					$.ajax({
+						url : "/lib/rent.do",
+						type : "post",
+						data : { chknos : no },
+						success : function(data) {			
+								alert('선택하신 도서가 대여되었습니다!');
+								location.reload();							
+						},
+						});
+					}
+					
+				}
 			});
-			console.log(no); 
-			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-				alert("선택된 위시리스트가 없습니다.")
-			} else {//선택된 것이 있으면 controller로 값 넘겨주기
-				$.ajaxSettings.traditional = true;
-				$.ajax({
-					url : "/lib/rent.do",
-					type : "post",
-					data : { chknos : no },
-					success : function(result) {
-						if(result==1){
-							alert('선택하신 도서가 대여되었습니다!');
-							location.reload();
-						}
-						else{
-							alert('선택하신 도서가 대여불가 상태입니다. 대여가능책을 확인해주세요!');
-						}
-					},
-				});
-			}
-
 		});
-		$(".reserve").click(function() {//삭제버튼 누르면 삭제 컨트롤러로 체크된 값 넘겨주기
-			var count = $("input[name=check]:checked").length;
-			var no=new Array();
-			$("input[name=check]:checked").each(function() {
+		$(".reserve").click(function() {
+			$("input[name=check]:checked").each(function() {	 
+				if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
+					alert('선택하신 도서는 대여가능 상태입니다. 대여버튼을 눌러주세요!')
+				} else{
+				var count = $("input[name=check]:checked").length;
+				var no=new Array();
+				$("input[name=check]:checked").each(function() {
 				no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
-			});
-			
-			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-				alert("선택된 위시리스트가 없습니다.")
-			} else {//선택된 것이 있으면 controller로 값 넘겨주기
+				});
+				console.log(no); 
+				if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+					alert("선택된 위시리스트가 없습니다.")
+				} else {//선택된 것이 있으면 controller로 값 넘겨주기
 				$.ajaxSettings.traditional = true;
 				$.ajax({
 					url : "/lib/reserve.do",
 					type : "post",
 					data : { chknos : no },
-					success : function(result) {
-						if(result==1){
+					success : function(data) {			
 							alert('선택하신 도서가 예약되었습니다!');
-							location.reload();
-						}
-						else{
-							alert('선택하신 도서는 대여가능 상태입니다. 대여버튼을 눌러주세요!');
-						}
-						
+							location.reload();							
 					},
-				});
+					});
+				}
+				
 			}
-
 		});
+		});
+			
 	</script>
 </body>
 </html>
