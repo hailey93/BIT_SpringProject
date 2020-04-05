@@ -168,15 +168,19 @@ table {
 
 			<!-- divContent 시작-->
 			<div id="divContent">
-				<form id="frm" name="frm" method="post" action="/myloan/renew"
-					onsubmit="return checked(this);">
+				<form id="frm" name="frm" method="post"
+					action="/mypage/rentNow/renew">
 					<!-- Content List -->
 					<div class="listTable">
 						<table>
 							<thead>
 								<tr>
-									<th scope="row"><input type="checkbox" name="all"
-										class="checkAll"></th>
+									<th scope="row" class="footable-first-column">
+									<input
+										type="checkbox" name="allCheck" id="allCheck" value="checkbox"
+										title="전체선택"></th>
+									<!-- <th scope="col"><input type="checkbox" name="all"
+										class="checkAll"></th> -->
 									<th scope="row">No.</th>
 									<th scope="row">도서명</th>
 									<th scope="row">저자</th>
@@ -184,25 +188,26 @@ table {
 									<th scope="row">대여일</th>
 									<th scope="row">반납예정일</th>
 									<th scope="row">연장가능여부</th>
-									<th scope="row">연체일수</th>
+									<th scope="row" class="footable-last-column">연체일수</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${selectRentNow}" var="rent"
 									varStatus="status">
 									<tr>
-										<td class="checkbox"><input type="checkbox" name="check"
-											id="chk"></td>
-										<td>${status.count }</td>
+										<td class="num footable-first-column"><input
+											type="checkbox" name="check"></td>
+										<td class="num">${status.count }</td>
 										<!-- bookDetail 페이지로 넘기기 -->
-										<td><a href="./select.do?empno=${rent.bookTitle}">${rent.bookTitle}</a></td>
-										<td>${rent.author}</td>
-										<td>${rent.bookNo}</td>
-										<td>${rent.rentDate}</td>
-										<td>${rent.returnDueDate}</td>
+										<td class="bookTitle"><a
+											href="./select.do?bookDetail=${rent.bookTitle}">${rent.bookTitle}</a></td>
+										<td class="auther">${rent.author}</td>
+										<td class="bookNo">${rent.bookNo}</td>
+										<td class="rentDate">${rent.rentDate}</td>
+										<td class="returnDueDate">${rent.returnDueDate}</td>
 										<c:choose>
 											<c:when test="${rent.rentStatus == 0}">
-												<td>가능</td>
+												<td class="rentStatus">가능</td>
 											</c:when>
 											<c:otherwise>
 												<td>불가능</td>
@@ -213,7 +218,7 @@ table {
 												<td></td>
 											</c:when>
 											<c:otherwise>
-												<td>${rent.datedif}일</td>
+												<td class="datedif footable-last-column">${rent.datedif}일</td>
 											</c:otherwise>
 										</c:choose>
 									</tr>
@@ -223,31 +228,19 @@ table {
 					</div>
 
 
-					<!-- Content Paging -->
-					<div class="paging">
-						<span><span>1</span><a href="?pn=2">2</a><a href="?pn=3">3</a><a
-							href="?pn=4">4</a><a href="?pn=5">5</a></span><a href="?pn=6"
-							class="page" title="다음"><img
-							src="/image/ko/solution/common/btn/nextPage.gif" alt="다음"
-							title="다음"></a><a href="?pn=396" class="page" title="맨뒤"><img
-							src="/image/ko/solution/common/btn/lastPage.gif" alt="맨뒤"
-							title="맨뒤"></a>
-					</div>
-
 					<!-- Content Buttons -->
 					<div class="buttons">
-						<input type="submit" title="도서연장" value="도서연장"></input> <input
-							type="submit" title="도서반납" value="도서반납"></input>
+						<input type="submit" title="도서연장" value="도서연장" class="renew"></input> <input
+							type="submit" title="도서반납" value="도서반납" class="return"></input>
 					</div>
 
 
 
 					<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-					<script>
-						$(document).ready(
-								function() {
+					<!-- <script>
+						$(document).ready(function() {
 									/* $(".box button").attr("disabled", true); */
-									$(".checkAll").click(
+									$("#allCheck").click(
 											function() {
 												var chk = $(this)
 														.is(":checked");
@@ -269,17 +262,35 @@ table {
 												}
 											});
 								});
+					</script> -->
+					<script>
+						$(document).ready(function() {
+								$("#allCheck").click(function() {
+									var chk = $(this).is(":checked");
+									if (chk) {
+										$("input[name=check]").prop("checked", true);
+									} else {
+										$("input[name=check]").prop("checked", false);
+									}
+								});
+							});
+						</script>
+				
+					<script>
+					$(".renew").click(function() {
+						$("input[name=check]:checked").each(function() {
+							
+						}
+					}
 					</script>
-
 				</form>
-				"return checked(this);"
-			<!-- divContent 끝-->
+				<!-- divContent 끝-->
 			</div>
 
-		<!--//divContents-->
+			<!--//divContents-->
 		</div>
 
-	<!--//divContentsW?????-->
+		<!--//divContentsW?????-->
 	</div>
 
 

@@ -28,8 +28,9 @@ public class RentServiceImpl implements RentService {
 	}
 
 	@Override
-	public void renew(RentDTO rentDTO) {
-		rentDAO.renew(rentDTO);
+	public int renew(List<String> chkcodes) {
+		
+		return rentDAO.renew(chkcodes);
 	}
 
 	

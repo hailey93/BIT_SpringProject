@@ -12,7 +12,7 @@ public interface RentService {
 	
 	 List<RentDTO> selectRentNow(@SessionAttribute("id") String id);
 	
-	 void renew(RentDTO rentDTO);
+	 int renew(List<String> chkcodes);
 
 	 
 }
