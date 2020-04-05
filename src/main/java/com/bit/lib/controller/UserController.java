@@ -40,7 +40,7 @@ public class UserController {
 	@RequestMapping(value = "loginProc", method = RequestMethod.POST)
 	public String loginProc(User user, HttpSession session) {
 		
-		session.setAttribute("id", user.getId());
+//		session.setAttribute("id", user.getId());
 		session.setAttribute("user", user);
 		String nextPage = userService.loginProc(user)? "main":"user/login";
 		

@@ -24,6 +24,7 @@
 	media="screen and (max-width:767px)">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/slick.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sub.css">
 
 <style>
 table {
@@ -77,12 +78,11 @@ table {
 		</div>
 	</div>
 	<a href="rentNow.do" title="대여현황">대여현황</a>
-	<a href="wishList.do" title="예약목록">예약목록</a>
-	<a href="overdue.do" title="연체현황">연체현황</a>
-	<a href="rentHistory.do" title="대여이력">대여이력</a>
-	<a href="wishList.do" title="위시리스트">위시리스트</a>
-	<a href="wishList.do" title="회원정보수정">회원정보수정</a> <br>
-	
+	<a href="reserveList.do" title="예약목록">예약목록</a>
+	<a href="rentHistory.do" title="대여이력">대여이력</a> 
+	<a href="wishList.do" title="위시리스트">위시리스트</a> 
+	<a href="ishList.do" title="회원정보수정">회원정보수정</a>
+	<br>
 
 	<table border="1">
 		<thead>

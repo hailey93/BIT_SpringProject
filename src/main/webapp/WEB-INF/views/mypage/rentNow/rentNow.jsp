@@ -29,6 +29,10 @@
 	media="screen and (max-width:767px)">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/slick.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/sub.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/list.css">
 
 <style>
 table {
@@ -82,133 +86,202 @@ table {
 		</div>
 	</div>
 
-	<!-- 메인 출력 페이지 -->
-	<div id="divContents">
-		<%-- <jsp:useBean id="currentTime" class="java.util.Date" />
-		<fmt:formatDate value="${curdate}" pattern="yyyy-MM-dd"
-			var="currentTime" />
-		<script type="text/javascript"
-			src="/assets/js/member.js?${curdate}"></script> --%>
-		<!-- Tab메뉴 -->
-		<div id="divContent">
+	<!-- divContents-->
+	<div id="divContentsW">
+		<div id="divContents">
+
+			<script>
+				$(document).ready(
+						function() {
+							var savexlsDialog, savexlsform;
+							savexlsDialog = $("#dialog-form").dialog({
+								autoOpen : false,
+								height : 250,
+								width : 430,
+								modal : true,
+								title : '엑셀 다운로드 사유',
+								buttons : {
+									"확인" : savexls,
+									"취소" : function() {
+										$(this).dialog("close");
+									}
+								},
+								close : function(event, ui) {
+									savexlsform[0].reset();
+								}
+							});
+
+							savexlsform = savexlsDialog.find("form").on(
+									"submit", function(event) {
+										event.preventDefault();
+										savexls();
+									});
+
+							function savexls() {
+								var reason = $("#reason").val();
+								if (reason == '') {
+									alert('엑셀 다운로드 사유를 입력하세요.');
+									return false;
+								}
+
+								if (reason.length > 100) {
+									alert('100자 이하로 입력하세요.');
+									$("#reason").val("");
+									return false;
+								}
+
+								savexlsform[0].submit();
+								savexlsDialog.dialog("close");
+								return true;
+							}
+
+							$("a").click(function(event) {
+								var href = $(this).attr("href");
+								for (var i = 0; i < excelUrlLength; i++) {
+									if (href.indexOf(excelUrl[i]) != -1) {
+										event.preventDefault();
+										$("#formSavexls").attr("action", href);
+										if ('*******YUN123' == "")
+											alert('로그인 후 이용이 가능합니다.');
+										else
+											savexlsDialog.dialog("open");
+
+										break;
+									}
+								}
+							});
+						});
+			</script>
+
+			<!-- Tab메뉴 -->
 			<div id="divTabMenu">
-				<a href="rentNow.do" title="대여현황">대여현황</a> <a href="wishList.do"
-					title="예약목록">예약목록</a> <a href="overdue.do" title="연체현황">연체현황</a> <a
-					href="rentHistory.do" title="대여이력">대여이력</a> <a href="wishList.do"
-					title="위시리스트">위시리스트</a> <a href="wishList.do" title="회원정보수정">회원정보수정</a>
-				<br>
+				<div>
+					<ul>
+						<li class="selected"><a href="rentNow.do" title="대여현황">대여현황</a></li>
+						<li><a href="reserveList.do" title="예약목록">예약목록</a></li>
+						<li><a href="rentHistory.do" title="대여이력">대여이력</a></li>
+						<li><a href="wishList.do" title="위시리스트">위시리스트</a></li>
+						<li><a href="wishList.do" title="회원정보수정">회원정보수정</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
-		<div>
-			<form id="frm" name="frm" action="/mypage/rentNow">
-				<div class="listTable">
-					<table border="1">
-						<thead>
-							<tr>
-								<th scope="row"><input type="checkbox" name="all"
-									class="checkAll"></th>
-								<th scope="row">No.</th>
-								<th scope="row">도서명</th>
-								<th scope="row">저자</th>
-								<th scope="row">등록번호</th>
-								<th scope="row">대여일</th>
-								<th scope="row">반납예정일</th>
-								<th scope="row">연장가능여부</th>
-								<th scope="row">연체일수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${selectRentNow}" var="rent" varStatus="status">
+
+			<!-- divContent 시작-->
+			<div id="divContent">
+				<form id="frm" name="frm" method="post" action="/myloan/renew"
+					onsubmit="return checked(this);">
+					<!-- Content List -->
+					<div class="listTable">
+						<table>
+							<thead>
 								<tr>
-									<td class="checkbox"><input type="checkbox" name="check"
-										id="chk"></td>
-									<td>${status.count }</td>
-									<!-- bookDetail 페이지로 넘기기 -->
-									<td><a href="./select.do?empno=${rent.bookTitle}">${rent.bookTitle}</a></td>
-									<td>${rent.author}</td>
-									<td>${rent.bookNo}</td>
-									<td>${rent.rentDate}</td>
-									<td>${rent.returnDueDate}</td>
-									<c:choose>
-										<c:when test="${rent.rentStatus == 0}">
-											<td>가능</td>
-										</c:when>
-										<c:otherwise>
-											<td>불가능</td>
-										</c:otherwise>
-									</c:choose>
-									<td>${rent.datedif+1}일</td>
+									<th scope="row"><input type="checkbox" name="all"
+										class="checkAll"></th>
+									<th scope="row">No.</th>
+									<th scope="row">도서명</th>
+									<th scope="row">저자</th>
+									<th scope="row">등록번호</th>
+									<th scope="row">대여일</th>
+									<th scope="row">반납예정일</th>
+									<th scope="row">연장가능여부</th>
+									<th scope="row">연체일수</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
+							</thead>
+							<tbody>
+								<c:forEach items="${selectRentNow}" var="rent"
+									varStatus="status">
+									<tr>
+										<td class="checkbox"><input type="checkbox" name="check"
+											id="chk"></td>
+										<td>${status.count }</td>
+										<!-- bookDetail 페이지로 넘기기 -->
+										<td><a href="./select.do?empno=${rent.bookTitle}">${rent.bookTitle}</a></td>
+										<td>${rent.author}</td>
+										<td>${rent.bookNo}</td>
+										<td>${rent.rentDate}</td>
+										<td>${rent.returnDueDate}</td>
+										<c:choose>
+											<c:when test="${rent.rentStatus == 0}">
+												<td>가능</td>
+											</c:when>
+											<c:otherwise>
+												<td>불가능</td>
+											</c:otherwise>
+										</c:choose>
+										<c:choose>
+											<c:when test="${rent.datedif == 0}">
+												<td></td>
+											</c:when>
+											<c:otherwise>
+												<td>${rent.datedif}일</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 
-				<div class="box on">
-					<button type="button" class="renew">도서연장</button>
-					<button type="button" class="return">도서반납</button>
 
-				</div>
-				<!-- <button type="button" class="renew" onclick="location='/renew.do'">도서연장</button> -->
-				<!-- <button type="submit" class="return">도서반납</button> -->
+					<!-- Content Paging -->
+					<div class="paging">
+						<span><span>1</span><a href="?pn=2">2</a><a href="?pn=3">3</a><a
+							href="?pn=4">4</a><a href="?pn=5">5</a></span><a href="?pn=6"
+							class="page" title="다음"><img
+							src="/image/ko/solution/common/btn/nextPage.gif" alt="다음"
+							title="다음"></a><a href="?pn=396" class="page" title="맨뒤"><img
+							src="/image/ko/solution/common/btn/lastPage.gif" alt="맨뒤"
+							title="맨뒤"></a>
+					</div>
 
-			</form>
+					<!-- Content Buttons -->
+					<div class="buttons">
+						<input type="submit" title="도서연장" value="도서연장"></input> <input
+							type="submit" title="도서반납" value="도서반납"></input>
+					</div>
+
+
+
+					<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+					<script>
+						$(document).ready(
+								function() {
+									/* $(".box button").attr("disabled", true); */
+									$(".checkAll").click(
+											function() {
+												var chk = $(this)
+														.is(":checked");
+												/* if (chk == true) {
+													$(".box button").removeAttr('disabled');
+													$(".box").removeClass("on");
+												} else {
+													$(".box button").attr("disabled", true);
+													$(".box").addClass("on");
+												} */
+												if (chk) {
+													$("input[name=check]")
+															.prop("checked",
+																	true);
+												} else {
+													$("input[name=check]")
+															.prop("checked",
+																	false);
+												}
+											});
+								});
+					</script>
+
+				</form>
+				"return checked(this);"
+			<!-- divContent 끝-->
+			</div>
+
+		<!--//divContents-->
 		</div>
+
+	<!--//divContentsW?????-->
 	</div>
-	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			/* $(".box button").attr("disabled", true); */
-			$(".checkAll").click(function() {
-				var chk = $(this).is(":checked");
-				/* if (chk == true) {
-					$(".box button").removeAttr('disabled');
-					$(".box").removeClass("on");
-				} else {
-					$(".box button").attr("disabled", true);
-					$(".box").addClass("on");
-				} */
-				if (chk) {
-					$("input[name=check]").prop("checked", true);
-				} else {
-					$("input[name=check]").prop("checked", false);
-				}
-			});
-		});
-	</script>
 
-	<script>
-		$(".delete").click(function() {//삭제버튼 누르면 삭제 컨트롤러로 체크된 값 넘겨주기
-			var count = $("input[name=check]:checked").length;
-			var chkArray = [];
-			$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
-				chkArray.push($(this).val()); //체크된 것만 뽑아서 배열에 넣기
-			});
-			console.log(JSON.stringify(chkArray));
-
-			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-				alert("선택된 위시리스트가 없습니다.")
-			} else {//선택된 것이 있으면 controller로 값 넘겨주기
-				jQuery.ajaxSettings.traditional = true;
-
-				$.ajax({
-					url : '/lib/deleteWishList.do',
-					type : 'post',
-					data : JSON.stringify(chkArray),
-					dataType : 'json',
-					contentType : 'application/json; charset=UTF-8',
-					success : function(data) {
-						alert('삭제되었습니다!');
-						location.reload();
-					},
-					error : function() {
-						alert('삭제되지 않았습니다!');
-					},
-				});
-			}
-
-		});
-	</script>
 
 	<div id="divFooter">
 		<div class="banner"></div>
