@@ -32,9 +32,9 @@ public class AdminController {
 		return "admin/newBook";
 	}
 	
-	@PostMapping(value="bookEnrol.do")
+	@PostMapping(value="addBook.do")
 	public String getbookEnrol(NewBookDTO book) {
-		
+		adminService.addBook(book);
 		return "admin/adminMain";
 	}
 }

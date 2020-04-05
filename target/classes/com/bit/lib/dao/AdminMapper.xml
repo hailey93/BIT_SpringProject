@@ -7,16 +7,16 @@ select *
 from user where ID=	#{id} and PW=#{pw}
 </select>
 
-<insert id="newBookProc" parameterType="newBookDTO">
+<insert id="addBookProc" parameterType="newBookDTO">
 insert into book (bookTitle, author, type, publisher, pubYear, imagePath, bookQty)
 values(#{bookTitle}, #{author}, #{type}, #{publisher}, #{pubYear}, #{imagePath}, #{bookQty})
 </insert>
 
-<select id="newBookInfo" parameterType="newBookDTO" resultType="newBookDTO">
+<select id="selectBookInfo" parameterType="newBookDTO" resultType="newBookDTO">
 select bookCode, bookQty from book where bookTitle=#{bookTitle}
 </select>
 
-<insert id="newBookProc2" parameterType="newBookDTO">
+<insert id="addBookProc2" parameterType="newBookDTO">
 insert into bookstatus (bookNo, bookCode, rentStatus) values(#{bookNo}, #{bookCode}, 2)
 </insert>
 
