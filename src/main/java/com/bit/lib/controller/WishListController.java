@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.lib.dto.WishListDTO;
@@ -46,12 +46,27 @@ public class WishListController {
 		return "mypage/wishList/addSuccessPopup";
 	}
 
-	@RequestMapping(value = "/deleteWishList.do", method = RequestMethod.POST)
+	@PostMapping(value = "/deleteWishList.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public void getDeleteWishList(@RequestBody List<String> chkItems) {
-		//jsp에서 List로 받은 chkItems service단으로 넘기기
-		System.out.println(chkItems);
-		wishListService.deleteWishList(chkItems);
+	public void getDeleteWishList(@RequestParam List<String> chkcodes) {
+
+        wishListService.deleteWishList(chkcodes);
+
+	}
+	
+	@PostMapping(value = "/rent.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public void getRent(@RequestParam List<String> chknos) {
+		
+		System.out.println(chknos);
+			
+	}
+	
+	@PostMapping(value = "/reserve.do", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public void getReserve(@RequestParam List<String> chknos) {
+		
+		System.out.println(chknos);
 		
 	}
 	

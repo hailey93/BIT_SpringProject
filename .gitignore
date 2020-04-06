@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.MF
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -19,3 +20,8 @@
 */pom.properties
 *.class~*
 >>>>>>> da0a43af7f9a817756084775147582599fe993f5
+=======
+.MF
+.class
+*.class
+>>>>>>> 044d96718f7fdc653d28ebfb491b1d1da38bda58

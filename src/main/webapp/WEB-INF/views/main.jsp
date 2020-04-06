@@ -129,5 +129,7 @@
 	</div>
 	<!-- //divFooter -->
 
+	<jsp:include page="bot.jsp" flush="false" />
+
 </body>
 </html>

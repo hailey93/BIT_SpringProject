@@ -26,11 +26,11 @@ public class WishListServiceImpl implements WishListService {
 	}
 
 	@Override
-	public void deleteWishList(List<String> chkItems) {
+	public void deleteWishList(List<String> chkcodes) {
 		//컨트롤러에서 전달한 List를 for문으로 돌려 고유값을 하나씩 꺼내어 delete문을 돌리기
 		
-		for(String delItems:chkItems) {
-			int wishListCode=Integer.parseInt(delItems);
+		for(String chkcode:chkcodes) {
+			int wishListCode=Integer.parseInt(chkcode);
 			System.out.println(wishListCode);
 			wishListDAO.deleteWishList(wishListCode);
 		}
