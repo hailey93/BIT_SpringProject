@@ -74,10 +74,9 @@
 	<div>
 	<!-- <div id="contents2"> -->
 
-<<<<<<< HEAD
+
 					<li><a href="login.do" title="로그아웃">로그아웃</a></li>
-=======
->>>>>>> da0a43af7f9a817756084775147582599fe993f5
+
 
 		<article>
 			<div class="block">
