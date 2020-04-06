@@ -2,15 +2,17 @@ package com.bit.lib.service;
 
 import java.util.List;
 
-import com.bit.lib.domain.Reserve;
 import com.bit.lib.dto.ReserveListDTO;
 
 public interface ReserveService {
 
 	
-	void insertReserve(Reserve reserve);
+	void insertReserve(String id, List<String> chknos);
+	void insertReserveup(List<String> chknos);
 	
 	List<ReserveListDTO> getReserveList(String id);
 	
+	void reserveCancel(String bookNo);
+	void reserveCancelup(String bookNo);
 	
 }
