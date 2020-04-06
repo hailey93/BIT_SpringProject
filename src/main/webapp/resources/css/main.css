@@ -42,7 +42,7 @@
 
 article {padding: 52px 3% 0;}
 article .block {padding: 150px; min-height: 500px;}
-article .block p {padding: 100px; line-height: 200px; color: #ffffff; font-size: 16px; font-weight: 600;}
+article .block p {padding: 0px 50px 0px 50px; line-height: 200px; color: #ffffff; font-size: 16px; font-weight: 600;}
 article .block:nth-child(2n+1) {background: #ffffff;}
 article .block:nth-child(2n) {background: #ffffff;}
 
@@ -812,6 +812,7 @@ article .block:nth-child(2n) {background: #ffffff;}
 	background: #ffffff;
 	height: 68px;
 	padding: 40px 0 38px;
+	z-index: 99999;
 }
 
 .headerBtm:after {
@@ -3232,10 +3233,11 @@ article .block:nth-child(2n) {background: #ffffff;}
 }
 
 .footer {
+	background : #2c70c7;
 	position: fixed;
 	left: 0px;
 	bottom: 0px;
-	height: 60px;
+	height: 50px;
 	width: 100%;
 }
 
