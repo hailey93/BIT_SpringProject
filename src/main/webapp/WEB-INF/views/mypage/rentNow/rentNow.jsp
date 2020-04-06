@@ -278,10 +278,12 @@ table {
 				
 					<script>
 					$(".renew").click(function() {
-						$("input[name=check]:checked").each(function() {
-							
-						}
-					}
+						var count = $("input[name=check]:checked").length;
+						var code=new Array();
+						$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
+							code.push($(this).attr("data-")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+						});
+					});
 					</script>
 				</form>
 				<!-- divContent 끝-->
