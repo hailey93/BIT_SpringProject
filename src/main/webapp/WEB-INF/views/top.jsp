@@ -17,7 +17,7 @@
 				<img src="webimg/bitlogo.png" />
 				</a>
 			</h2>
-			
+
 			<div id="globalMenu">
 				<ul>
 					<li><a href="wishList.do" title="마이페이지">마이페이지</a></li>

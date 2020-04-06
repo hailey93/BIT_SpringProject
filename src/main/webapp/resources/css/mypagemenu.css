@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#divContentsW{position:relative;font-family:NanumBarunGothic,NanumGothic,san-serif}
+#divContentsW{position:relative;font-family:NanumBarunGothic,NanumGothic,san-serif; margin-top:200px;}
 #divContents{position:relative;width:1200px;margin:0 auto;padding-bottom:100px;}
 /* divContent */
 #divContent{width:1200px;min-height:550px;}

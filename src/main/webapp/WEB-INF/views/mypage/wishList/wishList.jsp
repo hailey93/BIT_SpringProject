@@ -10,20 +10,12 @@
 <meta name="copyright"
 	content="COPYRIGHT(C) BIT LIBRARY. ALL RIGHTS RESERVED.">
 <meta content="initial-scale=1, width=device-width" name="viewport">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>위시리스트</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/common.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/main.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/main(1).css"
-	media="screen and (min-width:768px) and (max-width:1024px)">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/main(2).css"
-	media="screen and (max-width:767px)">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/slick.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
 
@@ -35,46 +27,8 @@ table {
 </head>
 <body>
 
-	<div id="divHeader">
-		<!--header-->
-		<div class="headerBtm">
-			<div>
-				<h2 class="logo">
-					<a href="" title="비트 도서관"><img
-						src="${pageContext.request.contextPath}/img/webimg/bitlogo.png"
-						alt=""></a>
-				</h2>
-				<div id="globalMenu">
-					<ul>
-						<li><a href="" title="마이페이지">마이페이지</a></li>
+<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
 
-						<li><a href="" title="로그아웃">로그아웃</a></li>
-
-					</ul>
-				</div>
-				<div id="divSearch">
-					<form name="searchForm" action="" method="get">
-						<!-- 검색어 넘겨주기 -->
-						<input type="hidden" name="si" value="TOTAL"> <input
-							type="hidden" name="st" value="KWRD">
-						<fieldset>
-							<legend>검색</legend>
-							<div class="search">
-								<p class="searchBox">
-									<input type="text" class="searchInput" id="type1q" name="q"
-										title="검색어를 입력하세요." placeholder="검색어를 입력하세요."> <input
-										type="image" class="searchBtn"
-										src="${pageContext.request.contextPath}/img/webimg/btnSrch.png"
-										alt="검색" title="검색">
-								</p>
-							</div>
-						</fieldset>
-					</form>
-
-				</div>
-			</div>
-		</div>
-	</div>
 	<div id="divContentsW">
 		<div id="divContents">
 			<div id="divTabMenu" class="mThumbnailScroller _mTS_2 mTS-buttons-out" style="position: relative;">
@@ -142,17 +96,8 @@ table {
 	</div>
 </div>	
 
-	<div id="divFooter">
-		<div class="banner"></div>
-		<!-- //배너모음 -->
-		<div class="footer">
-			<div>
-				<p class="copyright">COPYRIGHT©BIT LIBRARY. ALL RIGHTS RESERVED.</p>
-			</div>
-			<a href="https://www.nowonlib.kr/#" class="btnTop">페이지 맨 위로 이동</a>
-		</div>
-		<!-- //divFooter -->
-	</div>
+<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
