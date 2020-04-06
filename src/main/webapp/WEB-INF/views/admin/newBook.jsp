@@ -14,7 +14,7 @@
 장르: <input type="text" name="type"><br>
 출판사: <input type="text" name="publisher"><br>
 출판년도: <input type="text" name="pubYear"><br>
-이미지 첨부:
+이미지 첨부: <input type="text" name="imagePath"><br>
 책 수량: <input type="number" name="bookQty"><br>
 등록하기<input type="submit">
 </form>

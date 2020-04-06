@@ -7,6 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+
 public class NewBookDTO {
 
 	private int bookCode;
@@ -18,6 +19,4 @@ public class NewBookDTO {
 	private String imagePath;
 	private int bookQty;
 	
-	private String bookNo;
-	private int rentStatus;
 }

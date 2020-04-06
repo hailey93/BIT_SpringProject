@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bit.lib.domain.User;
 import com.bit.lib.dto.NewBookDTO;
+import com.bit.lib.dto.NewBookStatusDTO;
 import com.bit.lib.service.AdminService;
 
 @Controller
 public class AdminController {
 	
-	@Autowired
+	@Autowired(required=false)
 	AdminService adminService;
+
+	@Autowired(required=false)
+	NewBookStatusDTO newBookStatusDTO;
 	
 	@RequestMapping("admLogin.do")
 	public String login() {
@@ -33,8 +37,11 @@ public class AdminController {
 	}
 	
 	@PostMapping(value="addBook.do")
-	public String getbookEnrol(NewBookDTO book) {
+	public String getaddbook(NewBookDTO book) {
+		System.out.println(book);
 		adminService.addBook(book);
+		System.out.println(book);
+		adminService.addBookStatus(newBookStatusDTO);
 		return "admin/adminMain";
 	}
 }

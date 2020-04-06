@@ -30,6 +30,7 @@ table {
 <jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
 
 	<div id="divContentsW">
+	
 	<div id="row">
 	<h1 align="center">위시리스트</h1>
 	</div>
