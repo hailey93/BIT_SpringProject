@@ -14,5 +14,7 @@ public interface RentService {
 	
 	 void renew(RentDTO rentDTO);
 
-	
+	 void bookRent(List<String> chknos, String id);
+	 void bookstUpdate(List<String> chknos);
+	 void reserveCancel(List<String> chknos);
 }

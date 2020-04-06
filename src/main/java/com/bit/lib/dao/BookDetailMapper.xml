@@ -19,5 +19,6 @@
 		inner join book b on bst.bookCode = b.bookCode
         where b.bookTitle=#{bookTitle};
 	</select>
+	
 
 </mapper>
