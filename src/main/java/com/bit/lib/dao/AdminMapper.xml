@@ -16,7 +16,7 @@ values(#{bookTitle}, #{author}, #{type}, #{publisher}, #{pubYear}, #{imagePath},
 select bookCode, bookQty from book where bookTitle=#{bookTitle}	
 </select>
 
-<insert id="addBookProc2" parameterType="newBookStatusDTO">
+<insert id="addBookProc2" parameterType="newBookDTO">
 insert into bookstatus (bookNo, bookCode, rentStatus) values(#{bookNo}, #{bookCode}, 2)
 </insert>
 

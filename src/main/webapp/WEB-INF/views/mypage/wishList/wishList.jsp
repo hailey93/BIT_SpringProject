@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
 
@@ -82,7 +83,7 @@ table {
 					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
 					value="${myWishList.rentStatus }"></td>
 
-					<td class="image"><a href=""><img src="${myWishList.imagePath }"></a></td>
+					<td class="image"><a href=""><img src="${myWishList.imagePath }" width="75" height="103"></a></td>
 
 					<td class="bookTitle"><a href="">${myWishList.bookTitle }</a></td>
 					

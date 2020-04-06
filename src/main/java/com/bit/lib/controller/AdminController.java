@@ -38,10 +38,8 @@ public class AdminController {
 	
 	@PostMapping(value="addBook.do")
 	public String getaddbook(NewBookDTO book) {
-		System.out.println(book);
 		adminService.addBook(book);
-		System.out.println(book);
-		adminService.addBookStatus(newBookStatusDTO);
+		
 		return "admin/adminMain";
 	}
 }
