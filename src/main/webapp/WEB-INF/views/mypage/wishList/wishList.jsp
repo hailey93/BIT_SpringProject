@@ -31,6 +31,9 @@ table {
 <jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
 
 	<div id="divContentsW">
+	<div id="row">
+	<h1 align="center">위시리스트</h1>
+	</div>
 		<div id="divContents">
 			<div id="divTabMenu" class="mThumbnailScroller _mTS_2 mTS-buttons-out" style="position: relative;">
 				<div>
