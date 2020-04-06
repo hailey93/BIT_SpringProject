@@ -17,7 +17,7 @@
 
 	<!-- selectRentNow -->
 	<select id="selectRentNow" parameterType="String" resultType="RentDTO">
-		select b.bookTitle, b.author, r.bookNo, r.rentDate, bs.returnDueDate, bs.rentStatus
+		select r.historyCode, b.bookTitle, b.author, r.bookNo, r.rentDate, bs.returnDueDate, bs.rentStatus
 		,DATEDIFF(curdate(), bs.returnDueDate) as datedif 
 		from renthistory as r
 		inner join bookstatus as bs on r.bookNo=bs.bookNo
@@ -26,7 +26,7 @@
 		where not bs.rentstatus=3 and u.id='yun123'
 	</select>
 
-	<update id="renew" parameterType="String">
+	<update id="renew" parameterType="int">
 		update bookStatus as bs 
 		inner join reserve as rs on rs.bookNo=bs.bookNo
 		set bs.rentStatus =1 , returnDueDate=date_add(returnDueDate, interval 7 day)

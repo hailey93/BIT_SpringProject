@@ -28,10 +28,15 @@ public class RentServiceImpl implements RentService {
 	}
 
 	@Override
-	public int renew(List<String> chkcodes) {
+	public void renew(List<String> chkcodes) {
 		
-		return rentDAO.renew(chkcodes);
+		for(String chkcode:chkcodes) {
+			int historyCode=Integer.parseInt(chkcode);
+			System.out.println(historyCode);
+			rentDAO.renew(historyCode);
+		}
 	}
+		
 
 	
 }

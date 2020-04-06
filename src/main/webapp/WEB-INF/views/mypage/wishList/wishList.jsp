@@ -13,7 +13,6 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>위시리스트</title>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 
@@ -101,6 +100,7 @@ table {
 </div>	
 
 <jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
@@ -203,3 +203,4 @@ table {
 			
 	</script>
 </body>
+</html>

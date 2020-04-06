@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 public class RentDTO {
 
+	private int historyCode;
 	private int bookCode;
 	private String bookNo;
 	private String bookTitle;

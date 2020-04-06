@@ -14,5 +14,5 @@ public interface RentDAO {
 
 	public List<RentDTO> selectRentNow(String id);
 
-	int renew(List<String> chkcodes);
+	public void renew(int historyCode);
 }
