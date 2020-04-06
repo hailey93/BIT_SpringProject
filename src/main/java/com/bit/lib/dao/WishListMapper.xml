@@ -14,7 +14,7 @@ insert into wishlist (id, bookNo) values (#{id}, #{bookNo})
 </insert>
 
 <delete id="deleteWishList" parameterType="int">
-	delete from wishList where wishListCode=#{wishListCode}
+delete from wishList where wishListCode=#{wishListCode}
 </delete>
 
 </mapper>

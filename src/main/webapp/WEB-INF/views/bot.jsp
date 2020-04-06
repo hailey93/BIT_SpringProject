@@ -11,7 +11,11 @@
 
 	<div id="divFooter">
 		<div class="footer" >
+<<<<<<< HEAD
 			<a href="main#" class="btnTop"></a>
+=======
+			<a href="#" class="btnTop"></a>
+>>>>>>> Test2
 		</div>
 		<!-- //divFooter -->
 	</div>

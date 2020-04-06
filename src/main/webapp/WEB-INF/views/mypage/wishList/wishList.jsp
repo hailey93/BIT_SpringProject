@@ -10,8 +10,10 @@
 <meta name="copyright"
 	content="COPYRIGHT(C) BIT LIBRARY. ALL RIGHTS RESERVED.">
 <meta content="initial-scale=1, width=device-width" name="viewport">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>위시리스트</title>
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/common.css">
 <link rel="stylesheet"
@@ -24,6 +26,11 @@
 	media="screen and (max-width:767px)">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/slick.css">
+=======
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+
+>>>>>>> Test2
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
 
@@ -35,6 +42,7 @@ table {
 </head>
 <body>
 
+<<<<<<< HEAD
 	<div id="divHeader">
 		<!--header-->
 		<div class="headerBtm">
@@ -49,28 +57,17 @@ table {
 						<li><a href="" title="마이페이지">마이페이지</a></li>
 
 						<li><a href="" title="로그아웃">로그아웃</a></li>
+=======
+<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
+>>>>>>> Test2
 
-					</ul>
-				</div>
-				<div id="divSearch">
-					<form name="searchForm" action="" method="get">
-						<!-- 검색어 넘겨주기 -->
-						<input type="hidden" name="si" value="TOTAL"> <input
-							type="hidden" name="st" value="KWRD">
-						<fieldset>
-							<legend>검색</legend>
-							<div class="search">
-								<p class="searchBox">
-									<input type="text" class="searchInput" id="type1q" name="q"
-										title="검색어를 입력하세요." placeholder="검색어를 입력하세요."> <input
-										type="image" class="searchBtn"
-										src="${pageContext.request.contextPath}/img/webimg/btnSrch.png"
-										alt="검색" title="검색">
-								</p>
-							</div>
-						</fieldset>
-					</form>
+	<div id="divContentsW">
+		<div id="divContents">
+			<div id="divTabMenu" class="mThumbnailScroller _mTS_2 mTS-buttons-out" style="position: relative;">
+				<div>
+					<div id="mTS_2" class="mTSWrapper mTS_horizontal"><ul class="mTSContainer" id="mTS_2_container" style="position: relative; top: 0px; left: 0px; width: 100%;">
 
+<<<<<<< HEAD
 				</div>
 			</div>
 		</div>
@@ -87,6 +84,14 @@ table {
 								
 								<li class="mTSThumbContainer"><a href="">대여이력</a></li>
 
+=======
+								<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+
+								<li class="mTSThumbContainer"><a href="">예약목록</a></li>
+								
+								<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+
+>>>>>>> Test2
 								<li class="selected mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
 								<li class="mTSThumbContainer"><a href="">회원정보</a></li>
@@ -141,18 +146,12 @@ table {
 	</div>
 	</div>
 </div>	
+<<<<<<< HEAD
+=======
 
-	<div id="divFooter">
-		<div class="banner"></div>
-		<!-- //배너모음 -->
-		<div class="footer">
-			<div>
-				<p class="copyright">COPYRIGHT©BIT LIBRARY. ALL RIGHTS RESERVED.</p>
-			</div>
-			<a href="https://www.nowonlib.kr/#" class="btnTop">페이지 맨 위로 이동</a>
-		</div>
-		<!-- //divFooter -->
-	</div>
+<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+>>>>>>> Test2
+
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
