@@ -12,8 +12,6 @@ public interface BookDetailService {
 	
 	List<BookDetailDTO> bookPage(String bookTitle);
 	
-	void bookRent(@Param("bookNo") String bookNo, @Param("id") String id);
-	
-	void bookstUpdate(String bookNo);
+
 
 }

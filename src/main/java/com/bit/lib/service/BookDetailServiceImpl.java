@@ -35,20 +35,5 @@ public class BookDetailServiceImpl implements BookDetailService {
 		return bookdetailDao.bookDetail(bookTitle);
 	}
 
-	@Override
-	public void bookRent(@Param("bookNo") String bookNo, @Param("id") String id) {
-		// TODO Auto-generated method stub
-		bookdetailDao.bookRent(bookNo, id);
-	}
-
-	@Override
-	public void bookstUpdate(String bookNo) {
-		// TODO Auto-generated method stub
-		bookdetailDao.bookstUpdate(bookNo);
-	} 
-	
-
-	
-
 
 }

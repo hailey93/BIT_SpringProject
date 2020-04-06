@@ -1,11 +1,9 @@
 package com.bit.lib.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.lib.dto.RentDTO;
+import com.bit.lib.dto.ReserveListDTO;
 import com.bit.lib.service.RentService;
+import com.bit.lib.service.ReserveService;
 
 @Controller
 public class Rentcontroller {
 	@Autowired
 	private RentService rentService;
+	private ReserveService reserveService;
 
 	@RequestMapping(value = "rentHistory.do", method = RequestMethod.GET)
 	public String getRentHistoryList(Model model, HttpSession session) {
@@ -48,45 +49,20 @@ public class Rentcontroller {
 		return "mypage/rentNow/renew";
 	}
 
-	/*
-	 * // 도서 대여
-	 * 
-	 * @RequestMapping(value = "/searchRent.do", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public String searchRent(@RequestBody RentDTO rentDTO,
-	 * HttpSession session) { String id = (String) session.getAttribute("id");
-	 * System.out.println(rentDTO.getBookNo() + "//////" + id +
-	 * rentDTO.getRentStatus() + rentDTO.getReserveStatus());
-	 * rentService.searchRent(rentDTO.getBookNo(), rentDTO.getRentStatus(),
-	 * rentDTO.getReserveStatus(), id); System.out.println(rentDTO.getBookNo() +
-	 * "///" + rentDTO.getRentStatus() + "/////" + rentDTO.getReserveStatus() +
-	 * "/////" + id); System.out.println("Not Rent"); return "book/bookDetail"; }
-	 */
-	@PostMapping(value = "/rent.do", produces="application/json; charset=UTF-8")
+	@PostMapping(value = "/rent.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String bookRent(@RequestParam List<String> chknos, String bookNo, HttpSession session) {
+	public String bookRent(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
-		System.out.println(chknos);
-		bookNo = chknos.get(0).toString();
-		System.out.println(bookNo);
-		rentService.bookRent(chknos, bookNo, id);
-		System.out.println("업데이트");
-		rentService.bookstUpdate(chknos,bookNo);
-		System.out.println("Update Ok");
-		return "/book/bookDetail";
-	}
+		System.out.println(chknos + "///" + id);
 
-	/*
-	 * @RequestMapping(value = "/bookRent.do", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public String bookRent(@RequestBody RentDTO rentDTO,
-	 * HttpSession session) { System.out.println(rentDTO); String id = (String)
-	 * session.getAttribute("id"); rentService.bookRent(rentDTO.getBookNo(), id);
-	 * rentService.bookstUpdate(rentDTO.getBookNo());
-	 * 
-	 * System.out.println("rentOk");
-	 * 
-	 * return "book/bookDetail"; }
-	 */
+		rentService.bookRent(chknos, id);
+		System.out.println("Rent Ok");
+		rentService.bookstUpdate(chknos);
+		System.out.println("up Ok");
+		rentService.reserveCancel(chknos);
+		System.out.println("delete Ok");
+		return "/mypage/rentNow/rentNow";
+
+	}
 
 }

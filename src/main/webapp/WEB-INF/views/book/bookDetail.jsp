@@ -73,75 +73,40 @@
 			<tr>
 				<!-- <td><input type="radio" class="bookdtList" name="bookdtList"/></td> -->
 				<!-- <td><input type="checkbox" class="bookdtList" name="bookdtList"/></td> -->
-				<td class="num footalbe-first-cloumn"><input type="checkbox"
-					name="check" id="check" data-bookNo="${bookdtList.bookNo}"
-					value="${bookst}"></td>
+				<td class="num footable-first-column"><input type="checkbox" 
+				name="check" id="check" data-reservest="${reservest}" data-bookNo="${bookdtList.bookNo}"
+					value="${bookst}" onclick="check_only(this)"></td>
 				<td>${bookdtList.bookNo}</td>
 				<td><c:out value="${bookstat}" /></td>
 				<td><c:out value="${reservestat}" /></td>
 			</tr>
 		</c:forEach>
-		<!-- <input type="button" value="대여" Onclick="location.href='/lib/bookRent.do'"> -->
 		<button type="button" class="rent">대여</button>
-		<input type="button" value="위시리스트"
-			Onclick="location.href='lib/addwishlist.do'">
-		<input type="button" value="예약"
-			Onclick="location.href='/lib/reserve.do'">
+		<button type="wishList" class="wish">위시리스트</button>
+		<button type="button" class="reserve">예약</button>
 	</table>
 
-	<!-- <script type="text/javascript">
-	function check_only(chk){
-        var obj = document.getElementsByName("check");
-        for(var i=0; i<obj.length; i++){
-            if(obj[i] != check){
-                obj[i].checked = false;
-            }
-        }
-    }
-
-</script>
- -->
-
+	<script type="text/javascript">
+		function check_only(check) {
+			var obj = document.getElementsByName("check");
+			for (var i = 0; i < obj.length; i++) {
+				if (obj[i] != check) {
+					obj[i].checked = false;
+				}
+			}
+		}
+	</script>
 
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
 	<script>
-	/* $(".rent").click(function() {
-		$("input[name=check]:checked").each(function() {
-			if (this.value != "2") { //대여불가
-				alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
-			} else {
-				var count = $("input[name=check]:checked").length;
-				var no
-				$("input[name=check]:checked").each(function() {
-					no=($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
-				});
-				console.log(no);
-				if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-					alert("선택된 위시리스트가 없습니다.")
-				} else {//선택된 것이 있으면 controller로 값 넘겨주기
-					$.ajaxSettings.traditional = true;
-					$.ajax({
-						url : "/lib/rent.do",
-						type : "post",
-						data : {bookNo : no},
-						success : function(data) {
-							alert('선택하신 도서가 대여되었습니다!');
-							location.reload();
-						},
-					});
-				}
-
-			}
-		});
-	}); */
-		 $(".rent").click(function() {
+ 	 $(".rent").click(function() {
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
 					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
 				} else {
 					var count = $("input[name=check]:checked").length;
-					var no = new Array();
+					var no=new Array;
 					$("input[name=check]:checked").each(function() {
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					});
@@ -149,11 +114,12 @@
 					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 						alert("선택된 위시리스트가 없습니다.")
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+						
 						$.ajaxSettings.traditional = true;
 						$.ajax({
 							url : "/lib/rent.do",
 							type : "post",
-							data : {chknos : no},
+							data : { chknos : no },
 							success : function(data) {
 								alert('선택하신 도서가 대여되었습니다!');
 								location.reload();
@@ -163,50 +129,43 @@
 
 				}
 			});
-		});
-	</script>
-	<!-- <script>
-		$(".rent").click(
-				function() {
-					var count = $("input[name=chk]:checked").length;
-						var chkArray = [];
-					$("input[name=chk]:checked").each(function(){
-						 chkArray.push($(this).val());
-					});
-					console.log(chkArray);
-					var data={};
-					data["datas"] = chkArray;
+		}); 
+ 	 
+ 	$(".reserve").click(function() {
+		$("input[name=check]:checked").each(function() {
+			if ($(this).attr("data-reservest") != "0") { //예약불가
+				alert("예약이 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
+			} else {
+				if(this.value == "2"){
+					alert("예약이 불가능합니다.")
+				}else{
+				var count = $("input[name=check]:checked").length;
+				var no=new Array;
+				$("input[name=check]:checked").each(function() {
+					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+				});
+				console.log(no);
+				if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+					alert("선택된 위시리스트가 없습니다.")
+				} else {//선택된 것이 있으면 controller로 값 넘겨주기
 					
-					if(count == 0){
-						alert("선택된 도서가 없습니다.")
-					} else{
-						/* jQuery.ajaxSettings.traditional = true; */
-						
-						$.ajax({
-							url : "/lib/searchRent.do",
-							type : "post",
-							traditional : true,
-							dataType : "JSON",
-							contentType : "application/json; charset=UTF-8",
-							async: false,
-							data : JSON.stringify(data),
-							success : function(data){
-								alert("예약되었습니다.");
-								console.log(JSON.stringify(chk));
-							},
-							error : function(request, status, error){
-								alert("code:" + request.status + "\n"
-										+ "message : " + request.responseText
-										+ "\n" + "error : " +error);
-								console.log('184', JSON.stringify(chk));
-								console.log(data);
-								location.reload();
-								document.write("/////////////");
-							},
-						})
+					$.ajaxSettings.traditional = true;
+					$.ajax({
+						url : "/lib/reserve.do",
+						type : "post",
+						data : { chknos : no },
+						success : function(data) {
+							alert('선택하신 도서가 대여되었습니다!');
+							location.reload();
+						},
+					});
 				}
-				})
-	</script> -->
+			}
+		};
+	})
+ 	}); 
+		
 
+	</script>
 </body>
 </html>

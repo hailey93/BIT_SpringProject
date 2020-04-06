@@ -2,7 +2,6 @@ package com.bit.lib.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.bit.lib.dto.RentDTO;
@@ -14,10 +13,8 @@ public interface RentService {
 	 List<RentDTO> selectRentNow(@SessionAttribute("id") String id);
 	
 	 void renew(RentDTO rentDTO);
-	
-	 void searchRent(String bookNo, int rentStatus, int reserveStatus, String id);
-	 void bookRent(List<String> chknos, String bookNo, String id);
-	 void bookstUpdate(List<String> chknos, String bookNo);
-	 
-	
+
+	 void bookRent(List<String> chknos, String id);
+	 void bookstUpdate(List<String> chknos);
+	 void reserveCancel(List<String> chknos);
 }

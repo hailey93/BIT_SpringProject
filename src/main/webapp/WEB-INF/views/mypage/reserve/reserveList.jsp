@@ -38,7 +38,9 @@
 			</c:choose>
 
 			<tr>
-				<td><input type="checkbox" name="chk" value="${rentst.bookNo}"></td>
+				<td class="num footable-first-column"><input type="checkbox" 
+				name="check" id="check" data-bookNo="${rentst.bookNo}"
+				value="${rents}" onclick="check_only(this)"></td>
 				<td>${rentst.bookNo}</td>
 				<td>${rentst.bookTitle}</td>
 				<td>${rentst.reserveDate}</td>
@@ -48,21 +50,33 @@
 				<%-- <td>${rentst.rentStatus}</td> --%>
 			</tr>
 		</c:forEach>
-		<input type="button" value="대여" Onclick="location.href='/lib/bookRent.do'">
 	</table>
+		<button type="button" class="rent">대여</button>
 		<button type="button" class="delete">예약취소</button>
+		
+		<script type="text/javascript">
+	function check_only(check){
+        var obj = document.getElementsByName("check");
+        for(var i=0; i<obj.length; i++){
+            if(obj[i] != check){
+                obj[i].checked = false;
+            }
+        }
+    }
+
+</script>
 	
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	
 	<script>
 		$(".delete").click(
 				function() {
-					var count = $("input[name=chk]:checked").length;
+					var count = $("input[name=check]:checked").length;
 						var chk;
-					$("input[name=chk]:checked").each(function(){
-						 chk=($(this).val());
+					$("input[name=check]:checked").each(function(){
+						 chk=($(this).attr("data-bookNo"));
 					});
-					console.log("input[name=chk]:checked");
+					console.log("input[name=check]:checked");
 					if(count == 0){
 						alert("선택된 목록이 없습니다.")
 					} else{
@@ -80,16 +94,40 @@
 								alert("삭제되었습니다");
 								console.log(JSON.stringify(chk));
 							},
-							error : function(request, status, error){
-								alert("code:" + request.status + "\n"
-										+ "message : " + request.responseText
-										+ "\n" + "error : " +error);
-								console.log('184', JSON.stringify(chk));
+						});
+					}
+				});
+				
+				 $(".rent").click(function() {
+			$("input[name=check]:checked").each(function() {
+				if (this.value != "2") { //대여불가
+					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
+				} else {
+					var count = $("input[name=check]:checked").length;
+					var no=new Array;
+					$("input[name=check]:checked").each(function() {
+						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+					});
+					console.log(no);
+					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+						alert("선택된 위시리스트가 없습니다.")
+					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+						
+						$.ajaxSettings.traditional = true;
+						$.ajax({
+							url : "/lib/rent.do",
+							type : "post",
+							data : { chknos : no },
+							success : function(data) {
+								alert('선택하신 도서가 대여되었습니다!');
 								location.reload();
 							},
-						})
+						});
 					}
-				})
+
+				}
+			});
+		}); 
 	</script>
 </body>
 </html>

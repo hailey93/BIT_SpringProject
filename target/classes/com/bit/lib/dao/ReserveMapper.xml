@@ -3,7 +3,7 @@
 <mapper namespace="com.bit.lib.dao.ReserveDAO">
 
 <!--  예약시. 예약테이블 입력 및 도서상태 변경 -->
-	<insert id="insertReserve" parameterType="map">
+	<insert id="insertReserve">
 		insert into reserve (id, reserveDate, bookNo)
 			value (#{id}, curdate(), #{bookNo});
 	</insert>

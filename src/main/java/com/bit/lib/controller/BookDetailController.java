@@ -18,21 +18,12 @@ public class BookDetailController {
 	//도서 상세페이지
 	@RequestMapping(value = "/bookDetail.do", method=RequestMethod.GET)
 	public String bookPage(Model model, String bookTitle) {
-		bookTitle = "책제목1";
+		bookTitle = "책제목3";
 		model.addAttribute("bookdtList", bookDetailService.bookPage(bookTitle));
 		model.addAttribute("bookdt", bookDetailService.bookDetail(bookTitle));
 		System.out.println(bookDetailService.bookPage(bookTitle));
 
 		return "book/bookDetail";
 	}
-	//도서 대여
-	@RequestMapping(value="/bookRent.do", method=RequestMethod.GET)
-	public String bookRent(@Param("bookNo") String bookNo, @Param("id") String id) {
-		 bookDetailService.bookRent(bookNo, id);
-		 bookDetailService.bookstUpdate(bookNo);
-		System.out.println("rent");
-		return "book/bookDetail";
-	}
 
-	
 }
