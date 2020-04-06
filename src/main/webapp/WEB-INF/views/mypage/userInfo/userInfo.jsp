@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 	아이디:${user.id}<br>
 	이름: ${user.name}<br>
 	비밀번호: ${user.pw}<br>
-	생년월일: ${user.birth}<br>
+	생년월일: <fmt:formatDate value="${user.birth}" pattern="yyyy-MM-dd"/><br>
 	성별: ${user.gender}<br>
 	휴대폰번호: ${user.phone}<br>
 	

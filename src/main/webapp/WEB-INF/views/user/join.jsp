@@ -45,7 +45,9 @@
 				</tr>
 				<tr>
 					<td>성별</td>
-					<td><input type="text" id="gender" name="gender" ></td>
+					<td>남자<input type="radio" name="gender" value="남자" checked="checked">
+               여자<input type="radio" id="gender" name="gender" value="여자" ></td>
+					
 				</tr>
 				<tr>
 					<td>핸드폰번호</td>
@@ -92,10 +94,6 @@
 			else if($.trim($('#birth').val()) == ''){
 				alert("생년월일 입력.");
 				$('#birth').focus();
-				return;
-			}else if($.trim($('#gender').val()) == ''){
-				alert("성별 입력.");
-				$('#gender').focus();
 				return;
 			}else if($.trim($('#phone').val()) == ''){
 				alert("핸드폰번호 입력.");
