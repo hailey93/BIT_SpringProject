@@ -56,7 +56,7 @@
 						<div class="search">
 							<p class="searchBox">
 								<input type="text" class="searchInput" id="keyWord"
-									value="${keyWord}" name="keyWord" title="검색어를 입력하세요."
+									value="${paging.keyWord}" name="keyWord" title="검색어를 입력하세요."
 									placeholder="검색어를 입력하세요."> <input type="image"
 									class="searchBtn" src="webimg/btnSrch.png" alt="검색" title="검색">
 							</p>
@@ -66,154 +66,109 @@
 			</div>
 		</div>
 	</div>
-<div>
-	<article>
-	<div class="block">
-		<div id="divContentsW" style="margin-top: 100px;">
-			<div id="divContents">
-				<!-- content -->
-				<div id="divContent">
+	<div>
+		<article>
+			<div class="block">
+				<div id="divContentsW" style="margin-top: 0px;">
+					<div id="divContents">
+						<!-- content -->
+						<div id="divContent">
 
-					<div class="searchBrief">
+							<div class="searchBrief">
 
-						<div class="searchWords">
-							<dl class="searchKeyword">
-								<dt>검색어</dt>
-								<dd>
-									<span class="keyword">[키워드/ ${keyWord} ]</span>
+								<div class="searchWords">
+									<dl class="searchKeyword">
+										<dt>검색어</dt>
+										<dd>
+											<span class="keyword">[키워드/ ${paging.keyWord} ]</span>
 
-								</dd>
+										</dd>
 
-							</dl>
-
-							<ul class="selectedFacet"></ul>
-
-						</div>
-						<div class="briefContent">
-							<div class="facet"></div>
-							<!-- //facet -->
-
-							<div class="result">
-								<div class="resultHeader">
-
-									<p class="searchCnt">
-										총<strong>458</strong>건 중 <strong>458</strong>건 출력
-									</p>
+									</dl>
+									
 								</div>
-								<form name="briefFrm" method="post"
-									action="https://www.nowonlib.kr/search/brief/service"
-									onsubmit="return checked(this);">
-									<fieldset>
-										<legend>Service Form</legend>
-										<input type="hidden" name="webSysdiv" value="TOT"> <input
-											type="hidden" name="popupYn" value="N"> <input
-											type="hidden" name="mainLink" value="/search/tot">
+								<div class="briefContent">
 
-										<ul class="resultList resultDetail">
-											<li id="item_CATTOT000000032948" class="items">
-												<dl>
-													<dt class="title">No</dt>
+									<div class="result">
+										<form name="briefFrm" method="post"
+											action="https://www.nowonlib.kr/search/brief/service"
+											onsubmit="return checked(this);">
+											<fieldset>
+												<legend>Service Form</legend>
+												<!-- <input type="hidden" name="webSysdiv" value="TOT"> <input
+													type="hidden" name="popupYn" value="N"> <input
+													type="hidden" name="mainLink" value="/search/tot"> -->
 
-													<dd class="num">1.</dd>
-													<dt class="title">표지이미지</dt>
-													<dd class="book">
-														<a
-															href="https://www.nowonlib.kr/search/detail/CATTOT000000032948?mainLink=/search/tot&amp;briefLink=/search/tot/result?st=KWRD_A_q=code_A_si=TOTAL_A_x=0_A_y=0">
+												<ul class="resultList resultDetail">
+													<!-- 반복 실행 -->
+													<c:forEach items="${searchBook }" var="searchBook" varStatus="searchBookStatus">
+														<li id="${searchBook.bookCode }" class="items" style="width: 660px; height: 150px;">
+															<dl>
+																<dd class="num">${searchBookStatus.count }</dd>
+																<dt class="title">표지이미지</dt>
+																<dd class="book">
+																	<a href="<!-->">
+																		<img id="${searchBook.bookCode }" src="${searchBook.imagePath }" width="75"
+																		height="103" alt="${searchBook.bookTitle }" onerror="">
+																	</a>
+																</dd>
 
-															<img id="bookImg_CATTOT000000032948" src="" width="75"
-															height="103" alt="(The)Da Vinci code" onerror="">
-														</a>
+																<dt class="title">제목</dt>
+																<dd class="title">
+																	<a href="<!-->"> ${searchBook.bookTitle }
+																	</a> <input type="button" class="addItem btnType2"
+																		onclick=""
+																		title="추가" value="추가" style="display: none;">																	
+																</dd>
 
-													</dd>
+																<dt class="title">저자</dt>
+																<dd class="info">${searchBook.author }</dd>
+																<dt class="title">유형</dt>
+																<dd class="info">${searchBook.type }</dd>
+																<dt class="title">출판사</dt>
+																<dd class="info">${searchBook.publisher }</dd>
+																<dt class="title">출판년</dt>
+																<dd class="info">${searchBook.pubYear }</dd>
+																
+															</dl>
+														</li>
 
-													<dt class="title">제목</dt>
+													</c:forEach>
+												</ul>
+												<div class="paging">
+												<span>
+												<c:forEach begin="0" end="4">
+												
+												<c:if test="${paging.page eq }]" >												
+												<span>${paging.page }</span>
+												</c:if>
+												<a href="/mainSearch/">${paging.page }</a>
+												
+												
+													<!-- <span> <span>1</span>
+													<a href="https://www.nowonlib.kr/search/tot/result?pn=2&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">2</a>
+													<a href="https://www.nowonlib.kr/search/tot/result?pn=3&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">3</a>
+													<a href="https://www.nowonlib.kr/search/tot/result?pn=4&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">4</a>
+													<a href="https://www.nowonlib.kr/search/tot/result?pn=5&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">5</a>
+													</span> -->
+												</span>
+												</c:forEach>
+												</div>
 
-													<dd class="title">
-														<a
-															href="https://www.nowonlib.kr/search/detail/CATTOT000000032948?mainLink=/search/tot&amp;briefLink=/search/tot/result?st=KWRD_A_q=code_A_si=TOTAL_A_x=0_A_y=0">(The)Da
-															Vinci <span class="hilight">code</span>
-														</a> <input type="button" class="addItem btnType2"
-															onclick="addItem(&#39;data=CAT000000032948&#39;);"
-															title="추가" value="추가" style="display: none;"> <span
-															class="bookLending"> <strong>7</strong>회 대출
-														</span>
-													</dd>
-
-													<dt class="title">저자</dt>
-
-													<dd class="info">Brown, Dan</dd>
-
-													<dt class="title">출판사</dt>
-
-													<dd class="info">Doubleday</dd>
-
-													<dt class="title">청구기호</dt>
-
-													<dd class="info">843 B877d</dd>
-
-													<dt class="title">출판년</dt>
-
-													<dd class="info">2000</dd>
-
-													<dt class="title">ISBN</dt>
-
-													<dd class="info">0385513224</dd>
-
-													<dt class="title">자료유형</dt>
-													<dd class="type info">
-
-														<img alt=""
-															src="./[키워드_ 전체_code] 검색결과 _ 노원구 구립도서관_files/type_m.png">
-														단행본
-
-													</dd>
-													<dt class="title">매체정보</dt>
-													<dd class="media"></dd>
-													<dt class="title">미리보기</dt>
-													<dd class="preview">
-														<div id="prevDetail_CATTOT000000032948" class="detailInfo"
-															style="display: none;"></div>
-													</dd>
-													<dt class="title">소장현황</dt>
-													<dd class="holdingInfo">
-														<div class="holding">
-
-															<p class="location">
-
-																<span>대출가능</span>
-															</p>
-														</div>
-													</dd>
-												</dl>
-											</li>
-										</ul>
-
-										<div class="paging">
-											<span> <span>1</span> <a
-												href="https://www.nowonlib.kr/search/tot/result?pn=2&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">2</a>
-												<a
-												href="https://www.nowonlib.kr/search/tot/result?pn=3&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">3</a>
-												<a
-												href="https://www.nowonlib.kr/search/tot/result?pn=4&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">4</a>
-												<a
-												href="https://www.nowonlib.kr/search/tot/result?pn=5&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">5</a>
-											</span>
-										</div>
-
-									</fieldset>
-								</form>
+											</fieldset>
+										</form>
+									</div>
+									<!-- //resultInfo -->
+								</div>
 							</div>
-							<!-- //resultInfo -->
+							<!-- //brief -->
+
 						</div>
 					</div>
-					<!-- //brief -->
-
 				</div>
 			</div>
-		</div>
-		</div>
-	</article>
-</div>
+		</article>
+	</div>
 	<jsp:include page="../bot.jsp" flush="false" />
 
 
