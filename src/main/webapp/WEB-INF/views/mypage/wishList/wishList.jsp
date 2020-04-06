@@ -40,11 +40,11 @@ table {
 				<div>
 					<div id="mTS_2" class="mTSWrapper mTS_horizontal"><ul class="mTSContainer" id="mTS_2_container" style="position: relative; top: 0px; left: 0px; width: 100%;">
 
-								<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+								<li class="mTSThumbContainer"><a href="rentNow.do">대여현황</a></li>
 
-								<li class="mTSThumbContainer"><a href="">예약목록</a></li>
+								<li class="mTSThumbContainer"><a href="reserveList.do">예약목록</a></li>
 								
-								<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+								<li class="mTSThumbContainer"><a href="rentHistory.do">대여이력</a></li>
 
 								<li class="selected mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
@@ -70,7 +70,9 @@ table {
 
 				<th scope="row" data-class="expand">도서명</th>
 
-				<th scope="row" data-hide="phone" class="footable-last-column" style="display: table-cell;">대출상태</th>
+				<th scope="row" data-hide="phone" style="display: table-cell;">대출상태</th>
+				
+				<th scope="row" data-hide="phone" class="footable-last-column" style="display: table-cell;">예약상태</th>
 
 			</tr>
 		</thead>
@@ -81,17 +83,24 @@ table {
 				<tr>
 					<td class="num footable-first-column"><input type="checkbox" name="check" 
 					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
-					value="${myWishList.rentStatus }"></td>
+					data-resStatus="${myWishList.reserveStatus }" value="${myWishList.rentStatus }"></td>
 
 					<td class="image"><a href=""><img src="${myWishList.imagePath }" width="75" height="103"></a></td>
 
 					<td class="bookTitle"><a href="">${myWishList.bookTitle }</a></td>
 					
-					<td class="footable-last-column"  style="display: table-cell;">
+					<td class="bookStatus"  style="display: table-cell;">
 				    <c:choose>
 						<c:when test="${myWishList.rentStatus==2 }">대여가능</c:when>
-						<c:otherwise>대여중</c:otherwise>
+						<c:otherwise>대여불가능</c:otherwise>
 					</c:choose></td>
+					
+					<td class="footable-last-column"  style="display: table-cell;">
+				    <c:choose>
+						<c:when test="${myWishList.reserveStatus==1 }">예약불가능</c:when>
+						<c:otherwise>예약없음</c:otherwise>
+					</c:choose></td>
+					
 				</tr>
 
 			</c:forEach>
@@ -150,6 +159,12 @@ table {
 						alert('선택하신 도서가 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
 					} else{
 					var count = $("input[name=check]:checked").length;
+					
+					var code=new Array();
+					$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
+						code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+					});
+					
 					var no=new Array();
 					$("input[name=check]:checked").each(function() {
 					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
@@ -160,9 +175,9 @@ table {
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
 					$.ajaxSettings.traditional = true;
 					$.ajax({
-						url : "/lib/rent1.do",
+						url : "/lib/wishRent.do",
 						type : "post",
-						data : { chknos : no },
+						data : { chkcodes : code, chknos : no },
 						success : function(data) {			
 								alert('선택하신 도서가 대여되었습니다!');
 								location.reload();							
@@ -175,10 +190,20 @@ table {
 		});
 		$(".reserve").click(function() {
 			$("input[name=check]:checked").each(function() {	 
-				if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
-					alert('선택하신 도서는 대여가능 상태입니다. 대여버튼을 눌러주세요!')
+				if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
+					alert("다른 사용자가 예약중이라 예약이 불가능합니다.")
+				}
+				else{
+					if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
+					alert('선택하신 도서는 바로 대여가능합니다. 대여버튼을 눌러주세요!')
 				} else{
 				var count = $("input[name=check]:checked").length;
+				
+				var code=new Array();
+				$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
+					code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+				});
+				
 				var no=new Array();
 				$("input[name=check]:checked").each(function() {
 				no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
@@ -189,16 +214,16 @@ table {
 				} else {//선택된 것이 있으면 controller로 값 넘겨주기
 				$.ajaxSettings.traditional = true;
 				$.ajax({
-					url : "/lib/reserve1.do",
+					url : "/lib/wishReserve.do",
 					type : "post",
-					data : { chknos : no },
-					success : function(data) {			
+					data : { chkcodes : code, chknos : no },
+					success : function() {			
 							alert('선택하신 도서가 예약되었습니다!');
 							location.reload();							
 					},
 					});
 				}
-				
+				}	
 			}
 		});
 		});
