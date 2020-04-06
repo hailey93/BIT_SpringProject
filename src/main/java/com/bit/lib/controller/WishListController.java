@@ -54,7 +54,7 @@ public class WishListController {
 
 	}
 	
-	@PostMapping(value = "/rent.do", produces="application/json; charset=UTF-8")
+	@PostMapping(value = "/rent1.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public void getRent(@RequestParam List<String> chknos) {
 		
@@ -62,7 +62,7 @@ public class WishListController {
 			
 	}
 	
-	@PostMapping(value = "/reserve.do", produces="application/json; charset=UTF-8")
+	@PostMapping(value = "/reserve1.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public void getReserve(@RequestParam List<String> chknos) {
 		
