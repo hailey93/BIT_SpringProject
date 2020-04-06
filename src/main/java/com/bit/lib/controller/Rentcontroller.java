@@ -47,7 +47,7 @@ public class Rentcontroller {
 			return "redirect:/login.do";
 		}
 		
-		int result = rentService.renew(chkcodes);
+		int result = rentService.renew(chkcodes); //마이바티스가 업데이트쿼리문 실행한 레코드의 개수를 반환해줌
 		String uri = "";
 		if (result > 0) {
 			System.out.println("연장성공" + result);
