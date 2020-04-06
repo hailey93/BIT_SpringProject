@@ -160,7 +160,7 @@ table {
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
 					$.ajaxSettings.traditional = true;
 					$.ajax({
-						url : "/lib/rent.do",
+						url : "/lib/rent1.do",
 						type : "post",
 						data : { chknos : no },
 						success : function(data) {			
@@ -189,7 +189,7 @@ table {
 				} else {//선택된 것이 있으면 controller로 값 넘겨주기
 				$.ajaxSettings.traditional = true;
 				$.ajax({
-					url : "/lib/reserve.do",
+					url : "/lib/reserve1.do",
 					type : "post",
 					data : { chknos : no },
 					success : function(data) {			
