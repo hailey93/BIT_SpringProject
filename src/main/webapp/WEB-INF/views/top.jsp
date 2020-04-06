@@ -21,7 +21,7 @@
 			<div id="globalMenu">
 				<ul>
 					<li><a href="wishList.do" title="마이페이지">마이페이지</a></li>
-					<li><a href="" title="로그아웃">로그아웃</a></li>
+					<li><a href="logout.do" title="로그아웃">로그아웃</a></li>
 				</ul>
 			</div>
 						

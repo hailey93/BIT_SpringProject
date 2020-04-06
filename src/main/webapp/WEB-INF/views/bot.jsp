@@ -11,7 +11,7 @@
 
 	<div id="divFooter">
 		<div class="footer" >
-			<a href="main#" class="btnTop"></a>
+			<a href="#" class="btnTop"></a>
 		</div>
 		<!-- //divFooter -->
 	</div>
