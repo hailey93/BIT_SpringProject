@@ -18,7 +18,7 @@ import com.bit.lib.dto.ReserveListDTO;
 @Service("bookDetailService")
 public class BookDetailServiceImpl implements BookDetailService {
 
-	@Autowired
+	@Autowired(required = false)
 	private BookDetailDAO bookdetailDao;
 
 	@Override
