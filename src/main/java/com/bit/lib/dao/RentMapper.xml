@@ -4,38 +4,46 @@
 <mapper namespace="com.bit.lib.dao.RentDAO">
 
 
-	<select id="getRentHistoryList" parameterType="String" resultType="RentDTO">
-		<!-- select b.bookTitle, b.author, r.bookNo, r.rentDate, r.returnDate
+	<select id="getRentHistoryList" parameterType="String"
+		resultType="RentDTO">
+
+		select b.bookTitle, b.author, r.bookNo, r.rentDate,
+		r.returnDate
 		from renthistory as r
-		inner join bookstatus as bs on r.bookNo=bs.bookNo
-		inner join user as u on r.id=u.id
+		inner join bookstatus as bs on
+		r.bookNo=bs.bookNo
 		inner join book as b on b.bookcode=bs.bookCode
-		where u.id=#{id} and r.rentdate<if test="rentDate!=null or rentDate!=''"/> -->
-		select b.bookTitle, b.author, r.bookNo, r.rentDate, r.returnDate
-		from renthistory as r
-		inner join bookstatus as bs on r.bookNo=bs.bookNo
-		inner join user as u on r.id=u.id
-		inner join book as b on b.bookcode=bs.bookCode
-		where u.id=#{id} and not r.rentDate is null
-		
+		where
+		r.id=#{id} and not r.rentDate is null
+
 	</select>
 
-	<!-- selectRentNow -->
-	<select id="selectRentNow" parameterType="String" resultType="RentDTO">
-		select b.bookTitle, b.author, r.bookNo, r.rentDate, bs.returnDueDate
+	<!-- 대여현황 -->
+	<select id="selectRentNow" parameterType="String"
+		resultType="RentDTO">
+		select b.bookTitle, b.author, r.bookNo, r.rentDate,
+		bs.returnDueDate, bs.rentStatus,
+		DATEDIFF(curdate(), bs.returnDueDate) as datedif
 		from renthistory as r
-		inner join bookstatus as bs on r.bookNo=bs.bookNo
-		inner join user as u on r.id=u.id
-		inner join book as b on b.bookcode=bs.bookCode
-		where (bs.rentStatus=0 or bs.rentStatus=1) and u.id='hyun123'
+		inner join
+		bookstatus as bs on r.bookNo=bs.bookNo
+		inner join book as b on
+		b.bookcode=bs.bookCode
+		where not bs.rentstatus=2 and r.id='yeo123'
 	</select>
 
-	<update id="renew" parameterType="rentDTO">
-		update bookStatus as bs 
-		inner join reserve as rs on rs.bookNo=bs.bookNo
-		set bs.rentStatus =1 , returnDueDate=date_add(returnDueDate, interval 7 day)
-		where bs.rentStatus=0 and reserveStatus=0
-		
+	<!-- 도서연장 -->
+	<update id="renew" parameterType="String">
+		update bookStatus
+		set rentStatus =1 , returnDueDate=date_add(returnDueDate, interval 7 day)
+		where bookNo=#{bookNo}
+	</update>
+	
+	<!-- 도서반납 -->
+	<update id="return" parameterType="String">
+		update renthistory as r
+		inner join bookstatus as bs on r.bookno=bs.bookno
+		set r.returndate=curdate() , bs.rentstatus=2 where r.bookno=#{bookno}
 	</update>
 	
 	<!-- 도서 대여 Mapper -->
@@ -54,4 +62,5 @@
 		delete from reserve where bookNo=#{bookNo};
 	</delete>
 	
+
 </mapper>

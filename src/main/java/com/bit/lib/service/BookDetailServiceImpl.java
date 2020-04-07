@@ -13,7 +13,7 @@ import com.bit.lib.dto.BookDetailDTO;
 @Service("bookDetailService")
 public class BookDetailServiceImpl implements BookDetailService {
 
-	@Autowired
+	@Autowired(required = false)
 	private BookDetailDAO bookdetailDao;
 
 	@Override

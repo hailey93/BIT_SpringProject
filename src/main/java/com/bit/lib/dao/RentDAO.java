@@ -12,9 +12,9 @@ public interface RentDAO {
 
 	public List<RentDTO> selectRentNow(String id);
 
-	void renew(RentDTO rentDTO);
-	
 	void bookRent(@Param("bookNo") String bookNo, @Param("id")String id);
 	void bookstUpdate(String bookNo);
 	void reserveCancel(String bookNo);
+	public void renew(String bookNo);
+
 }
