@@ -99,7 +99,7 @@ table {
 					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
 					data-resStatus="${myWishList.reserveStatus }" value="${myWishList.rentStatus }"></td>
 
-					<td class="image"><a href="bookDetail.do"><img src="<spring:url value='${myWishList.imagePath }'/>" width="75" height="103" /></a></td>
+					<td class="image"><a href="bookDetail.do"><img src="${myWishList.imagePath }" width="75" height="103" /></a></td>
 
 					<td class="bookTitle"><a href="bookDetail.do">${myWishList.bookTitle }</a></td>
 					
