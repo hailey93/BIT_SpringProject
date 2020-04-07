@@ -41,7 +41,7 @@
 				<tr>
 					<td>아이디</td>
 					<td><input type="text" id="id" name="id" ></td>
-					<td><input type="button" id="check" value="중복체크"></td>
+					<td><input type="button" id="check" style="cursor: pointer" value="중복체크"></td>
 				</tr>
 				<tr>
 					<td colspan=3 id="idCheck"></td>
@@ -76,11 +76,11 @@
 				</tr>
 				
 				<tr>
-					<td colspan="3"><input type="button" id="signUp" value="회원가입 완료"></td>
+					<td colspan="3"><input type="button" id="signUp" value="회원가입 완료" style="cursor: pointer; HEIGHT: 24pt; background-color: white; font-weight: bold"></td>
 				</tr>
 				
 				<tr>
-					<td colspan="3"><input type="button" value="로그인" onclick="location.href='login.do'"></td>
+					<td colspan="3"><input type="button" value="로그인" style="cursor: pointer; HEIGHT: 24pt; background-color: white; font-weight: bold" onclick="location.href='login.do'"></td>
 				</tr>
 			</tbody>
 		</table>

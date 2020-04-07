@@ -17,6 +17,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
+
 </head>
 <body>
 <div class="headerBtm">
@@ -28,19 +29,7 @@
 				
 				</a>
 			</h2>
-			<div align="right">
-			<ul> 
-				<li>
-					
-						
-						
-							<a title="로그인" href="login.do">로그인</a>
-						
-					
-				</li>
-				<li><a title="회원가입" href="join.do">회원가입</a></li>
-			</ul>
-			</div>
+			
 			<br><br><br><br><br><br>
 <div class="intro" align="center">
 					<img alt="MEMBER LOGIN" src="webimg/login.png" align="middle">	
@@ -51,13 +40,24 @@
 					
 				
 <form action="loginProc" method="post">
-		<label for="id">아이디</label> <input type="text" name="id" size="20" maxlength="15"><br><br>
-		<label for="id">비밀번호</label><input type="password" name="pw" size="20" maxlength="15"><br><br>
+		<table>
+			<tbody>
+				<tr>
+					<td>아이디</td><td> <input type="text" name="id" size="20" maxlength="15"></td></tr>
+					
+		<tr>
+					<td>비밀번호</td><td><input type="password" name="pw" size="20" maxlength="15"></td>
 		
-		<p class="loginBtn">
-			<input type="submit" value = "로그인">
-			</p><br>
-	</form> <ul><li>아직 회원이 아니세요? <a href="join.do">회원가입</a></li></ul>
+		</tr>
+		</tbody>
+		</table>
+		
+		<p>
+			<input type="submit" value = "로그인" style="position:absolute;left: 710px; top: 253px; WIDTH: 60pt; HEIGHT: 38pt; background-color: #005490; color: #fff;cofont-weight: bold; cursor: pointer">
+			</p>
+			
+			<br>
+	</form> <ul><li>아직 회원이 아니세요? <a href="join.do" ><font size="3" color="blue"><u>회원가입</u></font></a></li></ul>
 	</div>
 	</div>
 </div>
