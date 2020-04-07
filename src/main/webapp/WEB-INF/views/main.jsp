@@ -76,20 +76,17 @@
 				</p>
 			</div>
 			<!-- 반복 -->
-
 		</article>
+		
+		
 		<script>
 			var count = 7;
 
 			window.onscroll = function(e) {
-
 				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-
 					if (count < 50) {
-
 						var addContent = '<p>'
 								+
-
 								'<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
@@ -100,7 +97,7 @@
 					}
 
 					else {
-						alert('보유한 책을 모두 보았습니다.');
+						alert('여기까지가 끝인가보오.');
 					}
 
 				}
