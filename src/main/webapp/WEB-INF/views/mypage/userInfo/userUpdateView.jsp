@@ -48,49 +48,47 @@
 				</div>
 			</div>	
 	<form action="updateUser.do" method="post" onsubmit="return check()">
-		<table>
+		<table border="1" width="66%" align="center">
 
 
 			<tbody>
 				<tr>
-					<td colspan="2">아이디: <input type="text" id="id" name="id"
+					<th scope="row" bgcolor="lightgray">아이디</th> <td colspan="3"><input type="text" id="id" name="id"
 						value="${id}" readonly="readonly"></td>
 				</tr>
 
 				<tr>
-					<td colspan="2">이름: <input type="text" id="name" name="name"></td>
+					<th bgcolor="lightgray">이름</th><td colspan="3"><input type="text" id="name" name="name"></td>
 				</tr>
 				<tr>
-					<td colspan="2">비밀번호: <input type="password" id="pw" name="pw"></td>
+					<th bgcolor="lightgray">비밀번호</th> <td colspan="3"><input type="password" id="pw" name="pw"></td>
 				</tr>
 				<tr>
 
-					<td colspan="2">비밀번호 확인: <input type="password" name="pwCheck"
+					<th bgcolor="lightgray">비밀번호 확인</th><td colspan="3"><input type="password" name="pwCheck"
 						id="pwCheck"></td>
 				</tr>
 				<tr>
-					<td colspan="2">생년월일: <input type="date" id="birth"
+					<th bgcolor="lightgray"> 생년월일 </th><td colspan="3"><input type="date" id="birth"
 						name="birth">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">성별: 남자<input type="radio" name="gender" value="남자" checked="checked">
+					<th bgcolor="lightgray">성별</th><td colspan="3"> 남자<input type="radio" name="gender" value="남자" checked="checked">
                여자<input type="radio" id="gender" name="gender" value="여자" ></td>
 				</tr>
 				<tr>
-					<td colspan="2">휴대폰번호: <input type="text" id="phone"
+					<th bgcolor="lightgray">휴대폰번호</th><td colspan="3"><input type="text" id="phone"
 						name="phone"></td>
 				</tr>
-
-				<tr>
-					<td colspan="3"><button type="submit" id="updateOk">수정완료</button></td>
-				</tr>
-				<tr>
-					<td colspan="3"><input type="button"
-						onclick="location.href='viewUser.do'" value="회원정보"></td>
-				</tr>
+				
 			</tbody>
-		</table>
+		</table><br>
+		<div align="center">
+		<button type="submit" id="updateOk" style="WIDTH: 60pt; HEIGHT: 28pt">수정완료</button>&nbsp;
+		<input type="button" style="WIDTH: 50pt; HEIGHT: 28pt"
+						onclick="location.href='viewUser.do'" value="회원정보">
+						</div>
 	</form>
 </div>
 </div>
