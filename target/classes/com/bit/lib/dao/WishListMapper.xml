@@ -10,7 +10,7 @@ where w.id=#{id}
 </select>
 
 <insert id="addWishList" parameterType="wishListDTO">
-insert into wishlist (id, bookNo) values (#{id}, #{bookNo})
+insert into wishlist (bookNo, id) values (#{bookNo}, #{id})
 </insert>
 
 <delete id="deleteWishList" parameterType="int">

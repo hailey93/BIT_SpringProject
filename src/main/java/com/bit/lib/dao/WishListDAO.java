@@ -2,7 +2,6 @@ package com.bit.lib.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.bit.lib.dto.RentDTO;

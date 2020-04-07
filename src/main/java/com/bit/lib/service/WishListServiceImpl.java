@@ -22,8 +22,14 @@ public class WishListServiceImpl implements WishListService {
 	}
 
 	@Override
-	public void addWishList(WishListDTO wishListDTO) {
-		wishListDAO.addWishList(wishListDTO);
+	public void addWishList(List<String> chknos, String id) {
+		WishListDTO wishListDTO=new WishListDTO();
+		wishListDTO.setId(id);
+		for(int i=0;i<chknos.size();i++) {
+			wishListDTO.setBookNo(chknos.get(i));
+			wishListDAO.addWishList(wishListDTO);
+		}
+		System.out.println(wishListDTO);
 	}
 
 	@Override
@@ -40,7 +46,6 @@ public class WishListServiceImpl implements WishListService {
 	public void addRent(List<String> chknos, String id) {
 		RentDTO rentDTO=new RentDTO();
 		rentDTO.setId(id);
-		System.out.println(chknos.size());
 		for(int i=0;i<chknos.size();i++) {
 			rentDTO.setBookNo(chknos.get(i));
 			
@@ -53,7 +58,6 @@ public class WishListServiceImpl implements WishListService {
 	public void addReserve(String id, List<String> chknos) {
 		RentDTO rentDTO=new RentDTO();
 		rentDTO.setId(id);
-		System.out.println(chknos.size());
 		for(int i=0;i<chknos.size();i++) { //list로 있는 여러 bookNo만큼(i) 반복
 			rentDTO.setBookNo(chknos.get(i)); //dto의 bookNo에 셋해줌
 			

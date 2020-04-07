@@ -69,10 +69,6 @@ table {
 				</div>
 			</div>	
 	
-	<button type="button" class="delete">삭제</button>
-	<button type="button" class="rent">대여하기</button>
-	<button type="button" class="reserve">예약하기</button>
-	
 	<div class="listTable">
 	<table class="mobileTable tablet">
 
@@ -120,6 +116,9 @@ table {
 			</c:forEach>
 		</tbody>
 	</table>
+	<button id="button" type="button" class="delete">삭제</button>
+	<button id="button" type="button" class="rent">대여하기</button>
+	<button id="button" type="button" class="reserve">예약하기</button>
 	</div>
 	</div>
 </div>	
