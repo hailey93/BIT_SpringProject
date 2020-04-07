@@ -8,7 +8,7 @@
 	<select id="getSearchBook" parameterType="String" resultType="int">
 
 		SELECT count(*) listCnt FROM library.book  
-		where concat(bookTitle,author,type,publisher) 
+		where concat(bookTitle,author,type,publisher,pubYear) 
 		like CONCAT('%',#{keyWord},'%')	
 	
 	</select>
@@ -16,7 +16,7 @@
 	<select id="searchBook" resultType="book">
 
 		SELECT * FROM library.book 
-		where concat(bookTitle,author,type,publisher) 
+		where concat(bookTitle,author,type,publisher,pubYear) 
 		like CONCAT('%',#{keyWord},'%')
 		limit #{startList}, #{listSize}
 		
