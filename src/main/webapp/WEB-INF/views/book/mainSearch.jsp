@@ -56,7 +56,7 @@
 						<div class="search">
 							<p class="searchBox">
 								<input type="text" class="searchInput" id="keyWord"
-									value="${paging.keyWord}" name="keyWord" title="검색어를 입력하세요."
+									value="${keyWord}" name="keyWord" title="검색어를 입력하세요."
 									placeholder="검색어를 입력하세요."> <input type="image"
 									class="searchBtn" src="webimg/btnSrch.png" alt="검색" title="검색">
 							</p>
@@ -80,12 +80,12 @@
 									<dl class="searchKeyword">
 										<dt>검색어</dt>
 										<dd>
-											<span class="keyword">[키워드/ ${paging.keyWord} ]</span>
+											<span class="keyword">[키워드/ ${keyWord} ]</span>
 
 										</dd>
 
 									</dl>
-									
+
 								</div>
 								<div class="briefContent">
 
@@ -101,24 +101,25 @@
 
 												<ul class="resultList resultDetail">
 													<!-- 반복 실행 -->
-													<c:forEach items="${searchBook }" var="searchBook" varStatus="searchBookStatus">
-														<li id="${searchBook.bookCode }" class="items" style="width: 660px; height: 150px;">
+													<c:forEach items="${searchBook }" var="searchBook"
+														varStatus="searchBookStatus">
+														<li id="${searchBook.bookCode }" class="items"
+															style="width: 660px; height: 150px;">
 															<dl>
-																<dd class="num">${searchBookStatus.count }</dd>
+																<dd class="num">${paging.startList + searchBookStatus.count }</dd>
 																<dt class="title">표지이미지</dt>
 																<dd class="book">
-																	<a href="<!-->">
-																		<img id="${searchBook.bookCode }" src="${searchBook.imagePath }" width="75"
-																		height="103" alt="${searchBook.bookTitle }" onerror="">
+																	<a href="<!-->"> <img id="${searchBook.bookCode }"
+																		src="${searchBook.imagePath }" width="75" height="103"
+																		alt="${searchBook.bookTitle }" onerror="">
 																	</a>
 																</dd>
 
 																<dt class="title">제목</dt>
 																<dd class="title">
-																	<a href="<!-->"> ${searchBook.bookTitle }
-																	</a> <input type="button" class="addItem btnType2"
-																		onclick=""
-																		title="추가" value="추가" style="display: none;">																	
+																	<a href="<!-->"> ${searchBook.bookTitle } </a> <input
+																		type="button" class="addItem btnType2" onclick=""
+																		title="추가" value="추가" style="display: none;">
 																</dd>
 
 																<dt class="title">저자</dt>
@@ -129,30 +130,41 @@
 																<dd class="info">${searchBook.publisher }</dd>
 																<dt class="title">출판년</dt>
 																<dd class="info">${searchBook.pubYear }</dd>
-																
+
 															</dl>
 														</li>
 
 													</c:forEach>
 												</ul>
 												<div class="paging">
-												<span>
-												<c:forEach begin="0" end="4">
-												
-												<c:if test="${paging.page eq }]" >												
-												<span>${paging.page }</span>
-												</c:if>
-												<a href="/mainSearch/">${paging.page }</a>
-												
-												
-													<!-- <span> <span>1</span>
-													<a href="https://www.nowonlib.kr/search/tot/result?pn=2&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">2</a>
-													<a href="https://www.nowonlib.kr/search/tot/result?pn=3&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">3</a>
-													<a href="https://www.nowonlib.kr/search/tot/result?pn=4&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">4</a>
-													<a href="https://www.nowonlib.kr/search/tot/result?pn=5&amp;st=KWRD&amp;q=code&amp;si=TOTAL&amp;x=0&amp;y=0">5</a>
-													</span> -->
-												</span>
-												</c:forEach>
+													<span>
+														<c:if test="${paging.prev == true }">
+															<a href="" class="page"> <img
+																src="webimg/prevPage.gif">
+															</a>
+														</c:if> 
+														<c:forEach begin="1" end="5" var="page">
+
+															<c:choose>
+																<c:when test="${paging.page == page+paging.range}">
+																	<span>${page+paging.range }</span>
+																</c:when>
+
+																<c:otherwise>
+																	<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page}&range=${paging.range}">
+																	${page+paging.range}</a>
+																</c:otherwise>
+															</c:choose>
+
+														</c:forEach>
+														
+														<c:if test="${paging.next == true }">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page}&range=${paging.range+5}" class="page"> <img
+																src="webimg/nextPage.gif">
+															</a>
+														</c:if>
+
+													</span>
 												</div>
 
 											</fieldset>

@@ -13,7 +13,7 @@
 	
 	</select>
 	
-	<select id="searchBook" parameterType="paging" resultType="book">
+	<select id="searchBook" resultType="book">
 
 		SELECT * FROM library.book 
 		where concat(bookTitle,author,type,publisher) 

@@ -2,13 +2,16 @@ package com.bit.lib.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.bit.lib.domain.Book;
-import com.bit.lib.domain.Paging;
 
 public interface MainDAO {
 	
 	int getSearchBook(String keyWord);
-	List<Book> searchBook(Paging paging);
+	List<Book> searchBook(@Param("keyWord") String keyWord,
+						  @Param("startList") int startList,
+						  @Param("listSize") int listSize);
 	List<Book> mainView();
 	
 }

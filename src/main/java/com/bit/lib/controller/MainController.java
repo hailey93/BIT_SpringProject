@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bit.lib.dao.MainDAO;
 import com.bit.lib.domain.Paging;
 
-import lombok.extern.java.Log;
-
 @Controller
-@Log
 public class MainController {
 	
 	@Autowired
 	MainDAO mainDAO;
+	
+	@Autowired
+	Paging paging;
 	
 	@GetMapping("/main")
 	public String main(Model model) {
@@ -29,17 +29,19 @@ public class MainController {
 	public String mainSearch(Model model, 
 			@RequestParam("keyWord") String keyWord,
 			@RequestParam(required = false, defaultValue = "1")int page,
-			@RequestParam(required = false, defaultValue = "1")int range) {
+			@RequestParam(required = false, defaultValue = "0")int range) {
+		System.out.println(keyWord +"/"+ page +"/"+ range);
 		
-		int listCnt = mainDAO.getSearchBook(keyWord);
 		
-		Paging paging = new Paging();
+		
+		int listCnt = mainDAO.getSearchBook(keyWord);		
 		paging.pageInfo(page, range, listCnt);
-		paging.setKeyWord(keyWord);
 		
-		model.addAttribute("searchBook", mainDAO.searchBook(paging));		
-		model.addAttribute("paging", paging);
+		model.addAttribute("searchBook", mainDAO.searchBook(keyWord, paging.getStartList(),paging.getListSize()));	//검색	
+		model.addAttribute("paging", paging); // 페이지 값 넘기기
+		model.addAttribute("keyWord", keyWord); 
 		
+		System.out.println(paging);
 		
 		return "book/mainSearch";
 		
