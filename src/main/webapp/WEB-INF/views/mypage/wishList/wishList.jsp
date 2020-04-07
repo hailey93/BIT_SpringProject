@@ -145,11 +145,12 @@ table {
 		$(".delete").click(function() {//삭제버튼 누르면 컨트롤러로 체크된 값 넘겨주기
 				
 					var count = $("input[name=check]:checked").length;
+		
 					var code=new Array();
 					$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
 						code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
 					});
- 					console.log(code); 
+ 
 					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 						alert("선택된 위시리스트가 없습니다.")
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
@@ -168,12 +169,14 @@ table {
 				
 				});
 		$(".rent").click(function() {
+			var count = $("input[name=check]:checked").length;
+			if(count==0){ //아무것도 선택된 것이 없을때 alert 띄워주기
+				alert("선택된 위시리스트가 없습니다.")
+			}
 			$("input[name=check]:checked").each(function() {//체크된 것만 선택하기	 
 					if(this.value!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
 						alert('선택하신 도서가 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
 					} else{
-					var count = $(this).length;
-					
 					var code=new Array();
 					code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
 					
@@ -181,9 +184,8 @@ table {
 					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					
 					console.log(no); 
-					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-						alert("선택된 위시리스트가 없습니다.")
-					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+					
+					//선택된 것이 있으면 controller로 값 넘겨주기
 					$.ajaxSettings.traditional = true;
 					$.ajax({
 						url : "/lib/wishRent.do",
@@ -194,12 +196,17 @@ table {
 								location.reload();							
 						},
 						});
-					}
+					
 					
 				}
 			});
 		});
 		$(".reserve").click(function() {
+			var count = $("input[name=check]:checked").length;
+			if(count==0){
+				alert("선택된 위시리스트가 없습니다.")
+			}
+			
 			$("input[name=check]:checked").each(function() {	 
 				if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
 					alert("다른 사용자가 예약중이라 예약이 불가능합니다.")
@@ -208,8 +215,6 @@ table {
 					if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
 					alert('선택하신 도서는 바로 대여가능합니다. 대여버튼을 눌러주세요!')
 					} else{
-					var count = $(this).length;
-				
 					var code=new Array();
 					code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
 				
@@ -217,9 +222,8 @@ table {
 					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 				
 					console.log(no); 
-					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-					alert("선택된 위시리스트가 없습니다.")
-					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+					
+					//선택된 것이 있으면 controller로 값 넘겨주기
 					$.ajaxSettings.traditional = true;
 					$.ajax({
 						url : "/lib/wishReserve.do",
@@ -229,8 +233,8 @@ table {
 								alert('선택하신 도서가 예약되었습니다!');
 								location.reload();							
 						},
-						});
-					}
+					});
+					
 				}	
 			}
 		});
