@@ -13,86 +13,103 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <title>회원정보수정</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/common.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/mypagemenu.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/mypagetable.css">
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
+	<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
 
 	<div id="divContentsW">
-	<div id="row">
-	<h1 align="center">회원정보수정</h1>
-	</div>
+		<div id="row">
+			<h1 align="center">회원정보수정</h1>
+		</div>
 		<div id="divContents">
-			<div id="divTabMenu" class="mThumbnailScroller _mTS_2 mTS-buttons-out" style="position: relative;">
+			<div id="divTabMenu"
+				class="mThumbnailScroller _mTS_2 mTS-buttons-out"
+				style="position: relative;">
 				<div>
-					<div id="mTS_2" class="mTSWrapper mTS_horizontal"><ul class="mTSContainer" id="mTS_2_container" style="position: relative; top: 0px; left: 0px; width: 100%;">
+					<div id="mTS_2" class="mTSWrapper mTS_horizontal">
+						<ul class="mTSContainer" id="mTS_2_container"
+							style="position: relative; top: 0px; left: 0px; width: 100%;">
 
-								<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+							<li class="mTSThumbContainer"><a href="">대여현황</a></li>
 
-								<li class="mTSThumbContainer"><a href="">예약목록</a></li>
-								
-								<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+							<li class="mTSThumbContainer"><a href="">예약목록</a></li>
 
-								<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
+							<li class="mTSThumbContainer"><a href="">대여이력</a></li>
 
-								<li class="selected mTSThumbContainer"><a href="viewUser.do">회원정보</a></li>
+							<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
-					</ul>
+							<li class="selected mTSThumbContainer"><a href="viewUser.do">회원정보</a></li>
+
+						</ul>
 					</div>
 				</div>
-			</div>	
-	<form action="updateUser.do" method="post" onsubmit="return check()">
-		<table border="1" width="66%" align="center">
+			</div>
+			<form action="updateUser.do" method="post" onsubmit="return check()">
+				<table border="1" width="66%" align="center">
 
 
-			<tbody>
-				<tr>
-					<th scope="row" bgcolor="lightgray">아이디</th> <td colspan="3"><input type="text" id="id" name="id"
-						value="${id}" readonly="readonly"></td>
-				</tr>
+					<tbody>
+						<tr>
+							<th scope="row" bgcolor="lightgray">아이디</th>
+							<td colspan="3"><input type="text" id="id" name="id"
+								value="${id}" readonly="readonly"></td>
+						</tr>
 
-				<tr>
-					<th bgcolor="lightgray">이름</th><td colspan="3"><input type="text" id="name" name="name"></td>
-				</tr>
-				<tr>
-					<th bgcolor="lightgray">비밀번호</th> <td colspan="3"><input type="password" id="pw" name="pw"></td>
-				</tr>
-				<tr>
+						<tr>
+							<th bgcolor="lightgray">이름</th>
+							<td colspan="3"><input type="text" id="name" name="name"></td>
+						</tr>
+						<tr>
+							<th bgcolor="lightgray">비밀번호</th>
+							<td colspan="3"><input type="password" id="pw" name="pw"></td>
+						</tr>
+						<tr>
 
-					<th bgcolor="lightgray">비밀번호 확인</th><td colspan="3"><input type="password" name="pwCheck"
-						id="pwCheck"></td>
-				</tr>
-				<tr>
-					<th bgcolor="lightgray"> 생년월일 </th><td colspan="3"><input type="date" id="birth"
-						name="birth">
-					</td>
-				</tr>
-				<tr>
-					<th bgcolor="lightgray">성별</th><td colspan="3"> 남자<input type="radio" name="gender" value="남자" checked="checked">
-               여자<input type="radio" id="gender" name="gender" value="여자" ></td>
-				</tr>
-				<tr>
-					<th bgcolor="lightgray">휴대폰번호</th><td colspan="3"><input type="text" id="phone"
-						name="phone"></td>
-				</tr>
-				
-			</tbody>
-		</table><br>
-		<div align="center">
-		<button type="submit" id="updateOk" style="WIDTH: 60pt; HEIGHT: 28pt">수정완료</button>&nbsp;
-		<input type="button" style="WIDTH: 50pt; HEIGHT: 28pt"
+							<th bgcolor="lightgray">비밀번호 확인</th>
+							<td colspan="3"><input type="password" name="pwCheck"
+								id="pwCheck"></td>
+						</tr>
+						<tr>
+							<th bgcolor="lightgray">생년월일</th>
+							<td colspan="3"><input type="date" id="birth" name="birth">
+							</td>
+						</tr>
+						<tr>
+							<th bgcolor="lightgray">성별</th>
+							<td colspan="3">남자<input type="radio" name="gender"
+								value="남자" checked="checked"> 여자<input type="radio"
+								id="gender" name="gender" value="여자"></td>
+						</tr>
+						<tr>
+							<th bgcolor="lightgray">휴대폰번호</th>
+							<td colspan="3"><input type="text" id="phone" name="phone"></td>
+						</tr>
+
+					</tbody>
+				</table>
+				<br>
+				<div align="center">
+					<button type="submit" id="updateOk"
+						style="WIDTH: 60pt; HEIGHT: 28pt">수정완료</button>
+					&nbsp; <input type="button" style="WIDTH: 50pt; HEIGHT: 28pt"
 						onclick="location.href='viewUser.do'" value="회원정보">
-						</div>
-	</form>
-</div>
-</div>
-<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 </body>
 <script type="text/javascript">
 	$(document).ready(function(e) {
