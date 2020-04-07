@@ -32,11 +32,10 @@
 		where not bs.rentstatus=2 and u.id='yeo123'
 	</select>
 
-	<update id="renew" parameterType="int">
+	<update id="renew" parameterType="int" useGeneratedKeys="true" keyProperty="id">
 			update bookStatus as bs
 			inner join reserve as rs on rs.bookNo=bs.bookNo
-			set bs.rentStatus =1 , returnDueDate=date_add(returnDueDate, interval 7
-			day)
+			set bs.rentStatus =1 , returnDueDate=date_add(returnDueDate, interval 7 day)
 			where bs.rentStatus=0 and rs.id='yeo123'
 	</update>
 

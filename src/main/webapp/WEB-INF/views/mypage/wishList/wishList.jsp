@@ -148,7 +148,7 @@ table {
 						alert('선택하신 도서가 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
 					} else{
 					var count = $("input[name=check]:checked").length;
-					var no=new Array();
+					var no =new Array();
 					$("input[name=check]:checked").each(function() {
 					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					});
