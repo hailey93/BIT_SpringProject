@@ -34,13 +34,13 @@
 	</div>
 	
 	<div id="divContents">
-		<form action="addBook.do" method="post">
+		<form action="addBook.do" method="post" enctype="multipart/form-data">
 		책이름: <input type="text" name="bookTitle"><br>
 		작가: <input type="text" name="author"><br>
 		장르: <input type="text" name="type"><br>
 		출판사: <input type="text" name="publisher"><br>
 		출판년도: <input type="text" name="pubYear"><br>
-		이미지 첨부: <input type="text" name="imagePath"><br>
+		이미지 첨부: <input type="file" name="file" ><br>
 		책 수량: <input type="number" name="bookQty"><br>
 		<input type="submit" value="등록하기">
 		</form>

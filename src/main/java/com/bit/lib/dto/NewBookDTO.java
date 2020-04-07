@@ -21,4 +21,5 @@ public class NewBookDTO {
 	
 	private String bookNo;
 	private int rentStatus;
+	private int reserveStatus;
 }
