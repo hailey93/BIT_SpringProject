@@ -2,20 +2,10 @@ package com.bit.lib.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.bit.lib.dao.ReserveDAO;
-import com.bit.lib.dao.UserDAO;
-import com.bit.lib.domain.Book;
-import com.bit.lib.domain.BookStatus;
-import com.bit.lib.domain.RentHistory;
-import com.bit.lib.domain.Reserve;
-import com.bit.lib.domain.User;
 import com.bit.lib.dto.ReserveListDTO;
 
 @Service("reserveService")
@@ -29,15 +19,8 @@ public class ReserveServiceImpl implements ReserveService {
 	
 	
 	public List<ReserveListDTO> getReserveList(String id) {
-		
-		/*
-		 * String rentStat; int rentst = ReserveListDto dto = getReserveList(id).
-		 */
 		return reserveDao.getReserveList(id);
 	}
-
-
-
 
 	@Override
 	public void insertReserve( String id, List<String> chknos) {
@@ -46,9 +29,6 @@ public class ReserveServiceImpl implements ReserveService {
 		System.out.println(bookNo+"////"+id+"reserv");
 		reserveDao.insertReserve(id, bookNo);
 	}
-
-
-
 
 	@Override
 	public void insertReserveup(List<String> chknos) {
@@ -64,9 +44,6 @@ public class ReserveServiceImpl implements ReserveService {
 		
 		reserveDao.reserveCancel(bookNo);
 	}
-
-
-
 
 	@Override
 	public void reserveCancelup(String bookNo) {

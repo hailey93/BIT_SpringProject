@@ -1,6 +1,5 @@
 package com.bit.lib.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +20,7 @@ public class BookDetailController {
 		bookTitle = "책제목3";
 		model.addAttribute("bookdtList", bookDetailService.bookPage(bookTitle));
 		model.addAttribute("bookdt", bookDetailService.bookDetail(bookTitle));
+		System.out.println(bookDetailService.bookDetail(bookTitle));
 		System.out.println(bookDetailService.bookPage(bookTitle));
 
 		return "book/bookDetail";

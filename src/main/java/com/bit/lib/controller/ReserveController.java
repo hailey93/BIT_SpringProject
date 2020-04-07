@@ -4,19 +4,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bit.lib.dto.BookDetailDTO;
-import com.bit.lib.dto.ReserveListDTO;
 import com.bit.lib.service.ReserveService;
 
 @Controller
@@ -27,7 +22,7 @@ public class ReserveController {
 
 	// 도서 예약
 
-	@PostMapping(value = "/reserve.do", produces = "application/json; charset=UTF-8")
+	@RequestMapping(value = "/reserve.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String insertReserve(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
@@ -58,14 +53,14 @@ public class ReserveController {
 
 	@RequestMapping(value = "/reserveCancel1.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String reserveCancel1(@RequestBody ReserveListDTO reserveListDTO) {
-		System.out.println(reserveListDTO);
+	public String reserveCancel1(@RequestParam String bookNo) {
+		System.out.println(bookNo);
 
-		reserveService.reserveCancel(reserveListDTO.getBookNo());
-		reserveService.reserveCancelup(reserveListDTO.getBookNo());
+		reserveService.reserveCancel(bookNo);
+		reserveService.reserveCancelup(bookNo);
 
 		System.out.println("reserveCancel Ok");
-		return "mypage/reserve/reserveList";
+		return "/lib/reserveList.do";
 	}
 
 }

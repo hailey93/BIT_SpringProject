@@ -8,15 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.lib.dto.RentDTO;
-import com.bit.lib.dto.ReserveListDTO;
 import com.bit.lib.service.RentService;
 import com.bit.lib.service.ReserveService;
 
@@ -49,7 +46,7 @@ public class Rentcontroller {
 		return "mypage/rentNow/renew";
 	}
 
-	@PostMapping(value = "/rent.do", produces = "application/json; charset=UTF-8")
+	@RequestMapping(value = "/rent.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String bookRent(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
