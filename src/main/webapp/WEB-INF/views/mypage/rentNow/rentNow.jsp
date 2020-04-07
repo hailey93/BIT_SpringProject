@@ -102,9 +102,9 @@ table {
 										<td class="num footable-first-column"><input
 											type="checkbox" name="check" class="check"
 											data-num="${rent.historyCode}"
-											data-bookTitle="${rent.bookTitle }"
+											<%-- data-bookTitle="${rent.bookTitle }"
 											data-author="${rent.author }" data-bookNo="${rent.bookNo}"
-											data-rentDate="${rent.rentDate}"
+											data-rentDate="${rent.rentDate}" --%>
 											data-returnDueDate="${rent.returnDueDate}"
 											data-rentStatus="${rent.rentStatus}"
 											data-rentDif="${rent.datedif}" value="${rent.rentStatus}"></td>
@@ -213,9 +213,7 @@ table {
 						$.ajax({
 							url : "/lib/renew.do",
 							type : "post",
-							data : {
-								chknos : no
-							},
+							data : {chknos : no},
 							success : function(data) {
 								alert('선택하신 도서가 연장되었습니다!');
 								location.reload();

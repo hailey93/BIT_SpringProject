@@ -14,7 +14,7 @@ function close(){
 </head>
 <body>
 선택하신 책이 연장되었습니다<br>
-<a href="rentNow.do">대여현황</a>
+<a href="/rentNow.do">대여현황</a>
 <input type="button" value="닫기" onclick="close()">
 </body>
 </html>

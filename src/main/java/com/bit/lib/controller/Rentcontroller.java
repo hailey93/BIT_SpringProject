@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.taglibs.standard.lang.jstl.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bit.lib.dao.UserDAO;
-import com.bit.lib.domain.BookStatus;
-import com.bit.lib.domain.User;
 import com.bit.lib.dto.RentDTO;
 import com.bit.lib.service.RentService;
 
+
 @Controller
 public class Rentcontroller {
+
 	@Autowired
 	private RentService rentService;
 
@@ -28,7 +26,6 @@ public class Rentcontroller {
 	public String getRentHistoryList(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		model.addAttribute("rentHistoryList", rentService.getRentHistoryList(id));
-		System.out.println(rentService.getRentHistoryList(id));
 		return "mypage/rentHistory/rentHistory";
 	}
 
@@ -41,12 +38,9 @@ public class Rentcontroller {
 		return "mypage/rentNow/rentNow";
 	}
 
-	
 	@RequestMapping(value = "renew.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void renew(@RequestParam List<String> chkcodes) {
-		
-		
 		rentService.renew(chkcodes);
 		System.out.println(chkcodes);
 	}
