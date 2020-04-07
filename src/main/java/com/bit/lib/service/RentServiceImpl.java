@@ -31,9 +31,10 @@ public class RentServiceImpl implements RentService {
 	public void renew(List<String> chkcodes) {
 		
 		for(String chkcode:chkcodes) {
-			int historyCode=Integer.parseInt(chkcode);
-			System.out.println(historyCode);
-			rentDAO.renew(historyCode);
+			System.out.println(chkcode);
+			String bookNo=chkcode;
+			System.out.println(bookNo);
+			rentDAO.renew(bookNo);
 		}
 	}
 		

@@ -33,6 +33,7 @@ table {
 }
 </style>
 </head>
+
 <body>
 
 	<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
@@ -72,78 +73,80 @@ table {
 
 			<!-- divContent 시작-->
 			<div id="divContent">
-					<!-- Content List -->
-					<div class="listTable">
-						<table>
-							<thead>
-								<tr>
-									<th scope="row" class="footable-first-column"><input
-										type="checkbox" name="allCheck" id="allCheck" title="전체선택"></th>
-									<!-- <label
+				<!-- Content List -->
+				<div class="listTable">
+					<table>
+						<thead>
+							<tr>
+								<th scope="row" class="footable-first-column"><input
+									type="checkbox" name="allCheck" id="allCheck" title="전체선택"></th>
+								<!-- <label
 										for="allCheck"></label> -->
-									<!-- <th scope="col"><input type="checkbox" name="all"
+								<!-- <th scope="col"><input type="checkbox" name="all"
 										class="checkAll"></th> -->
-									<th scope="row">No.</th>
-									<th scope="row">도서명</th>
-									<th scope="row">저자</th>
-									<th scope="row">등록번호</th>
-									<th scope="row">대여일</th>
-									<th scope="row">반납예정일</th>
-									<th scope="row">연장가능여부</th>
-									<th scope="row" class="footable-last-column">연체일수</th>
-								</tr>
-							</thead>
-							<!-- data-num="${status.count}" data-bookTitle="${rent.bookTitle }" data-author="${rent.author }" 
+								<th scope="row">No.</th>
+								<th scope="row">도서명</th>
+								<th scope="row">저자</th>
+								<th scope="row">등록번호</th>
+								<th scope="row">대여일</th>
+								<th scope="row">반납예정일</th>
+								<th scope="row">연장가능여부</th>
+								<th scope="row" class="footable-last-column">연체일수</th>
+							</tr>
+						</thead>
+						<!-- data-num="${status.count}" data-bookTitle="${rent.bookTitle }" data-author="${rent.author }" 
 											data-bookNo="${rent.bookNo}" data-rentDate="${rent.rentDate}" data-returnDueDate="${rent.returnDueDate}" 
 											data-rentStatus="${rent.rentStatus}" data-rentDif="${rent.datedif}"  -->
-							<tbody>
-								<c:forEach items="${selectRentNow}" var="rent">
-									<tr>
-										<td class="num footable-first-column"><input
-											type="checkbox" name="check" class="check"
-											data-historyCode="${rent.historyCode}"
-											data-returnDueDate="${rent.returnDueDate}"
-											value="${rent.rentStatus}"></td>
-										<td class="historyCode">${rent.historyCode}</td>
-										<td class="bookTitle">
-											<!-- bookDetail 페이지로 넘기기 --> <a
-											href="./select.do?bookDetail=${rent.bookTitle}">${rent.bookTitle}</a>
-										</td>
-										<td class="author">${rent.author}</td>
-										<td class="bookNo">${rent.bookNo}</td>
-										<td class="rentDate">${rent.rentDate}</td>
-										<td class="returnDueDate">${rent.returnDueDate}</td>
-										<c:choose>
-											<c:when test="${rent.rentStatus == 0}">
-												<td class="rentStatus">가능</td>
-											</c:when>
-											<c:otherwise>
-												<td>불가능</td>
-											</c:otherwise>
-										</c:choose>
-										<c:choose>
-											<c:when test="${rent.datedif == 0}">
-												<td></td>
-											</c:when>
-											<c:otherwise>
-												<td class="datedif footable-last-column">${rent.datedif}일</td>
-											</c:otherwise>
-										</c:choose>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
+						<tbody>
+							<c:forEach items="${selectRentNow}" var="rent" varStatus="status">
+								<tr>
+									<td class="num footable-first-column"><input
+										type="checkbox" name="check" class="check"
+										data-bookNo="${rent.bookNo}"
+										data-returnDueDate="${rent.returnDueDate}"
+										data-reserveStatus="${rent.reserveStatus}"
+										value="${rent.rentStatus}"></td>
+									<td class="No">${status.count}</td>
+									<td class="bookTitle">
+										<!-- bookDetail 페이지로 넘기기 --> <a
+										href="./select.do?bookDetail=${rent.bookTitle}">${rent.bookTitle}</a>
+									</td>
+									<td class="author">${rent.author}</td>
+									<td class="bookNo">${rent.bookNo}</td>
+									<td class="rentDate">${rent.rentDate}</td>
+									<td class="returnDueDate">${rent.returnDueDate}</td>
+									<c:choose>
+										<c:when
+											test="${rent.rentStatus == 0 && rent.reserveStatus == 0 }">
+											<td class="renewOk">가능</td>
+										</c:when>
+										<c:otherwise>
+											<td>불가능</td>
+										</c:otherwise>
+									</c:choose>
+									<c:choose>
+										<c:when test="${rent.datedif < 0}">
+											<td></td>
+										</c:when>
+										<c:otherwise>
+											<td class="datedif footable-last-column">${rent.datedif+1}일</td>
+										</c:otherwise>
+									</c:choose>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 
 
-					<!-- Content Buttons -->
-					<div class="buttons">
-						<input type="submit" value="도서연장" class="renew"></input>
-						<input type="submit" value="도서반납" class="return"></input>
-					</div>
+				<!-- Content Buttons -->
+				<!-- <div class="buttons"> -->
+				<button type="button" class="renew">도서연장</button>
+				<button type="button" class="return">도서반납</button>
+				<!-- 	</div> -->
 
-					<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
-			<!-- divContent 끝-->
+				<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+				<!-- divContent 끝-->
 			</div>
 
 			<!--//divContents-->
@@ -174,7 +177,7 @@ table {
 								var checkArr = new Array();
 
 								$("input[class='check']:checked").each(function() {
-									checkArr.push($(this).attr("data-num"));
+									checkArr.push($(this).attr("data-bookNo"));
 								});
 
 						$.ajax({
@@ -191,37 +194,83 @@ table {
 
 	<script>
 		$(".renew").click(function() {
+
 			$("input[name=check]:checked").each(function() {
-				if (this.value != "0") { //대여상태가 0이 아닌 책들은 연장불가
-					alert('선택하신 도서는 연장이 불가능합니다. 다시 선택해주십시오')
+				if (this.value != 0) { //대여상태가 0이 아닌 책들은 연장불가
+					alert('선택하신 도서는 연장이 불가능합니다. 다시 선택해주십시오');
+				} else {
+
+					if ($(this).attr("data-reserveStatus") == 1) { // 예약중(1)인 책들
+						alert('선택하신 도서는 예약중입니다.');
+					} else {
+						var count = $("input[name=check]:checked").length;
+
+						var no = new Array();
+						no.push($(this).attr("data-bookNo"));
+
+						console.error(no+"///bookNo");
+						
+							$.ajaxSettings.traditional = true;
+							$.ajax({
+								url : "renew.do",
+								type : "post",
+								data : {
+									count : no
+								},
+								success : function(data) {
+									console.error(data +"///func");
+									alert('선택하신 도서가 연장되었습니다!');
+									location.reload();
+								},
+							});
+						
+						}
+				}
+
+			});
+		});
+		/* if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기, 먹히지 않음
+		alert("선택된 연장 가능 목록이 없습니다.");
+	} else {//선택된 것이 있으면 controller로 값 넘겨주기 */
+	</script>
+
+	<script>
+		$(".return").click(function() {
+			if (this.value != 0) { //대여상태가 0이 아닌 책들은 연장불가
+				alert('선택하신 도서는 연장이 불가능합니다. 다시 선택해주십시오');
+			}
+			$("input[name=check]:checked").each(function() {
+
+				if ($(this).attr("data-reserveStatus") == 1) { // 예약중(1)인 책들
+					alert('선택하신 도서는 예약중입니다.');
 				} else {
 					var count = $("input[name=check]:checked").length;
-					var no = new Array();
-					$("input[name=check]:checked").each(function() {
-						no.push($(this).attr("data-historyCode"));
-					});
 
-					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-						alert("선택된 연장 가능 목록이 없습니다.")
+					var no = new Array();
+					no.push($(this).attr("data-bookNo"));
+
+					console.log(no);
+					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기, 먹히지 않음
+						alert("선택된 연장 가능 목록이 없습니다.");
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
 						$.ajaxSettings.traditional = true;
 						$.ajax({
-							url : "/lib/renew.do",
+							url : "renew.do",
 							type : "post",
-							data : {chknos : no},
+							data : {
+								count : no
+							},
 							success : function(data) {
 								alert('선택하신 도서가 연장되었습니다!');
 								location.reload();
 							},
 						});
 					}
-
 				}
+
 			});
 		});
 	</script>
-
-
 
 </body>
 </html>

@@ -34,30 +34,16 @@ public class Rentcontroller {
 		String id = (String) session.getAttribute("id");
 		List<RentDTO> rentDtos = rentService.selectRentNow(id);
 		model.addAttribute("selectRentNow", rentDtos);
-		System.out.println(rentDtos);
 		return "mypage/rentNow/rentNow";
 	}
 
 	@RequestMapping(value = "renew.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public void renew(@RequestParam List<String> chkcodes) {
-		rentService.renew(chkcodes);
-		System.out.println(chkcodes);
+	public void renew(@RequestParam List<String> count) {
+		System.out.println(count +"//controller에서 count");
+		rentService.renew(count);
 	}
-		/*
-		 * User user = (User) session.getAttribute("id"); String id = user.getId();
-		 * 
-		 * int result = rentService.renew();
-		 */
-
-		// rentService.renew(rentDTO);;
-		// 마이바티스가 실행한 업데이트쿼리문의 레코드(행) 개수를 반환해줌
-
-		/*
-		 * String uri = ""; if (result > 0) { System.out.println("연장성공" + result); uri =
-		 * "mypage/rentNow/renew"; } else { System.out.println("연장실패"); uri =
-		 * "mypage/rentNow/renewErr"; } return uri;
-		 */
+		
 
 	
 }
