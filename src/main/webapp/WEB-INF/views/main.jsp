@@ -98,12 +98,18 @@
 					corporis, voluptates ducimus molestiae eum adipisci.</p>
 			</div>
 			<!-- 반복 -->
+<<<<<<< HEAD
 			
+=======
+>>>>>>> hj
 		</article>
+		
+		
 		<script>
 			var count = 0;
 			//스크롤 바닥 감지
 			window.onscroll = function(e) {
+<<<<<<< HEAD
 				//추가되는 임시 콘텐츠
 				//window height + window scrollY 값이 document height보다 클 경우,
 				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -114,6 +120,25 @@
 							+ '번째로 추가된 콘텐츠</p></div>';
 					//article에 추가되는 콘텐츠를 append
 					$('article').append(addContent); */
+=======
+				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+					if (count < 50) {
+						var addContent = '<p>'
+								+
+								'<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
+								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
+								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
+								+
+
+								'</p>';
+						$('.block').append(addContent);
+					}
+
+					else {
+						alert('여기까지가 끝인가보오.');
+					}
+
+>>>>>>> hj
 				}
 			};
 		</script>
