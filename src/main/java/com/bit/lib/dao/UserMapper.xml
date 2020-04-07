@@ -10,11 +10,27 @@
 		from library.user where ID=	#{id} and PW=#{pw}
 	</select>
 	
-
 	
-	<insert id="joinProc" parameterType="com.bit.lib.domain.User">
-		insert into library.user(ID, NAME, PW, BIRTH, GENDER, PHONE)
-		values(#{id}, #{name}, #{pw}, #{birth}, #{gender}, #{phone})
+	<insert id="joinUser" parameterType="com.bit.lib.domain.User">
+		insert into library.user(id,name,pw,birth,gender,phone) values(#{id},#{name},#{pw},#{birth},#{gender},#{phone})
 	</insert>
+	
+	<!-- 	select count(*) from library.user where ID = #{id} -->
+	<!--  아이디 중복확인 -->
+	<select id="idCheck" resultType="int">
+		select count(*) from library.user where ID=#{id}
+	</select>
+	
+	
+	<!--  회원정보 상세 조회 -->
+	<select id="viewUser" resultType="com.bit.lib.domain.User">
+		select * from library.user where id=#{id}
+	</select>
+	
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="com.bit.lib.domain.User">
+		update library.user set NAME=#{name},PW=#{pw},birth=#{birth},gender=#{gender},phone=#{phone} where id=#{id}
+	</update>
 		
 </mapper>

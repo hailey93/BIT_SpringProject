@@ -7,6 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+
 public class NewBookDTO {
 
 	private int bookCode;
@@ -20,4 +21,5 @@ public class NewBookDTO {
 	
 	private String bookNo;
 	private int rentStatus;
+	private int reserveStatus;
 }

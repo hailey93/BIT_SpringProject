@@ -20,4 +20,6 @@ public class BookDetailDTO {
 	private String bookNo;
 	private int rentStatus;
 	private int reserveStatus;
+	private Date rentDate;
+	private String id;
 }
