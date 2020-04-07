@@ -808,10 +808,12 @@ article .block:nth-child(2n) {background: #ffffff;}
 
 .headerBtm {
 	position: fixed; 
+	top: 0;
 	width: 100%;
 	background: #ffffff;
-	height: 68px;
-	padding: 40px 0 38px;
+	height: 60px;
+	padding: 40px 0;
+	z-index: 99999;
 }
 
 .headerBtm:after {

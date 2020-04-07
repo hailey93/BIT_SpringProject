@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class WishListDTO {
+public class WishListDTO  {
 
 	private int wishListCode;
 	private String bookNo;

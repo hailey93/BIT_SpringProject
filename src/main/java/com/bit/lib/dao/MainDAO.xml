@@ -3,12 +3,23 @@
 
 <mapper namespace="com.bit.lib.dao.MainDAO">
 
-	
 
-	<select id="searchBook" parameterType="String" resultType="book">
 
-		SELECT * FROM library.book  where concat(bookTitle,author) like CONCAT('%',#{qeury},'%')
+	<select id="getSearchBook" parameterType="String" resultType="int">
+
+		SELECT count(*) listCnt FROM library.book  
+		where concat(bookTitle,author,type,publisher,pubYear) 
+		like CONCAT('%',#{keyWord},'%')	
 	
+	</select>
+	
+	<select id="searchBook" resultType="book">
+
+		SELECT * FROM library.book 
+		where concat(bookTitle,author,type,publisher,pubYear) 
+		like CONCAT('%',#{keyWord},'%')
+		limit #{startList}, #{listSize}
+		
 	</select>
 	
 	<select id="mainView" resultType="book">
