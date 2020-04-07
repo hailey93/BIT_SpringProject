@@ -8,7 +8,7 @@ import com.bit.lib.dto.ReserveListDTO;
 
 public interface ReserveDAO {
 
-		void insertReserve(@Param("id") String id, @Param("bookNo") String bookNo);
+		void insertReserve(String id, String bookNo);
 		void insertReserveup(String bookNo);
 		
 		List<ReserveListDTO> getReserveList(String id);

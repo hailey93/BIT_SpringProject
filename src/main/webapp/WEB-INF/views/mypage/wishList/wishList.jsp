@@ -23,6 +23,19 @@
 table {
 	width: 100%;
 }
+#button {
+	margin: -1px;
+	border: 1px solid rgba(0, 155, 255, 0.9);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgba(0, 155, 255, 0.9);
+	padding: 3px;
+	border-radius: 5px;
+	font-size: 24px;
+}
+#button:hover{
+	color:white;
+	background-color: skyblue;
+}
 </style>
 </head>
 <body>
@@ -37,7 +50,7 @@ table {
 
 								<li class="mTSThumbContainer"><a href="">대여현황</a></li>
 
-								<li class="mTSThumbContainer"><a href="">예약목록</a></li>
+								<li class="mTSThumbContainer"><a href="reserveList.do">예약목록</a></li>
 								
 								<li class="mTSThumbContainer"><a href="">대여이력</a></li>
 

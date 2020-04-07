@@ -53,23 +53,5 @@ public class WishListController {
         wishListService.deleteWishList(chkcodes);
 
 	}
-	
-	@PostMapping(value = "/rent.do", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public void getRent(@RequestParam List<String> chknos) {
-		
-		System.out.println(chknos);
-			
-	}
-	
-	@PostMapping(value = "/reserve.do", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public void getReserve(@RequestParam List<String> chknos) {
-		
-		System.out.println(chknos);
-		
-	}
-	
-	
 
 }

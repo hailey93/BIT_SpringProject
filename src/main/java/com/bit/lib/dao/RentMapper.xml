@@ -38,10 +38,7 @@
 		
 	</update>
 	
-	<select id="searchRent" parameterType="map">
-		select rentStatus, reserveStatus from bookstatus where bookNo=${bookNo};
-	</select>
- 
+	<!-- 도서 대여 Mapper -->
 	<insert id="bookRent" >
 		insert into renthistory (bookNo, rentDate, id)
 			value (#{bookNo}, curdate(), #{id});
