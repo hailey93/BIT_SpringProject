@@ -15,5 +15,6 @@ public class WishListDTO  {
 	private String bookTitle;
 	private String imagePath;
 	private int rentStatus;
+	private int reserveStatus;
 	
 }

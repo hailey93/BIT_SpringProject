@@ -37,5 +37,24 @@
 		where bs.rentStatus=0 and reserveStatus=0
 		
 	</update>
-
+	
+	<select id="searchRent" parameterType="map">
+		select rentStatus, reserveStatus from bookstatus where bookNo=${bookNo};
+	</select>
+ 
+	<insert id="bookRent" >
+		insert into renthistory (bookNo, rentDate, id)
+			value (#{bookNo}, curdate(), #{id});
+		
+	</insert>
+	
+	<update id="bookstUpdate" parameterType="string">
+		update bookstatus 
+			set rentStatus=0, returnDueDate=date_add(curdate(),interval+7 day), reserveStatus=0 where bookNo=#{bookNo};
+	</update>
+	
+	<delete id="reserveCancel" parameterType="string">
+		delete from reserve where bookNo=#{bookNo};
+	</delete>
+	
 </mapper>

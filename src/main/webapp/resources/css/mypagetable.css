@@ -30,7 +30,7 @@
 	border-left: none;
 }
 .mobileTable > thead{
-	display:none
+	/* display:none */
 }
 .mobileTable > thead > tr > th.footable-first-column, .footable > thead > tr > td.footable-first-column,
 .mobileTable > tbody > tr > td.footable-first-column {
