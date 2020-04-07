@@ -41,16 +41,16 @@
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form action="mainSearch" method="get" id="mainSearch">
-					<!-- 검색어 넘겨주기 -->
+				<form action="mainSearch" method="get" >
 					<fieldset>
-						<legend>검색</legend>
 						<div class="search">
 							<p class="searchBox">
+							
 								<input type="text" class="searchInput" id="keyWord"
 									name="keyWord" title="검색어를 입력하세요." placeholder="검색어를 입력하세요.">
 								<input type="image" class="searchBtn" src="webimg/btnSrch.png"
 									alt="검색" title="검색">
+									
 							</p>
 						</div>
 					</fieldset>
