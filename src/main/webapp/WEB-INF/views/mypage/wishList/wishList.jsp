@@ -194,30 +194,30 @@ table {
 				else{
 					if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
 					alert('선택하신 도서는 바로 대여가능합니다. 대여버튼을 눌러주세요!')
-				} else{
-				var count = $(this).length;
+					} else{
+					var count = $(this).length;
 				
-				var code=new Array();
-				code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+					var code=new Array();
+					code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
 				
-				var no=new Array();
-				no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+					var no=new Array();
+					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 				
-				console.log(no); 
-				if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+					console.log(no); 
+					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 					alert("선택된 위시리스트가 없습니다.")
-				} else {//선택된 것이 있으면 controller로 값 넘겨주기
-				$.ajaxSettings.traditional = true;
-				$.ajax({
-					url : "/lib/wishReserve.do",
-					type : "post",
-					data : { chkcodes : code, chknos : no },
-					success : function() {			
-							alert('선택하신 도서가 예약되었습니다!');
-							location.reload();							
-					},
-					});
-				}
+					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+					$.ajaxSettings.traditional = true;
+					$.ajax({
+						url : "/lib/wishReserve.do",
+						type : "post",
+						data : { chkcodes : code, chknos : no },
+						success : function() {			
+								alert('선택하신 도서가 예약되었습니다!');
+								location.reload();							
+						},
+						});
+					}
 				}	
 			}
 		});
