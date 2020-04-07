@@ -49,7 +49,7 @@
 					<form name="frmMylist" action="/mylist/writeitem" method="post" />
 					 <ul class="searchLinkBtn">
 						<button id="button" type="button" class="rent">대여</button>
-						<button id="button" type="wishList" class="wish">위시리스트</button>
+						<button id="button" type="addWishList.do" class="wish">위시리스트</button>
 						<button id="button" type="button" class="reserve">예약</button>
 
 					 </ul>
