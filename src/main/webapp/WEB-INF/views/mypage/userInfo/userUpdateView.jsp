@@ -5,10 +5,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<title>userUpdateView</title>
+<meta name="description" content="비트 도서관">
+<meta name="keyword" content="비트 도서관">
+<meta name="copyright"
+	content="COPYRIGHT(C) BIT LIBRARY. ALL RIGHTS RESERVED.">
+<meta content="initial-scale=1, width=device-width" name="viewport">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<title>회원정보수정</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
+
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
+
+	<div id="divContentsW">
+	<div id="row">
+	<h1 align="center">회원정보수정</h1>
+	</div>
+		<div id="divContents">
+			<div id="divTabMenu" class="mThumbnailScroller _mTS_2 mTS-buttons-out" style="position: relative;">
+				<div>
+					<div id="mTS_2" class="mTSWrapper mTS_horizontal"><ul class="mTSContainer" id="mTS_2_container" style="position: relative; top: 0px; left: 0px; width: 100%;">
+
+								<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+
+								<li class="mTSThumbContainer"><a href="">예약목록</a></li>
+								
+								<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+
+								<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
+
+								<li class="selected mTSThumbContainer"><a href="viewUser.do">회원정보</a></li>
+
+					</ul>
+					</div>
+				</div>
+			</div>	
 	<form action="updateUser.do" method="post" onsubmit="return check()">
 		<table>
 
@@ -54,7 +92,9 @@
 			</tbody>
 		</table>
 	</form>
-
+</div>
+</div>
+<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 </body>
 <script type="text/javascript">
 	$(document).ready(function(e) {

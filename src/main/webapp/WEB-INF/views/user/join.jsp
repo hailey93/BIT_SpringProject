@@ -6,13 +6,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="비트 도서관">
+<meta name="keyword" content="비트 도서관">
+<meta name="copyright"
+	content="COPYRIGHT(C) BIT LIBRARY. ALL RIGHTS RESERVED.">
+<meta content="initial-scale=1, width=device-width" name="viewport">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>login</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagetable.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 <title>join</title>
 </head>
 <body>
-	<h1>회원가입</h1>
+<div class="headerBtm">
+		<div>
+<h2 class="logo">
+				<a href="login.do" title="비트 도서관">
+				<img src="webimg/bitlogo.png" />
+				</a>
+			</h2><br><br><br><br>
+			<div align="center">
+	<h1 >회원가입</h1>
 	<hr>
 	<form action="joinProcess" id="signFrm" name="signFrm">
 		<table>
@@ -64,6 +85,10 @@
 			</tbody>
 		</table>
 	</form>
+	</div>
+	</div>
+</div>
+<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 </body>
 <script type="text/javascript">
 	$(document).ready(function(e){

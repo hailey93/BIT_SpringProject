@@ -46,7 +46,7 @@ table {
 
 								<li class="selected mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
-								<li class="mTSThumbContainer"><a href="">회원정보</a></li>
+								<li class="mTSThumbContainer"><a href="viewUser.do">회원정보</a></li>
 
 					</ul>
 					</div>
