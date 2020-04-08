@@ -243,10 +243,9 @@ table {
 								console.error($(this).attr("data-datedif"));
 								if($("input[name=check]:checked").attr("data-datedif")>0) { //연체일수가0보다 크면 연체 alert
 									alert('선택하신 도서는 연체중입니다.');
-								// if 걸리지않음, data-datedif undefine으로 나오는 이유?
 								}
 								else {
-									alert('반납 되었다.');
+									alert('반납되었습니다.');
 								}
 								location.reload();
 							},

@@ -27,7 +27,7 @@
 		from renthistory as r
 		inner join bookstatus as bs on r.bookNo=bs.bookNo
 		inner join book as b on b.bookcode=bs.bookCode
-		where not bs.rentstatus=2 and r.id=#{id}
+		where not bs.rentstatus=2 and r.id=#{id} and r.returndate is null;
 	</select>
 
 	<!-- 도서연장 -->
