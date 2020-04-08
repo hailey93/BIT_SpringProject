@@ -1,5 +1,7 @@
 package com.bit.lib.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +21,14 @@ public class MainController {
 	Paging paging;
 	
 	@GetMapping("/main")
-	public String main(Model model) {
+	public String main(Model model, HttpSession session) {
+		
 		model.addAttribute("mainView", mainDAO.mainView());
 		model.addAttribute("mainViewCount", mainDAO.getMainView());
 		System.out.println(mainDAO.getSearchBook(""));
-		return "main";
+		
+		String id = (String) session.getAttribute("id");		
+		return id.equals("adm123")?"admin/adminMain":"main";
 	}
 	
 	
