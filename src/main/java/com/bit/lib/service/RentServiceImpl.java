@@ -28,9 +28,38 @@ public class RentServiceImpl implements RentService {
 	}
 
 	@Override
-	public int renew(List<String> chkcodes) {
+	public void renew(List<String> chkcodes) {
 		
-		return rentDAO.renew(chkcodes);
+		for(String chkcode:chkcodes) {
+			System.out.println(chkcode);
+			String bookNo=chkcode;
+			System.out.println(bookNo);
+			rentDAO.renew(bookNo);
+		}
+	}
+		
+
+	@Override
+	public void bookRent(List<String> chknos, String id) {
+		// TODO Auto-generated method stub
+		String bookNo = chknos.get(0).toString();
+		System.out.println(bookNo+"///"+id+"rent");
+		rentDAO.bookRent(bookNo, id);
+	}
+
+	@Override
+	public void bookstUpdate(List<String> chknos) {
+		// TODO Auto-generated method stub
+		String bookNo = chknos.get(0).toString();
+		System.out.println(bookNo+"rentup");
+		rentDAO.bookstUpdate(bookNo);
+	}
+	
+	@Override
+	public void reserveCancel(List<String> chknos) {
+		String bookNo = chknos.get(0).toString();
+		
+		rentDAO.reserveCancel(bookNo);
 	}
 
 	

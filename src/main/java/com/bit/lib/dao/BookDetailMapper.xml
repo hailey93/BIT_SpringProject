@@ -2,22 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bit.lib.dao.BookDetailDAO">
 
-<!-- <select id="bookPage" parameterType="string" resultType="com.bit.lib.dto.BookDetailDTO">
-		select b.bookTitle, b.author, b.type, b.publisher, b.pubYear, b.imagePath, bst.reserveStatus,
-		bst.bookNo, bst.rentStatus from book b
-        inner join bookstatus bst on b.bookCode = bst.bookCode
-        where b.bookTitle=#{bookTitle};
-	</select> -->
-	
 	<select id="bookDetail" parameterType="string" resultType="com.bit.lib.dto.BookDetailDTO">
 		select * from book where bookTitle=#{bookTitle};
 	</select>
-	
 	
 	<select id="bookPage" parameterType="string" resultType="com.bit.lib.dto.BookDetailDTO">
 		select bst.reserveStatus, bst.bookNo, bst.rentStatus from bookstatus bst
 		inner join book b on bst.bookCode = b.bookCode
         where b.bookTitle=#{bookTitle};
 	</select>
-
+	
 </mapper>

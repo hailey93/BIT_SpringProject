@@ -13,8 +13,7 @@ function close(){
 </script>
 </head>
 <body>
-<!-- 위시리스트담기 성공 후 팝업창으로 선택 -->
-선택하신 책이 위시리스트에 담겼습니다!<br>
+선택하신 책이 연장되었습니다<br>
 <a href="wishList.do">위시리스트</a>
 <input type="button" value="닫기" onclick="close()">
 </body>

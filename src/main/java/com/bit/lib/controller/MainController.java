@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.lib.dao.MainDAO;
+import com.bit.lib.domain.Paging;
 
 @Controller
 public class MainController {
@@ -14,19 +15,33 @@ public class MainController {
 	@Autowired
 	MainDAO mainDAO;
 	
+	@Autowired
+	Paging paging;
+	
 	@GetMapping("/main")
 	public String main(Model model) {
 		model.addAttribute("mainView", mainDAO.mainView());
 		return "main";
 	}
 	
+	
 	@GetMapping("/mainSearch")
-	public String mainSearch(Model model, @RequestParam("keyWord") String keyWord) {
+	public String mainSearch(Model model, 
+			@RequestParam("keyWord") String keyWord,
+			@RequestParam(required = false, defaultValue = "1")int page,
+			@RequestParam(required = false, defaultValue = "0")int range) {
+		System.out.println(keyWord +"/"+ page +"/"+ range);
 		
-
-		model.addAttribute("keyWord", keyWord);
-		model.addAttribute("searchBook", mainDAO.searchBook(keyWord));
-		System.out.println(mainDAO.searchBook(keyWord));
+		
+		
+		int listCnt = mainDAO.getSearchBook(keyWord);		
+		paging.pageInfo(page, range, listCnt);
+		
+		model.addAttribute("searchBook", mainDAO.searchBook(keyWord, paging.getStartList(),paging.getListSize()));	//검색	
+		model.addAttribute("paging", paging); // 페이지 값 넘기기
+		model.addAttribute("keyWord", keyWord); 
+		
+		System.out.println(paging);
 		
 		return "book/mainSearch";
 		

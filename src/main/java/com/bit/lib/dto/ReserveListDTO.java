@@ -1,6 +1,6 @@
 package com.bit.lib.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -81,7 +81,7 @@ table {
 	<a href="reserveList.do" title="예약목록">예약목록</a>
 	<a href="rentHistory.do" title="대여이력">대여이력</a> 
 	<a href="wishList.do" title="위시리스트">위시리스트</a> 
-	<a href="ishList.do" title="회원정보수정">회원정보수정</a>
+	<a href="wishList.do" title="회원정보수정">회원정보수정</a>
 	<br>
 
 	<table border="1">
