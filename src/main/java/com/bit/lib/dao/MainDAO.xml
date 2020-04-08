@@ -28,6 +28,12 @@
 	
 	</select>
 	
+	<select id="getMainView" resultType="int">
+
+		SELECT count(*) FROM library.book
+	
+	</select>
+	
 	
 		
 </mapper>

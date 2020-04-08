@@ -21,6 +21,8 @@ public class MainController {
 	@GetMapping("/main")
 	public String main(Model model) {
 		model.addAttribute("mainView", mainDAO.mainView());
+		model.addAttribute("mainViewCount", mainDAO.getMainView());
+		System.out.println(mainDAO.getSearchBook(""));
 		return "main";
 	}
 	
