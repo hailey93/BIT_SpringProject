@@ -22,14 +22,12 @@
 	<select id="selectRentNow" parameterType="String"
 		resultType="RentDTO">
 		select b.bookTitle, b.author, r.bookNo, r.rentDate,
-		bs.returnDueDate, bs.rentStatus,
+		bs.returnDueDate, bs.rentStatus, bs.reserveStatus, 
 		DATEDIFF(curdate(), bs.returnDueDate) as datedif
 		from renthistory as r
-		inner join
-		bookstatus as bs on r.bookNo=bs.bookNo
-		inner join book as b on
-		b.bookcode=bs.bookCode
-		where not bs.rentstatus=2 and r.id='yeo123'
+		inner join bookstatus as bs on r.bookNo=bs.bookNo
+		inner join book as b on b.bookcode=bs.bookCode
+		where not bs.rentstatus=2 and r.id=#{id}
 	</select>
 
 	<!-- 도서연장 -->
@@ -40,7 +38,7 @@
 	</update>
 	
 	<!-- 도서반납 -->
-	<update id="return" parameterType="String">
+	<update id="bookReturn" parameterType="String">
 		update renthistory as r
 		inner join bookstatus as bs on r.bookno=bs.bookno
 		set r.returndate=curdate() , bs.rentstatus=2 where r.bookno=#{bookno}
@@ -50,7 +48,6 @@
 	<insert id="bookRent" >
 		insert into renthistory (bookNo, rentDate, id)
 			value (#{bookNo}, curdate(), #{id});
-		
 	</insert>
 	
 	<update id="bookstUpdate" parameterType="string">

@@ -16,7 +16,6 @@ import com.bit.lib.dto.RentDTO;
 import com.bit.lib.service.RentService;
 import com.bit.lib.service.ReserveService;
 
-
 @Controller
 public class Rentcontroller {
 
@@ -39,7 +38,7 @@ public class Rentcontroller {
 		return "mypage/rentNow/rentNow";
 	}
 
-	@RequestMapping(value = "/rent.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/rent.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String bookRent(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
@@ -55,15 +54,17 @@ public class Rentcontroller {
 
 	}
 
-
 	@RequestMapping(value = "renew.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void renew(@RequestParam List<String> count) {
-		System.out.println(count +"//controller에서 count");
+		System.out.println(count + "//controller에서 count");
 		rentService.renew(count);
 	}
-		
 
-	
+	@RequestMapping(value = "return.do", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public void bookReturn(@RequestParam List<String> count) {
+		System.out.println(count + "//controller에서 count");
+		rentService.bookReturn(count);
+	}
 }
-
