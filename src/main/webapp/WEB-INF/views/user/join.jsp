@@ -35,7 +35,7 @@
 			<div align="center">
 	<h1 >회원가입</h1>
 	<hr>
-	<form action="joinProcess" id="signFrm" name="signFrm">
+	<form action="joinProcess.do" id="signFrm" name="signFrm" method="post">
 		<table>
 			<tbody>
 				<tr>
