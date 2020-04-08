@@ -39,7 +39,7 @@
 					
 					
 				
-<form action="loginProc" method="post">
+<form action="loginProc.do" method="post">
 		<table>
 			<tbody>
 				<tr>
