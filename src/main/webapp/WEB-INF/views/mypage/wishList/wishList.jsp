@@ -91,9 +91,9 @@ table {
 					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
 					data-resStatus="${myWishList.reserveStatus }" value="${myWishList.rentStatus }"></td>
 
-					<td class="image"><a href="/lib/bookDetail.do?bookTitle=${myWishList.bookTitle }"><img src="${myWishList.imagePath }" width="75" height="103" /></a></td>
+					<td class="image"><a href="/lib/bookDetail.do?bookCode=${myWishList.bookCode }"><img src="${myWishList.imagePath }" width="75" height="103" /></a></td>
 
-					<td class="bookTitle"><a href="/lib/bookDetail.do?bookTitle=${myWishList.bookTitle }">${myWishList.bookTitle }</a></td>
+					<td class="bookTitle"><a href="/lib/bookDetail.do?bookCode=${myWishList.bookCode }">${myWishList.bookTitle }</a></td>
 					
 					<td class="bookStatus">
 				    <c:choose>

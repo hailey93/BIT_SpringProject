@@ -8,7 +8,7 @@
 		resultType="RentDTO">
 
 		select b.bookTitle, b.author, r.bookNo, r.rentDate,
-		r.returnDate
+		r.returnDate, bs.bookCode
 		from renthistory as r
 		inner join bookstatus as bs on
 		r.bookNo=bs.bookNo

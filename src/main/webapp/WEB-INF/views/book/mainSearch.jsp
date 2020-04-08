@@ -118,7 +118,7 @@
 
 																<dt class="title">제목</dt>
 																<dd class="title">
-																	<a href="/lib/bookDetail.do?bookCode=${searchBook.bookCode }"> ${searchBook.bookCode } </a> <input
+																	<a href="/lib/bookDetail.do?bookCode=${searchBook.bookCode }"> ${searchBook.bookTitle } </a> <input
 																		type="button" class="addItem btnType2" onclick=""
 																		title="추가" value="추가" style="display: none;">
 																</dd>
