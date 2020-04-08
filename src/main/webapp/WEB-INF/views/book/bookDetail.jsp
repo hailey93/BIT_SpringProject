@@ -105,22 +105,31 @@
 								  <c:set var="reservest" value="${bookdtList.reserveStatus}" />
 								  <c:set var="bookst" value="${bookdtList.rentStatus}" />
 								   <c:choose>
-								    <c:when test="${bookst == 2}">
-								     <c:set var="bookstat" value="대여가능" />
-								     <c:set var="reservestat" value="예약불가" />
+								    <c:when test="${bookst == 2}">	<!-- 도서상태가 2=반납상태라면 -->
+								     <c:choose>
+								       <c:when test="${reservest != 0}"> <!-- 도서상태가 반납이고 예약상태가 예약없음 상태가 아니라면 -->
+								        <c:set var="bookstat" value="예약도서" />
+								        <c:set var="reservestat" value="예약불가" />
+								       </c:when>
+								       <c:otherwise>
+								          <c:set var="bookstat" value="대여가능" /> <!-- 도서상태가  반납이고 예약상태가 예약없음 상태라면-->
+								        <c:set var="reservestat" value="예약불가" />
+								       </c:otherwise>
+								     </c:choose>
 								    </c:when>
 								   <c:otherwise>
-									<c:set var="bookstat" value="대여중" />
-									 <c:choose>
-									  <c:when test="${reservest == 0}">
-										<c:set var="reservestat" value="예약가능" />
-									  </c:when>
-									<c:otherwise>
-									 <c:set var="reservestat" value="예약불가" />
-									</c:otherwise>
-									 </c:choose>
-									</c:otherwise>
-								    </c:choose>
+								    <c:choose>
+								    <c:when test="${reservest == 0}">	<!--  도서상태가 반납이 아니고 예약없음 상태라면 -->
+									 <c:set var="bookstat" value="대여중" />
+								     <c:set var="reservestat" value="예약가능" />
+								    </c:when>
+								    <c:otherwise>						<!--  도서상태가 반납이 아니고 예약없음 상태가 아니라면 -->
+								      <c:set var="bookstat" value="대여중" />
+								      <c:set var="reservestat" value="예약도서" />
+								    </c:otherwise>
+								    </c:choose>    
+								   </c:otherwise>
+								  </c:choose>
 
 									 <tr>
 									  <td class="num footable-first-column"><input
@@ -158,19 +167,18 @@
 	
 	<script>
 		$(".rent").click(function() {
+			var count = $("input[name=check]:checked").length;
+			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+				alert("선택된 도서가 없습니다.")
+			}
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
 					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
 				} else {
-					var count = $("input[name=check]:checked").length;
 					var no = new Array;
-					$("input[name=check]:checked").each(function() {
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
-					});
-
-					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-						alert("선택된 도서가 없습니다.")
-					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+					
+					 //선택된 것이 있으면 controller로 값 넘겨주기
 
 						$.ajaxSettings.traditional = true;
 						$.ajax({
@@ -179,7 +187,7 @@
 							data : {chknos : no},
 							success : function(data) {
 								alert('선택하신 도서가 대여되었습니다!');
-								console.log(data)
+								location.reload();
 							},
 							error : function(request, status, error){
 								alert("code:" + request.status + "\n"
@@ -189,12 +197,15 @@
 							},
 						});
 					}
-
-				}
 			});
 		});
 
 		$(".reserve").click(function() {
+			var count = $("input[name=check]:checked").length;
+			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+				alert("선택된 도서가 없습니다.")
+			}
+			
 			$("input[name=check]:checked").each(function() {
 				if ($(this).attr("data-reservest") != "0") { //예약불가
 					alert("예약이 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
@@ -202,16 +213,9 @@
 					if (this.value == "2") {
 						alert("예약이 불가능합니다.")
 					} else {
-						var count = $("input[name=check]:checked").length;
-						var no = new Array;
-						$("input[name=check]:checked").each(function() {
-							no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
-						});
-
-						if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-							alert("선택된 도서가 없습니다.")
-						} else {//선택된 것이 있으면 controller로 값 넘겨주기
-
+					var no = new Array;
+					no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+					//선택된 것이 있으면 controller로 값 넘겨주기
 							$.ajaxSettings.traditional = true;
 							$.ajax({
 								url : "/lib/reserve.do",
@@ -219,20 +223,12 @@
 								data : {chknos : no},
 								success : function(data) {
 									alert('선택하신 도서가 예약되었습니다!');
-									consloe.log(data);
-								},
-								error : function(request, status, error){
-									alert("code:" + request.status + "\n"
-											+ "message : " + request.responseText
-											+ "\n" + "error : " +error);
-								
+									location.reload();
 								},
 							});
 						}
 					}
-				}
-				;
-			})
+			});
 		});
 		
 		$(".wish").click(function() {

@@ -22,9 +22,9 @@ public class ReserveController {
 
 	// 도서 예약
 
-	@RequestMapping(value = "/reserve.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
+	@RequestMapping(value = "/reserve.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String insertReserve(@RequestParam List<String> chknos, HttpSession session) {
+	public void insertReserve(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		System.out.println(id);
 		System.out.println(chknos+"예약"+id);
@@ -34,7 +34,6 @@ public class ReserveController {
 
 		System.out.println("reserve ok");
 
-		return "book/bookDetail";
 	}
 
 	// 도서 예약 목록
@@ -53,14 +52,13 @@ public class ReserveController {
 
 	@RequestMapping(value = "/reserveCancel1.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String reserveCancel1(@RequestParam String bookNo) {
+	public void reserveCancel1(@RequestParam String bookNo) {
 		System.out.println(bookNo);
 
 		reserveService.reserveCancel(bookNo);
 		reserveService.reserveCancelup(bookNo);
 
 		System.out.println("reserveCancel Ok");
-		return "/lib/reserveList.do";
 	}
 
 }
