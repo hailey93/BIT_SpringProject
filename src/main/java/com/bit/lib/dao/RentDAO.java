@@ -16,7 +16,5 @@ public interface RentDAO {
 	void bookstUpdate(String bookNo);
 	void reserveCancel(String bookNo);
 	public void renew(String bookNo);
-	
-	void overdue(String bookNo);
 
 }

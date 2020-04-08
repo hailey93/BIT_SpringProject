@@ -61,12 +61,5 @@
 	<delete id="reserveCancel" parameterType="string">
 		delete from reserve where bookNo=#{bookNo};
 	</delete>
-	
-	<!-- 도서 연체 상태 변경 -->
-	<update id="overdue" parameterType="string">
-		update bookstatus 
-			set rentStatus=3 where bookNo=#{bookNo};
-	</update>
-	
 
 </mapper>

@@ -115,6 +115,7 @@ table {
 	
 	<button id="button" type="button" class="delete">삭제</button>
 	<button id="button" type="button" class="rent">대여하기</button>
+	<input type="hidden" id="historycount" value="${history}"/>
 	<button id="button" type="button" class="reserve">예약하기</button>
 	
 	</div>
@@ -173,33 +174,38 @@ table {
 					if(count==0){ //아무것도 선택된 것이 없을때 alert 띄워주기
 						alert("선택된 위시리스트가 없습니다.")
 					}
-					$("input[name=check]:checked").each(function() {//체크된 것만 선택하기	 
-							if(this.value!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
-								alert('선택하신 도서는 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
-							} else{
-								if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
-									alert("예약도서는 대여가 불가능합니다.")
-								} else{																
-									var code=new Array();
-									code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+					if (document.getElementById("historycount").value >= 5){
+						alert("대여 한도 권수가 초과되었습니다.")
+					}else{
 						
-									var no=new Array();
-									no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+						$("input[name=check]:checked").each(function() {//체크된 것만 선택하기	 
+								if(this.value!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
+									alert('선택하신 도서는 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
+								} else{
+									if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
+										alert("예약도서는 대여가 불가능합니다.")
+									} else{																
+										var code=new Array();
+										code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+						
+										var no=new Array();
+										no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					
-									//선택된 것이 있으면 controller로 값 넘겨주기
-									$.ajaxSettings.traditional = true;
-									$.ajax({
-										url : "/lib/wishRent.do",
-										type : "post",
-										data : { chkcodes : code, chknos : no },
-										success : function(data) {			
-												alert('선택하신 도서가 대여되었습니다!');
-												location.reload();							
-										},
-									});										
+										//선택된 것이 있으면 controller로 값 넘겨주기
+										$.ajaxSettings.traditional = true;
+										$.ajax({
+											url : "/lib/wishRent.do",
+											type : "post",
+											data : { chkcodes : code, chknos : no },
+											success : function(data) {			
+													alert('선택하신 도서가 대여되었습니다!');
+													location.reload();							
+											},
+										});										
 								}
 							}	
 						});
+					}
 				});
 		
 		$(".reserve").click(function() {

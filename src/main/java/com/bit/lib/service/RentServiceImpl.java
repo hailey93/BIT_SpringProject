@@ -1,6 +1,5 @@
 package com.bit.lib.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +24,6 @@ public class RentServiceImpl implements RentService {
 	@Override
 	public List<RentDTO> selectRentNow(String id) {
 		
-		rentDAO.selectRentNow(id);
-		List<RentDTO> rentDTO=new ArrayList<RentDTO>();
-		for(RentDTO dto:rentDTO) { //여러개의 대여현황을 for문으로 하나씩 돌려줌
-			System.out.println("*******"+rentDTO);
-			if(dto.getDatedif()>0) { //연체일수가 0보다 크면 아래(==연체중이라는것)
-				if(dto.getRentStatus()!=3) { //대여상태가 3(연체)가 아니면
-					rentDAO.overdue(dto.getBookNo()); //대여상태를 3으로 바꿔주기
-				}else { //대여상태가 이미 3이면 바로 대여현황 출력
-					return rentDAO.selectRentNow(id);
-				}
-				
-			} 
-		}
 		return rentDAO.selectRentNow(id);
 	}
 
