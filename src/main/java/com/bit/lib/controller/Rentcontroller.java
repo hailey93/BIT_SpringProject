@@ -41,7 +41,7 @@ public class Rentcontroller {
 
 	@RequestMapping(value = "/rent.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String bookRent(@RequestParam List<String> chknos, HttpSession session) {
+	public void bookRent(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		System.out.println(chknos + "///" + id);
 
@@ -51,7 +51,7 @@ public class Rentcontroller {
 		System.out.println("up Ok");
 		rentService.reserveCancel(chknos);
 		System.out.println("delete Ok");
-		return "/mypage/rentNow/rentNow";
+		
 
 	}
 

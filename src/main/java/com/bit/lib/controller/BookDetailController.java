@@ -17,9 +17,8 @@ public class BookDetailController {
 	//도서 상세페이지
 	@RequestMapping(value = "/bookDetail.do", method=RequestMethod.GET)
 	public String bookPage(Model model, String bookTitle) {
-		
 		System.out.println(bookTitle);
-		
+
 		model.addAttribute("bookdtList", bookDetailService.bookPage(bookTitle));
 		model.addAttribute("bookdt", bookDetailService.bookDetail(bookTitle));
 		System.out.println(bookDetailService.bookDetail(bookTitle));
