@@ -56,7 +56,6 @@ public class Rentcontroller {
 	}
 
 
-
 	@RequestMapping(value = "renew.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void renew(@RequestParam List<String> count) {

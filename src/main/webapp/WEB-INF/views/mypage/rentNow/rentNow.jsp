@@ -234,7 +234,7 @@ table {
 	} else {//선택된 것이 있으면 controller로 값 넘겨주기 */
 	</script>
 
-	<script>
+	<!-- <script>
 		$(".return").click(function() {
 			if (this.value != 0) { //대여상태가 0이 아닌 책들은 연장불가
 				alert('선택하신 도서는 연장이 불가능합니다. 다시 선택해주십시오');
@@ -270,7 +270,7 @@ table {
 
 			});
 		});
-	</script>
+	</script> -->
 
 </body>
 </html>
