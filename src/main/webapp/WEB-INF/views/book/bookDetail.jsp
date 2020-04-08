@@ -171,7 +171,7 @@
 					});
 
 					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-						alert("선택된 위시리스트가 없습니다.")
+						alert("선택된 도서가 없습니다.")
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
 
 						$.ajaxSettings.traditional = true;
