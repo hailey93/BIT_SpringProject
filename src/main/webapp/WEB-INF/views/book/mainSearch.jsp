@@ -109,7 +109,7 @@
 																<dd class="num">${paging.startList + searchBookStatus.count }</dd>
 																<dt class="title">표지이미지</dt>
 																<dd class="book">
-																	<a href="<!-->"> <img id="${searchBook.bookCode }"
+																	<a href="/lib/bookDetail.do?bookTitle=${searchBook.bookTitle}"> <img id="${searchBook.bookCode }"
 																		src="${searchBook.imagePath }" width="75" height="103"
 																		alt="${searchBook.bookTitle }" onerror="">
 																	</a>
@@ -117,7 +117,7 @@
 
 																<dt class="title">제목</dt>
 																<dd class="title">
-																	<a href="<!-->"> ${searchBook.bookTitle } </a> <input
+																	<a href="/lib/bookDetail.do?bookTitle=${searchBook.bookTitle}"> ${searchBook.bookTitle } </a> <input
 																		type="button" class="addItem btnType2" onclick=""
 																		title="추가" value="추가" style="display: none;">
 																</dd>
@@ -139,8 +139,8 @@
 												<div class="paging">
 													<span>
 														<c:if test="${paging.prev == true }">
-															<a href="" class="page"> <img
-																src="webimg/prevPage.gif">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page}&range=${paging.range-5}" class="page">
+															<img src="webimg/prevPage.gif">
 															</a>
 														</c:if> 
 														<c:forEach begin="1" end="5" var="page">
@@ -159,8 +159,8 @@
 														</c:forEach>
 														
 														<c:if test="${paging.next == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page}&range=${paging.range+5}" class="page"> <img
-																src="webimg/nextPage.gif">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page}&range=${paging.range+5}" class="page">
+															<img src="webimg/nextPage.gif">
 															</a>
 														</c:if>
 

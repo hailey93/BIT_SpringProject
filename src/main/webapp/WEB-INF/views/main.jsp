@@ -65,14 +65,13 @@
 		<article>
 			<div class="block">
 				<p>
-					<a href="lib/mainSearch"> <img src="/bookimg/1.PNG" width="300"
-						height="400" vspace="20" hspace="50" /></a> <img src="/bookimg/2.PNG"
-						width="300" height="400" vspace="20" hspace="50" /> <img
-						src="/bookimg/3.PNG" width="300" height="400" vspace="20"
-						hspace="50" /> <img src="/bookimg/4.PNG" width="300" height="400"
-						vspace="20" hspace="50" /> <img src="/bookimg/5.PNG" width="300"
-						height="400" vspace="20" hspace="50" /> <img src="/bookimg/6.PNG"
-						width="300" height="400" vspace="20" hspace="50" />
+					<a href="lib/mainSearch"> 
+					<img src="/bookimg/1.PNG" width="300" height="400" vspace="20" hspace="50" /></a> 
+					<img src="/bookimg/2.PNG" width="300" height="400" vspace="20" hspace="50" />
+					<img src="/bookimg/3.PNG" width="300" height="400" vspace="20" hspace="50" />
+					<img src="/bookimg/4.PNG" width="300" height="400" vspace="20" hspace="50" />
+					<img src="/bookimg/5.PNG" width="300" height="400" vspace="20" hspace="50" />
+					<img src="/bookimg/6.PNG" width="300" height="400" vspace="20" hspace="50" />
 				</p>
 			</div>
 			<!-- 반복 -->
@@ -86,8 +85,7 @@
 				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 					if (count < 50) {
 						var addContent = '<p>'
-								+
-								'<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
+								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+

@@ -16,11 +16,12 @@ public class BookDetailController {
 
 	@RequestMapping(value = "/bookDetail.do")
 	public String bookPage(Model model, String bookTitle) {
-		bookTitle = "책제목1";
+		bookTitle = "책제목25";
 		model.addAttribute("bookdtList", bookDetailService.bookPage(bookTitle));
 		model.addAttribute("bookdt", bookDetailService.bookDetail(bookTitle));
 		System.out.println(bookDetailService.bookPage(bookTitle));
-
+		System.out.println(bookDetailService.bookDetail(bookTitle));
+		
 		return "book/bookDetail";
 	}
 

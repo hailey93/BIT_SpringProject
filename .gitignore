@@ -1,3 +1,5 @@
 .MF
 .class
 *.class
+*.class~*
+*.properties~*
