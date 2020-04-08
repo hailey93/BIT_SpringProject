@@ -1,5 +1,9 @@
 package com.bit.lib.service;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +15,7 @@ import com.bit.lib.domain.User;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
-		@Autowired(required=false)
+		@Autowired
 		UserDAO userDAO;
 
 		@Override
@@ -27,10 +31,33 @@ public class UserServiceImpl implements UserService {
 		}
 
 		@Override
-		public void joinProc(User user) {
+		public void joinUser(User user) {
 			// TODO Auto-generated method stub
-			
+			userDAO.joinUser(user);
 		}
 
+		@Override
+		public int idCheck(String id) {
+			int result = userDAO.idCheck(id);
+			return result;
+		}
+
+		@Override
+		public User viewUser(String id) {
+			
+			return userDAO.viewUser(id);
+		}
+
+		@Override
+		public void updateUser(User user) {
+			// TODO Auto-generated method stub
+			userDAO.updateUser(user);
+		}
+
+
+		
+
+		
+		
 		
 }

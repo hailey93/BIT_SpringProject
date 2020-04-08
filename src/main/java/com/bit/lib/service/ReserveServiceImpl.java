@@ -52,4 +52,10 @@ public class ReserveServiceImpl implements ReserveService {
 		reserveDao.reserveCancelup(bookNo);
 	}
 	
+
+
+
+	
+
+
 }

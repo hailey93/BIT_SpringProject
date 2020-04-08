@@ -34,23 +34,23 @@
 			</h2>
 			<div id="globalMenu">
 				<ul>
-					<li><a href="wishList.do" title="마이페이지">마이페이지</a></li>
+					<li><a href="rentNow.do" title="마이페이지">마이페이지</a></li>
 
-					<li><a href="" title="로그아웃">로그아웃</a></li>
+					<li><a href="logout.do" title="로그아웃">로그아웃</a></li>
 
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form action="mainSearch" method="get" id="mainSearch">
-					<!-- 검색어 넘겨주기 -->
+				<form action="mainSearch" method="get" >
 					<fieldset>
-						<legend>검색</legend>
 						<div class="search">
 							<p class="searchBox">
+							
 								<input type="text" class="searchInput" id="keyWord"
 									name="keyWord" title="검색어를 입력하세요." placeholder="검색어를 입력하세요.">
 								<input type="image" class="searchBtn" src="webimg/btnSrch.png"
 									alt="검색" title="검색">
+									
 							</p>
 						</div>
 					</fieldset>
@@ -76,33 +76,26 @@
 				</p>
 			</div>
 			<!-- 반복 -->
-
 		</article>
+		
+		
 		<script>
 			var count = 7;
-
 			window.onscroll = function(e) {
-
 				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-
 					if (count < 50) {
-
 						var addContent = '<p>'
 								+
-
 								'<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+ '<img src="/bookimg/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
 								+
-
 								'</p>';
 						$('.block').append(addContent);
 					}
-
 					else {
-						alert('보유한 책을 모두 보았습니다.');
+						alert('여기까지가 끝인가보오.');
 					}
-
 				}
 			};
 		</script>

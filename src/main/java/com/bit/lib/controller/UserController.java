@@ -1,11 +1,5 @@
 package com.bit.lib.controller;
-
-
-
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,21 +7,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.lib.domain.User;
 import com.bit.lib.service.UserService;
-import com.bit.lib.service.UserServiceImpl;
-
-
 
 @Controller
 public class UserController {
 	private final static Logger logger = LoggerFactory.getLogger(UserController.class);
-	UserService service = new UserServiceImpl();
 	
 	@Autowired
 	UserService userService;
@@ -39,31 +29,64 @@ public class UserController {
 	
 	@RequestMapping(value = "loginProc", method = RequestMethod.POST)
 	public String loginProc(User user, HttpSession session) {
-		
 		session.setAttribute("id", user.getId());
-		session.setAttribute("user", user);
+		session.setAttribute("user", user);  
 		String nextPage = userService.loginProc(user)? "main":"user/login";
-		
 		return nextPage;
 	}
-	
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "user/welcome";
+		return "user/login";
 	}
 	
-	
-	@RequestMapping("join.do")
-	public String join() {
+	@RequestMapping(value="/join.do", method = RequestMethod.GET)
+	public String join(User user) {
+		
 		return "user/join";
+	}	
+	
+	
+	@RequestMapping(value = "/joinProcess")
+	public String joinProcess(User user) {
+		//System.out.println(user);
+		userService.joinUser(user);
+		
+		
+		return "user/login";
 	}
 	
-	@RequestMapping(value="joinProc", method = RequestMethod.POST)
-	public String joinProc(User user) throws Exception {
-		userService.joinProc(user);
-		return "user/join";
+	//아이디 중복확인
+	@ResponseBody
+	@RequestMapping(value= "/idCheck.do", method = RequestMethod.GET)
+	public String joinIdCheck(HttpServletRequest request)  {
+		
+		String id = request.getParameter("id");
+		int result = userService.idCheck(id);
+		
+		 return Integer.toString(result);
 	}
+	
+	
+
+	
+	//회원정보 상세 조회
+	@RequestMapping("/viewUser.do")
+	public String viewUser(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		model.addAttribute("user", userService.viewUser(id));
+		return "mypage/userInfo/userInfo";
+	}
+	
+	
+	//회원정보 수정
+	@RequestMapping("/updateUser.do")
+	public String updateUser(@ModelAttribute User user) {
+		userService.updateUser(user);
+		return "mypage/userInfo/userUpdateView";
+	}
+	
+	
 	
 }
 

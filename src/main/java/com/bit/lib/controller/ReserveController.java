@@ -22,7 +22,7 @@ public class ReserveController {
 
 	// 도서 예약
 
-	@RequestMapping(value = "/reserve.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/reserve.do", method=RequestMethod.POST, produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public String insertReserve(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");

@@ -47,6 +47,9 @@ table {
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
 	 <div id="divContentsW">
+	 <div id="row">
+	<h1 align="center">예약 목록</h1>
+	</div>
 	  <div id="divContents">
 	   <div id="divTabMenu"
 			class="mThumbnailScroller _mTS_2 mTS-buttons-out"
@@ -55,11 +58,11 @@ table {
 		 <div id="mTS_2" class="mTSWrapper mTS_horizontal">
 		  <ul class="mTSContainer" id="mTS_2_container"
 			  style="position: relative; top: 0px; left: 0px; width: 100%;">
-			<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+			<li class="mTSThumbContainer"><a href="rentNow.do">대여현황</a></li>
 			<li class="selected mTSThumbContainer"><a href="reserveList.do">예약목록</a></li>
-			<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+			<li class="mTSThumbContainer"><a href="rentHistory.do">대여이력</a></li>
 			<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
-			<li class="mTSThumbContainer"><a href="">회원정보</a></li>
+			<li class="mTSThumbContainer"><a href="viewUser.do">회원정보</a></li>
 		  </ul>
 		 </div>
 		</div>
