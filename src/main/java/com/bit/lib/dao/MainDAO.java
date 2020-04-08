@@ -12,6 +12,8 @@ public interface MainDAO {
 	List<Book> searchBook(@Param("keyWord") String keyWord,
 						  @Param("startList") int startList,
 						  @Param("listSize") int listSize);
+	
+	int getMainView();
 	List<Book> mainView();
 	
 }
