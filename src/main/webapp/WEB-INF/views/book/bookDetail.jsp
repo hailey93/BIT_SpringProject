@@ -49,7 +49,7 @@
 					<form name="frmMylist" action="/mylist/writeitem" method="post" />
 					 <ul class="searchLinkBtn">
 						<button id="button" type="button" class="rent">대여</button>
-						<button id="button" type="addWishList.do" class="wish">위시리스트</button>
+						<button id="button" type="button" class="wish">위시리스트</button>
 						<button id="button" type="button" class="reserve">예약</button>
 
 					 </ul>
@@ -144,7 +144,7 @@
 					  </div>
 				    </div>
 				  </div>
-
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		function check_only(check) {
 			var obj = document.getElementsByName("check");
@@ -155,9 +155,7 @@
 			}
 		}
 	</script>
-
-	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-
+	
 	<script>
 		$(".rent").click(function() {
 			$("input[name=check]:checked").each(function() {
@@ -235,6 +233,40 @@
 				}
 				;
 			})
+		});
+		
+		$(".wish").click(function() {
+			
+			var count = $("input[name=check]:checked").length;
+
+			var no=new Array();
+			$("input[name=check]:checked").each(function() {
+				no.push($(this).attr("data-bookNo")); 
+			});
+
+			if (count == 0) { 
+				alert("선택된 도서가 없습니다.")
+			} else {
+				$.ajaxSettings.traditional = true;
+				$.ajax({
+					url : "/lib/addWishList.do",
+					type : "post",
+					data : { chknos : no },
+					success : function(data) {
+						alert('위시리스트로 담겼습니다!');
+						location.reload();
+					},
+					
+					error : function(request, status, error){
+						alert("code:" + request.status + "\n"
+								+ "message : " + request.responseText
+								+ "\n" + "error : " +error);
+					
+					}
+					
+				});
+			}
+		
 		});
 	</script>
 </body>

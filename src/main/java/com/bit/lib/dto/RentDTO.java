@@ -14,6 +14,7 @@ import lombok.ToString;
 @ToString
 public class RentDTO {
 
+	private int historyCode;
 	private int bookCode;
 	private String bookNo;
 	private String bookTitle;
@@ -23,5 +24,7 @@ public class RentDTO {
 	private Date rentDate;
 	private Date returnDate;
 	private Date returnDueDate;
+	private long datedif;
 	private String id;
 }
+

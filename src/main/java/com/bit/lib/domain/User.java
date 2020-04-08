@@ -22,5 +22,5 @@ public class User {
 	private Date birth;
 	private String gender;
 	private String phone;
-	
+		
 }

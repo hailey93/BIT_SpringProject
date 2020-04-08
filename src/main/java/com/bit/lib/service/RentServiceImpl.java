@@ -28,9 +28,16 @@ public class RentServiceImpl implements RentService {
 	}
 
 	@Override
-	public void renew(RentDTO rentDTO) {
-		rentDAO.renew(rentDTO);
+	public void renew(List<String> chkcodes) {
+		
+		for(String chkcode:chkcodes) {
+			System.out.println(chkcode);
+			String bookNo=chkcode;
+			System.out.println(bookNo);
+			rentDAO.renew(bookNo);
+		}
 	}
+		
 
 	@Override
 	public void bookRent(List<String> chknos, String id) {

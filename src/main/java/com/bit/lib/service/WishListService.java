@@ -8,7 +8,7 @@ import com.bit.lib.dto.WishListDTO;
 
 public interface WishListService {
 	List<WishListDTO> selectWishList(@SessionAttribute("id") String id);
-	void addWishList(WishListDTO wishListDTO);
+	void addWishList(List<String> chknos, String id);
 	void deleteWishList(List<String> chkcodes);
 	
 	void addReserve(String id, List<String> chknos);
