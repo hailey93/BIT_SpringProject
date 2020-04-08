@@ -10,6 +10,7 @@ public interface BookDetailService {
 	
 	List<BookDetailDTO> bookPage(String bookTitle);
 	
+	int rentCount(String id);
 
 
 }

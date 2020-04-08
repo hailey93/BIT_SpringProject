@@ -12,4 +12,9 @@
         where b.bookTitle=#{bookTitle};
 	</select>
 	
+		<!-- 대여권수 조회 -->
+	<select id="rentCount" resultType="int" >
+		select count(*) from renthistory where id=#{id} and returnDate is null;
+	</select> 
+	
 </mapper>

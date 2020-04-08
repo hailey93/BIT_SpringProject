@@ -49,6 +49,7 @@
 					<form name="frmMylist" action="/mylist/writeitem" method="post" />
 					 <ul class="searchLinkBtn">
 						<button id="button" type="button" class="rent">대여</button>
+						<input type="hidden" id="historycount" value="${history}"/>
 						<button id="button" type="button" class="wish">위시리스트</button>
 						<button id="button" type="button" class="reserve">예약</button>
 
@@ -135,7 +136,8 @@
 									  <td class="num footable-first-column"><input
 										  type="checkbox" name="check" id="check"
 										  data-reservest="${reservest}"
-										  data-bookNo="${bookdtList.bookNo}" value="${bookst}"
+										  data-bookNo="${bookdtList.bookNo}" 
+										  value="${bookst}"
 										  onclick="check_only(this)"></td>
 									  <td>${bookdtList.bookNo}</td>
 									  <td><c:out value="${bookstat}" /></td>
@@ -171,6 +173,9 @@
 			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택된 도서가 없습니다.")
 			}
+			if (document.getElementById("historycount").value >= 5){
+				alert("대여 한도 권수가 초과되었습니다.")
+			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
 					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
@@ -191,6 +196,7 @@
 							success : function(data) {
 								alert('선택하신 도서가 대여되었습니다!');
 								location.reload();
+								console.log(attr("data-historycount"));
 							},
 							error : function(request, status, error){
 								alert("code:" + request.status + "\n"
@@ -201,7 +207,8 @@
 						});
 					}
 			}
-		});
+				}
+		)};
 		});
 
 		$(".reserve").click(function() {

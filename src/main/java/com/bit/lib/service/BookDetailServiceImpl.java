@@ -27,6 +27,12 @@ public class BookDetailServiceImpl implements BookDetailService {
 		// TODO Auto-generated method stub
 		return bookdetailDao.bookDetail(bookTitle);
 	}
+	
+	@Override
+	public int rentCount(String id){
+		System.out.println();
+		return bookdetailDao.rentCount(id);
+	}
 
 
 }
