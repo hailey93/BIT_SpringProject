@@ -122,7 +122,7 @@ table {
 									<td class="No">${status.count}</td>
 									<td class="bookTitle">
 										<!-- bookDetail 페이지로 넘기기 --> <a
-										href="./select.do?bookDetail=${rent.bookTitle}">${rent.bookTitle}</a>
+										href="/lib/bookDetail.do?bookTitle=${rent.bookTitle}">${rent.bookTitle}</a>
 									</td>
 									<td class="author">${rent.author}</td>
 									<td class="bookNo">${rent.bookNo}</td>
