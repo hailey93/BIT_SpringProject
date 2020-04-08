@@ -31,6 +31,19 @@
 table {
 	width: 100%;
 }
+#button {
+	margin: -1px;
+	border: 1px solid rgba(0, 155, 255, 0.9);
+	background-color: rgba(0, 0, 0, 0);
+	color: rgba(0, 155, 255, 0.9);
+	padding: 3px;
+	border-radius: 5px;
+	font-size: 24px;
+}
+#button:hover{
+	color:white;
+	background-color: skyblue;
+}
 </style>
 </head>
 
@@ -62,7 +75,7 @@ table {
 
 							<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
-							<li class="mTSThumbContainer"><a href="">회원정보</a></li>
+							<li class="mTSThumbContainer"><a href="viewUser.do">회원정보</a></li>
 
 						</ul>
 					</div>
@@ -141,14 +154,14 @@ table {
 
 				<!-- Content Buttons -->
 				<!-- <div class="buttons"> -->
-				<button type="button" class="renew">도서연장</button>
-				<button type="button" class="return">도서반납</button>
+				<button id="button" type="button" class="renew">도서연장</button>
+				<button id="button" type="button" class="return">도서반납</button>
 				<!-- 	</div> -->
 
-				<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+				
 				<!-- divContent 끝-->
 			</div>
-
+<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 			<!--//divContents-->
 		</div>
 

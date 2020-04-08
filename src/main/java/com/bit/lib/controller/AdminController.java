@@ -14,7 +14,7 @@ import com.bit.lib.service.AdminService;
 @Controller
 public class AdminController {
 	
-	@Autowired(required=false)
+	@Autowired
 	AdminService adminService;
 	
 	@RequestMapping("admLogin.do")

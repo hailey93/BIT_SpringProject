@@ -20,7 +20,7 @@
 		<div>
 		
 			<h2 class="logo">
-				<a href="/lib/main" title="비트 도서관">
+				<a title="비트 도서관">
 				<img src="webimg/bitlogo.png" />
 				</a>
 			</h2>
@@ -34,7 +34,6 @@
 	
 	<div id="divContents">
 	
-		회원목록<br><br><br>
 		<a href="newBook.do">
 		신규 도서 등록</a><br>
 	
