@@ -29,7 +29,6 @@ public class WishListServiceImpl implements WishListService {
 			wishListDTO.setBookNo(chknos.get(i));
 			wishListDAO.addWishList(wishListDTO);
 		}
-		System.out.println(wishListDTO);
 	}
 
 	@Override

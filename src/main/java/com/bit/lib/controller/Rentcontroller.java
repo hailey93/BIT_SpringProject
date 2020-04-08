@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.lib.dto.RentDTO;
 import com.bit.lib.service.RentService;
-import com.bit.lib.service.ReserveService;
 
 
 @Controller
@@ -22,7 +21,7 @@ public class Rentcontroller {
 
 	@Autowired
 	private RentService rentService;
-	private ReserveService reserveService;
+
 
 	@RequestMapping(value = "rentHistory.do", method = RequestMethod.GET)
 	public String getRentHistoryList(Model model, HttpSession session) {
@@ -35,6 +34,7 @@ public class Rentcontroller {
 	public String selectRentNow(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		List<RentDTO> rentDtos = rentService.selectRentNow(id);
+		
 		model.addAttribute("selectRentNow", rentDtos);
 		return "mypage/rentNow/rentNow";
 	}
