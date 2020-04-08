@@ -17,7 +17,7 @@ import com.bit.lib.service.WishListService;
 @Controller
 public class WishListController {
 
-	@Autowired(required = false)
+	@Autowired
 	private WishListService wishListService;
 
 	//wishlist페이지에 목록 가져오기
