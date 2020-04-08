@@ -140,7 +140,7 @@
 												
 												<div class="paging">
 												
-													<span>
+													<span><%-- 
 														<c:if test="${paging.prev == true }">
 															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.page/(paging.pageSize+1) }&range=-5" class="page" >
 															<img src="webimg/prevPage.gif">
@@ -160,7 +160,7 @@
 																</c:when>
 																
 																<c:otherwise>
-																<%-- 공백처리 --%>??
+																공백처리??
 																</c:otherwise>
 																
 																
@@ -172,7 +172,7 @@
 															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.page/5 }&range=5" class="page" > 
 															<img src="webimg/nextPage.gif">
 															</a>
-														</c:if>
+														</c:if> --%>
 
 													</span>
 												</div>
