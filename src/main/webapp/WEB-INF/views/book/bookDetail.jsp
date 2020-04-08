@@ -175,6 +175,9 @@
 				if (this.value != "2") { //대여불가
 					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
 				} else {
+					 if ($(this).attr("data-reservest") != "0") {
+						alert("예약도서는 대여가 불가능합니다.")
+					}else{ 
 					var no = new Array;
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					
@@ -197,7 +200,8 @@
 							},
 						});
 					}
-			});
+			}
+		});
 		});
 
 		$(".reserve").click(function() {
@@ -208,7 +212,7 @@
 			
 			$("input[name=check]:checked").each(function() {
 				if ($(this).attr("data-reservest") != "0") { //예약불가
-					alert("예약이 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
+					alert("예약이 불가능합니다.") 
 				} else {
 					if (this.value == "2") {
 						alert("예약이 불가능합니다.")
