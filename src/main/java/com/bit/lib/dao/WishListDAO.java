@@ -10,7 +10,7 @@ import com.bit.lib.dto.WishListDTO;
 public interface WishListDAO {
 	List<WishListDTO> selectWishList(@SessionAttribute("id") String id);
 	void addWishList(WishListDTO wishListDTO);
-	void deleteWishList(int wishListCode); //체크박스에 연결된 위시리스트코드를 파라미터값으로 넘기고 그 파라미터값을 deletewishlist()가 받는다.
+	void deleteWishList(int wishListCode); 
 	//예약
 	void addReserve(RentDTO rentDTO); 
 	void updateStatus(RentDTO rentDTO);

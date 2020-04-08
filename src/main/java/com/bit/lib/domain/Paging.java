@@ -1,6 +1,6 @@
 package com.bit.lib.domain;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Component
+@Configuration
 public class Paging {
 	
 	private int listSize = 6; // 검색 목록수 6개 지정

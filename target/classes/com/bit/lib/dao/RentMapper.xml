@@ -29,7 +29,7 @@
 		bookstatus as bs on r.bookNo=bs.bookNo
 		inner join book as b on
 		b.bookcode=bs.bookCode
-		where not bs.rentstatus=2 and r.id='yeo123'
+		where not bs.rentstatus=2 and r.id=#{id}
 	</select>
 
 	<!-- 도서연장 -->

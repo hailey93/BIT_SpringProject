@@ -11,6 +11,6 @@ public interface WishListService {
 	void addWishList(List<String> chknos, String id);
 	void deleteWishList(List<String> chkcodes);
 	
-	void addReserve(String id, List<String> chknos);
 	void addRent(List<String> chknos, String id);
+	void addReserve(String id, List<String> chknos);
 }

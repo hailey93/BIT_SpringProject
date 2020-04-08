@@ -34,10 +34,9 @@ public class WishListController {
 	@PostMapping(value = "/addWishList.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public void getAddWishList(@RequestParam List<String> chknos, HttpSession session) {
-		//책상세페이지로부터 사용자가 선택한 bookNo가 넘어온다. @Param("bookNo") 
-		System.out.println(chknos);
+
 		String id = (String) session.getAttribute("id");
-		wishListService.addWishList(chknos, id); // db 위시리스트에 저장
+		wishListService.addWishList(chknos, id); 
 
 	}
 
@@ -60,7 +59,7 @@ public class WishListController {
 	}
 	
 
-	//위시리스트페이지에서 선택한 책 예약하고 책의 예약상태도 바꿔주기
+	//위시리스트페이지에서 선택한 책 예약
 	@PostMapping(value = "/wishReserve.do", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public void getAddReserve(@RequestParam List<String> chknos, @RequestParam List<String> chkcodes, HttpSession session) {

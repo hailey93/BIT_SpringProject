@@ -42,9 +42,9 @@
 			</h2>
 			<div id="globalMenu">
 				<ul>
-					<li><a href="wishList.do" title="마이페이지">마이페이지</a></li>
+					<li><a href="rentNow.do" title="마이페이지">마이페이지</a></li>
 
-					<li><a href="" title="로그아웃">로그아웃</a></li>
+					<li><a href="logout.do" title="로그아웃">로그아웃</a></li>
 
 				</ul>
 			</div>
@@ -109,7 +109,8 @@
 																<dd class="num">${paging.startList + searchBookStatus.count }</dd>
 																<dt class="title">표지이미지</dt>
 																<dd class="book">
-																	<a href="<!-->"> <img id="${searchBook.bookCode }"
+																	<a href="/lib/bookDetail.do?bookTitle=${searchBook.bookTitle }">
+																	<img id="${searchBook.bookCode }"
 																		src="${searchBook.imagePath }" width="75" height="103"
 																		alt="${searchBook.bookTitle }" onerror="">
 																	</a>
@@ -117,7 +118,7 @@
 
 																<dt class="title">제목</dt>
 																<dd class="title">
-																	<a href="<!-->"> ${searchBook.bookTitle } </a> <input
+																	<a href="/lib/bookDetail.do?bookTitle=${searchBook.bookTitle }"> ${searchBook.bookTitle } </a> <input
 																		type="button" class="addItem btnType2" onclick=""
 																		title="추가" value="추가" style="display: none;">
 																</dd>
