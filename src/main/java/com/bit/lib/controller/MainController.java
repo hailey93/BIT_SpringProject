@@ -31,19 +31,18 @@ public class MainController {
 	public String mainSearch(Model model, 
 			@RequestParam("keyWord") String keyWord,
 			@RequestParam(required = false, defaultValue = "1")int page,
-			@RequestParam(required = false, defaultValue = "0")int range) {
-		System.out.println(keyWord +"/"+ page +"/"+ range);
-		
-		
+			@RequestParam(required = false, defaultValue = "0")int range) {		
 		
 		int listCnt = mainDAO.getSearchBook(keyWord);		
 		paging.pageInfo(page, range, listCnt);
+		
+		System.out.println(page + "====" + range);
+		System.out.println(paging);
 		
 		model.addAttribute("searchBook", mainDAO.searchBook(keyWord, paging.getStartList(),paging.getListSize()));	//검색	
 		model.addAttribute("paging", paging); // 페이지 값 넘기기
 		model.addAttribute("keyWord", keyWord); 
 		
-		System.out.println(paging);
 		
 		return "book/mainSearch";
 		

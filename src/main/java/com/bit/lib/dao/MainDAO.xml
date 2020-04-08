@@ -22,17 +22,20 @@
 		
 	</select>
 	
-	<select id="mainView" resultType="book">
-
-		SELECT * FROM library.book
-	
-	</select>
 	
 	<select id="getMainView" resultType="int">
 
 		SELECT count(*) FROM library.book
 	
 	</select>
+	
+	<select id="mainView" resultType="book">
+
+		SELECT * FROM library.book
+	
+	</select>
+	
+	
 	
 	
 		
