@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bit.lib.dao.WishListDAO;
+import com.bit.lib.dto.RentDTO;
 import com.bit.lib.dto.WishListDTO;
 
 
@@ -14,15 +15,21 @@ public class WishListServiceImpl implements WishListService {
 	
 	@Autowired
 	private WishListDAO wishListDAO;
-
+	
 	@Override
 	public List<WishListDTO> selectWishList(String id) {
 		return wishListDAO.selectWishList(id);
 	}
 
 	@Override
-	public void addWishList(WishListDTO wishListDTO) {
-		wishListDAO.addWishList(wishListDTO);
+	public void addWishList(List<String> chknos, String id) {
+		WishListDTO wishListDTO=new WishListDTO();
+		wishListDTO.setId(id);
+		for(int i=0;i<chknos.size();i++) {
+			wishListDTO.setBookNo(chknos.get(i));
+			wishListDAO.addWishList(wishListDTO);
+		}
+		System.out.println(wishListDTO);
 	}
 
 	@Override
@@ -31,10 +38,34 @@ public class WishListServiceImpl implements WishListService {
 		
 		for(String chkcode:chkcodes) {
 			int wishListCode=Integer.parseInt(chkcode);
-			System.out.println(wishListCode);
 			wishListDAO.deleteWishList(wishListCode);
 		}
 	}
+
+	@Override
+	public void addRent(List<String> chknos, String id) {
+		RentDTO rentDTO=new RentDTO();
+		rentDTO.setId(id);
+		for(int i=0;i<chknos.size();i++) {
+			rentDTO.setBookNo(chknos.get(i));
+			
+			wishListDAO.bookRent(rentDTO); //대여이력테이블에 insert
+			wishListDAO.bookstUpdate(rentDTO); //책상태테이블의 대여상태 바꾸기
+		}
+	}
 	
+	@Override
+	public void addReserve(String id, List<String> chknos) {
+		RentDTO rentDTO=new RentDTO();
+		rentDTO.setId(id);
+		for(int i=0;i<chknos.size();i++) { //list로 있는 여러 bookNo만큼(i) 반복
+			rentDTO.setBookNo(chknos.get(i)); //dto의 bookNo에 셋해줌
+			
+			wishListDAO.addReserve(rentDTO); //reserve테이블에 insert
+			wishListDAO.updateStatus(rentDTO); //status테이블 예약status update
+		}
+		
+		
+	}
 
 }

@@ -2,17 +2,19 @@ package com.bit.lib.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Param;
 
 import com.bit.lib.dto.RentDTO;
 
-
-@Repository
 public interface RentDAO {
 
 	public List<RentDTO> getRentHistoryList(String id);
 
 	public List<RentDTO> selectRentNow(String id);
 
-	void renew(RentDTO rentDTO);
+	void bookRent(@Param("bookNo") String bookNo, @Param("id")String id);
+	void bookstUpdate(String bookNo);
+	void reserveCancel(String bookNo);
+	public void renew(String bookNo);
+
 }
