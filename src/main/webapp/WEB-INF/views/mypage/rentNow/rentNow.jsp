@@ -116,8 +116,8 @@ table {
 									<td class="num footable-first-column"><input
 										type="checkbox" name="check" class="check"
 										data-bookNo="${rent.bookNo}"
-										data-returnDueDate="${rent.returnDueDate}"
 										data-reserveStatus="${rent.reserveStatus}"
+										data-datedif="${rent.datedif }"
 										value="${rent.rentStatus}"></td>
 									<td class="No">${status.count}</td>
 									<td class="bookTitle">
@@ -130,7 +130,7 @@ table {
 									<td class="returnDueDate">${rent.returnDueDate}</td>
 									<c:choose>
 										<c:when
-											test="${rent.rentStatus == 0 && rent.reserveStatus == 0 }">
+											test="${rent.rentStatus == 0 && rent.reserveStatus == 0 && rent.datedif <1}">
 											<td class="renewOk">가능</td>
 										</c:when>
 										<c:otherwise>
@@ -138,11 +138,11 @@ table {
 										</c:otherwise>
 									</c:choose>
 									<c:choose>
-										<c:when test="${rent.datedif < 0}">
+										<c:when test="${rent.datedif < 1}">
 											<td></td>
 										</c:when>
 										<c:otherwise>
-											<td class="datedif footable-last-column">${rent.datedif+1}일</td>
+											<td class="datedif footable-last-column">${rent.datedif}일</td>
 										</c:otherwise>
 									</c:choose>
 								</tr>
@@ -182,106 +182,76 @@ table {
 		});
 	</script>
 
-	<!-- <script>
-						$(".renew").click(function() {
-							var confirm_val = confirm("연장하시겠습니까?");
-
-							if (confirm_val) {
-								var checkArr = new Array();
-
-								$("input[class='check']:checked").each(function() {
-									checkArr.push($(this).attr("data-bookNo"));
-								});
-
-						$.ajax({
-							url : "/mypage/rentNow/renew" ,
-							type : "post",
-							data : {checkArr : cheak},
-							success : function() {
-							location.href = "/mypage/rentNow/rentNow";
-								}
-							});
-						}
-						});
-					</script> -->
-
 	<script>
 		$(".renew").click(function() {
-
+			var count = $("input[name=check]:checked").length;
+			if(count==0){ //아무것도 선택된 것이 없을때 alert 띄워주기
+				alert("선택한 연장 가능 목록이 없습니다.");
+			}
 			$("input[name=check]:checked").each(function() {
-				if (this.value != 0) { //대여상태가 0이 아닌 책들은 연장불가
+				if (this.value != 0) { //대여상태가 0(대여중)이 아닌 책들은 연장불가
 					alert('선택하신 도서는 연장이 불가능합니다. 다시 선택해주십시오');
 				} else {
-
 					if ($(this).attr("data-reserveStatus") == 1) { // 예약중(1)인 책들
 						alert('선택하신 도서는 예약중입니다.');
-					} else {
-						var count = $("input[name=check]:checked").length;
-
+					} else if($(this).attr("data-datedif") >0 ){ // 연체일이 0보다 클 때
+						alert('연체중입니다');
+					}
+					else{
 						var no = new Array();
 						no.push($(this).attr("data-bookNo"));
 
 						console.error(no+"///bookNo");
 						
-							$.ajaxSettings.traditional = true;
-							$.ajax({
-								url : "renew.do",
-								type : "post",
-								data : {
-									count : no
-								},
-								success : function(data) {
-									console.error(data +"///func");
-									alert('선택하신 도서가 연장되었습니다!');
-									location.reload();
+						$.ajaxSettings.traditional = true;
+						$.ajax({
+							url : "renew.do",// 클라이언트가 http요청을 보낼 서버의 URL 주소 
+							type : "post",// 서버에서 보내줄 데이터 타입
+							data : {count : no},// HTTP 요청과 함께 서버로 보낼 데이터
+							success : function(data) { //성공시 success메소드로 요청한 데이터가 전달됨
+								console.error(data +"///func");
+								alert('선택하신 도서가 연장되었습니다!');
+								location.reload();
 								},
 							});
 						
-						}
-				}
-
-			});
+						} //last else end
+				} //first else end
+			}); //each fuc end
 		});
-		/* if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기, 먹히지 않음
-		alert("선택된 연장 가능 목록이 없습니다.");
-	} else {//선택된 것이 있으면 controller로 값 넘겨주기 */
+
 	</script>
 
 	<script>
 		$(".return").click(function() {
-			if (this.value != 0) { //대여상태가 0이 아닌 책들은 연장불가
-				alert('선택하신 도서는 연장이 불가능합니다. 다시 선택해주십시오');
+			var count = $("input[name=check]:checked").length;
+			if(count==0){ //아무것도 선택된 것이 없을때 alert 띄워주기
+				alert("선택된 반납 가능 목록이 없습니다.")
 			}
 			$("input[name=check]:checked").each(function() {
-
-				if ($(this).attr("data-reserveStatus") == 1) { // 예약중(1)인 책들
-					alert('선택하신 도서는 예약중입니다.');
-				} else {
-					var count = $("input[name=check]:checked").length;
-
 					var no = new Array();
 					no.push($(this).attr("data-bookNo"));
-
-					console.log(no);
-					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기, 먹히지 않음
-						alert("선택된 연장 가능 목록이 없습니다.");
-					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+						
+					console.error(no);
+						//선택된 것이 있으면 controller로 값 넘겨주기
 						$.ajaxSettings.traditional = true;
 						$.ajax({
-							url : "renew.do",
+							url : "return.do",
 							type : "post",
-							data : {
-								count : no
-							},
+							data : {count : no},
 							success : function(data) {
-								alert('선택하신 도서가 연장되었습니다!');
+								console.error($(this).attr("data-datedif"));
+								if($("input[name=check]:checked").attr("data-datedif")>0) { //연체일수가0보다 크면 연체 alert
+									alert('선택하신 도서는 연체중입니다.');
+								// if 걸리지않음, data-datedif undefine으로 나오는 이유?
+								}
+								else {
+									alert('반납 되었다.');
+								}
 								location.reload();
 							},
-						});
-					}
-				}
-
-			});
+						}); //ajax end
+			}); //check each fuc end
 		});
 	</script>
 
