@@ -6,9 +6,9 @@ import com.bit.lib.dto.BookDetailDTO;
 
 public interface BookDetailDAO {
 
-	List<BookDetailDTO> bookDetail(String bookTitle);
+	List<BookDetailDTO> bookDetail(int bookCode);
 	
-	List<BookDetailDTO> bookPage(String bookTitle);
+	List<BookDetailDTO> bookPage(int bookCode);
 	
 
 }

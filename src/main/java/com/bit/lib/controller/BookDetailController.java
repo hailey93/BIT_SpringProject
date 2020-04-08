@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.lib.service.BookDetailService;
 
@@ -16,14 +17,12 @@ public class BookDetailController {
 	
 	//도서 상세페이지
 	@RequestMapping(value = "/bookDetail.do", method=RequestMethod.GET)
-	public String bookPage(Model model, String bookTitle) {
-		
-		System.out.println(bookTitle);
-		
-		model.addAttribute("bookdtList", bookDetailService.bookPage(bookTitle));
-		model.addAttribute("bookdt", bookDetailService.bookDetail(bookTitle));
-		System.out.println(bookDetailService.bookDetail(bookTitle));
-		System.out.println(bookDetailService.bookPage(bookTitle));
+	public String bookPage(Model model, @RequestParam("bookCode") int bookCode) {
+				
+		model.addAttribute("bookdtList", bookDetailService.bookPage(bookCode));
+		model.addAttribute("bookdt", bookDetailService.bookDetail(bookCode));
+		System.out.println(bookDetailService.bookDetail(bookCode));
+		System.out.println(bookDetailService.bookPage(bookCode));
 
 		return "book/bookDetail";
 	}

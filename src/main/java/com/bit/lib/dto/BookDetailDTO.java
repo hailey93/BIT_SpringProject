@@ -10,7 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class BookDetailDTO {
-
+	
 	private String bookTitle;
 	private String author;
 	private String type;

@@ -66,7 +66,7 @@
 			<div class="block">
 				<p>
 				<c:forEach items="${mainView }" var="mainView" begin="0" end="5" >			
-					<a href="/lib/bookDetail.do?bookTitle=${mainView.bookTitle }"> 
+					<a href="/lib/bookDetail.do?bookCode=${mainView.bookCode }"> 
 					<img src="${mainView.imagePath }" width="300" height="400"
 					vspace="20" hspace="50" /></a>
 				</c:forEach>
@@ -80,19 +80,34 @@
 			var count = 6;
 			window.onscroll = function(e) {
 				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-					if (count < ${mainViewCount }) {
-						
-						var addContent = '<p>'
-								+ '<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
-								+ '<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
-								+ '<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
-								+
-								'</p>';
-						$('.block').append(addContent);
 					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					/* if (count < ${mainViewCount }) {						
+						var addContent = '<p>'
+								+ '<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>' +
+								'</p>';
+						$('.block').append(addContent);					
 					}
 					else {
-						alert('여기까지가 끝인가보오.');
+						alert('여기까지가 끝인가보오.'); */
 					}
 				}
 			};
