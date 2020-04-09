@@ -30,7 +30,7 @@
 	
 	<!-- 회원정보 수정 -->
 	<update id="updateUser" parameterType="com.bit.lib.domain.User">
-		update library.user set NAME=#{name},PW=#{pw},birth=#{birth},gender=#{gender},phone=#{phone} where id=#{id}
+		update library.user set PW=#{pw},birth=#{birth},gender=#{gender},phone=#{phone} where id=#{id}
 	</update>
 		
 </mapper>
