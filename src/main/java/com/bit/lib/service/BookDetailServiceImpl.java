@@ -17,12 +17,6 @@ public class BookDetailServiceImpl implements BookDetailService {
 	private BookDetailDAO bookdetailDao;
 
 	@Override
-	public List<BookDetailDTO> bookPage(int bookCode) {
-		// TODO Auto-generated method stub
-		return bookdetailDao.bookPage(bookCode);
-	}
-
-	@Override
 	public List<BookDetailDTO> bookDetail(int bookCode) {
 		// TODO Auto-generated method stub
 		return bookdetailDao.bookDetail(bookCode);
