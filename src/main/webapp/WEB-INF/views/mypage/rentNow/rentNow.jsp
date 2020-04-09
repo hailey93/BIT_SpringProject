@@ -24,26 +24,14 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypagemenu.css">
-<link rel="stylesheet"
+<link rel="stylesheet" 
 	href="${pageContext.request.contextPath}/css/mypagetable.css">
 
 <style>
 table {
 	width: 100%;
 }
-#button {
-	margin: -1px;
-	border: 1px solid rgba(0, 155, 255, 0.9);
-	background-color: rgba(0, 0, 0, 0);
-	color: rgba(0, 155, 255, 0.9);
-	padding: 3px;
-	border-radius: 5px;
-	font-size: 24px;
-}
-#button:hover{
-	color:white;
-	background-color: skyblue;
-}
+
 </style>
 </head>
 
@@ -154,8 +142,10 @@ table {
 
 				<!-- Content Buttons -->
 				<!-- <div class="buttons"> -->
-				<button id="button" type="button" class="renew">도서연장</button>
-				<button id="button" type="button" class="return">도서반납</button>
+				<div class="buttons">
+				<input class="renew" type="button" value="도서연장"></input>
+				<input class="return" type="button" value="도서반납"></input>
+				</div>
 				<!-- 	</div> -->
 
 				
