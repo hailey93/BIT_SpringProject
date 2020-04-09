@@ -10,5 +10,6 @@ public interface BookDetailDAO {
 	
 	List<BookDetailDTO> bookPage(int bookCode);
 	
+	int rentCount(String id);
 
 }

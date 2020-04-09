@@ -147,32 +147,25 @@ table {
 					data : {bookNo : chk},
 					success : function(data) {
 						alert("삭제되었습니다");
-						console.log(data);
-					},
-					error : function(request, status, error){
-						alert("code:" + request.status + "\n"
-								+ "message : " + request.responseText
-								+ "\n" + "error : " +error);
-					
+						location.reload();
 					},
 				});
 			}
 		});
 
 		$(".rent").click(function() {
+			var count = $("input[name=check]:checked").length;
+			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
+				alert("선택된 도서가 없습니다.")
+			}
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
-					alert("대여가 불가능합니다.") 
+					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
 				} else {
-					var count = $("input[name=check]:checked").length;
 					var no = new Array;
-					$("input[name=check]:checked").each(function() {
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
-					});
-
-					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
-						alert("선택된 위시리스트가 없습니다.")
-					} else {//선택된 것이 있으면 controller로 값 넘겨주기
+					
+					 //선택된 것이 있으면 controller로 값 넘겨주기
 
 						$.ajaxSettings.traditional = true;
 						$.ajax({
@@ -181,17 +174,16 @@ table {
 							data : {chknos : no},
 							success : function(data) {
 								alert('선택하신 도서가 대여되었습니다!');
-								console.log(data)
+								location.reload();
 							},
 							error : function(request, status, error){
 								alert("code:" + request.status + "\n"
 										+ "message : " + request.responseText
 										+ "\n" + "error : " +error);
+								
 							},
 						});
 					}
-
-				}
 			});
 		});
 	</script>

@@ -2,8 +2,6 @@ package com.bit.lib.dto;
 
 import java.sql.Date;
 
-import org.apache.ibatis.type.Alias;
-
 import com.bit.lib.domain.RentHistory;
 
 import lombok.Getter;

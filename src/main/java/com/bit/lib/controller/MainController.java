@@ -1,8 +1,12 @@
 package com.bit.lib.controller;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> origin/liz_0408
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +28,7 @@ public class MainController {
 	@Autowired
 	Paging paging;
 	
+<<<<<<< HEAD
 	@GetMapping("/main.do")
 	public String main(Model model) {
 		
@@ -31,6 +36,17 @@ public class MainController {
 		model.addAttribute("mainViewCount", mainDAO.getMainView());		
 		
 		return "main";
+=======
+	@GetMapping("/main")
+	public String main(Model model, HttpSession session) {
+		
+		model.addAttribute("mainView", mainDAO.mainView());
+		model.addAttribute("mainViewCount", mainDAO.getMainView());
+		System.out.println(mainDAO.getSearchBook(""));
+		
+		String id = (String) session.getAttribute("id");		
+		return id.equals("adm123")?"admin/adminMain":"main";
+>>>>>>> origin/liz_0408
 	}
 	
 	

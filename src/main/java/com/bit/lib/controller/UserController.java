@@ -27,11 +27,11 @@ public class UserController {
 		return "user/login";
 	}
 	
-	@RequestMapping(value = "loginProc", method = RequestMethod.POST)
+	@RequestMapping(value = "loginProc.do", method = RequestMethod.POST)
 	public String loginProc(User user, HttpSession session) {
 		session.setAttribute("id", user.getId());
 		session.setAttribute("user", user);  
-		String nextPage = userService.loginProc(user)? "main":"user/login";
+		String nextPage = userService.loginProc(user)? "redirect:/main":"user/login";
 		return nextPage;
 	}
 	@RequestMapping("logout.do")
@@ -40,14 +40,14 @@ public class UserController {
 		return "user/login";
 	}
 	
-	@RequestMapping(value="/join.do", method = RequestMethod.GET)
+	@RequestMapping(value="/join.do")
 	public String join(User user) {
 		
 		return "user/join";
 	}	
 	
 	
-	@RequestMapping(value = "/joinProcess")
+	@RequestMapping(value = "/joinProcess.do")
 	public String joinProcess(User user) {
 		//System.out.println(user);
 		userService.joinUser(user);

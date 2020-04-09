@@ -17,27 +17,34 @@ public class RentServiceImpl implements RentService {
 
 	@Override
 	public List<RentDTO> getRentHistoryList(String id) {
-		// TODO Auto-generated method stub
 		return rentDAO.getRentHistoryList(id);
 	}
 
 	@Override
 	public List<RentDTO> selectRentNow(String id) {
-		// TODO Auto-generated method stub
+
 		return rentDAO.selectRentNow(id);
 	}
 
 	@Override
-	public void renew(List<String> chkcodes) {
+	public void renew(List<String> chknos) {
 		
-		for(String chkcode:chkcodes) {
-			System.out.println(chkcode);
-			String bookNo=chkcode;
-			System.out.println(bookNo);
+		for(String chkno:chknos) {
+			System.out.println(chkno +"////chkno");
+			String bookNo=chkno;
+			System.out.println(bookNo +"////bookNo");
 			rentDAO.renew(bookNo);
 		}
 	}
-		
+	@Override
+	public void bookReturn(List<String> chknos) {
+		for(String chkno:chknos) {
+			System.out.println(chkno);
+			String bookNo=chkno;
+			System.out.println(bookNo);
+			rentDAO.bookReturn(bookNo);
+		}
+	}	
 
 	@Override
 	public void bookRent(List<String> chknos, String id) {
@@ -62,5 +69,6 @@ public class RentServiceImpl implements RentService {
 		rentDAO.reserveCancel(bookNo);
 	}
 
+	
 	
 }

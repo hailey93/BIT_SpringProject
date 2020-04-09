@@ -2,11 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bit.lib.dao.AdminDAO">
 
-<select id="loginProc" parameterType="user" resultType="user">
-select *
-from user where ID=	#{id} and PW=#{pw}
-</select>
-
 <insert id="addBookProc" parameterType="newBookDTO">
 insert into book (bookTitle, author, type, publisher, pubYear, imagePath, bookQty)
 values(#{bookTitle}, #{author}, #{type}, #{publisher}, #{pubYear}, #{imagePath}, #{bookQty})

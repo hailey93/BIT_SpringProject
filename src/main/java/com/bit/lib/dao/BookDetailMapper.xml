@@ -10,4 +10,9 @@
 		select reserveStatus, bookNo, rentStatus from library.bookstatus where bookCode=#{bookCode}
 	</select>
 	
+		<!-- 대여권수 조회 -->
+	<select id="rentCount" resultType="int" >
+		select count(*) from renthistory where id=#{id} and returnDate is null;
+	</select> 
+	
 </mapper>

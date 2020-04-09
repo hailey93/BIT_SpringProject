@@ -16,6 +16,7 @@ public interface RentService {
 	 void bookstUpdate(List<String> chknos);
 	 void reserveCancel(List<String> chknos);
 
-	 void renew(List<String> chkcodes);
+	 void renew(List<String> chknos);
+	 void bookReturn(List<String> chknos);
 
 }

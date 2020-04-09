@@ -14,15 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.lib.dto.RentDTO;
 import com.bit.lib.service.RentService;
-import com.bit.lib.service.ReserveService;
-
 
 @Controller
 public class Rentcontroller {
 
 	@Autowired
 	private RentService rentService;
-	private ReserveService reserveService;
+
 
 	@RequestMapping(value = "rentHistory.do", method = RequestMethod.GET)
 	public String getRentHistoryList(Model model, HttpSession session) {
@@ -35,13 +33,14 @@ public class Rentcontroller {
 	public String selectRentNow(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		List<RentDTO> rentDtos = rentService.selectRentNow(id);
+		
 		model.addAttribute("selectRentNow", rentDtos);
 		return "mypage/rentNow/rentNow";
 	}
 
-	@RequestMapping(value = "/rent.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/rent.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String bookRent(@RequestParam List<String> chknos, HttpSession session) {
+	public void bookRent(@RequestParam List<String> chknos, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		System.out.println(chknos + "///" + id);
 
@@ -51,20 +50,21 @@ public class Rentcontroller {
 		System.out.println("up Ok");
 		rentService.reserveCancel(chknos);
 		System.out.println("delete Ok");
-		return "/mypage/rentNow/rentNow";
+		
 
 	}
-
-
 
 	@RequestMapping(value = "renew.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void renew(@RequestParam List<String> count) {
-		System.out.println(count +"//controller에서 count");
+		System.out.println(count + "//controller에서 count");
 		rentService.renew(count);
 	}
-		
 
-	
+	@RequestMapping(value = "return.do", produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public void bookReturn(@RequestParam List<String> count) {
+		System.out.println(count + "//controller에서 count");
+		rentService.bookReturn(count);
+	}
 }
-
