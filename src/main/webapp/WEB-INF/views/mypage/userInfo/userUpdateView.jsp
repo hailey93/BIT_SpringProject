@@ -46,11 +46,11 @@
 						<ul class="mTSContainer" id="mTS_2_container"
 							style="position: relative; top: 0px; left: 0px; width: 100%;">
 
-							<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+							<li class="mTSThumbContainer"><a href="rentNow.do">대여현황</a></li>
 
-							<li class="mTSThumbContainer"><a href="">예약목록</a></li>
+							<li class="mTSThumbContainer"><a href="reserveList.do">예약목록</a></li>
 
-							<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+							<li class="mTSThumbContainer"><a href="rentHistory.do">대여이력</a></li>
 
 							<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
