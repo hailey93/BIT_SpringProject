@@ -99,7 +99,7 @@ table {
 				<tr>
 					<td class="num footable-first-column">${status.count}</td>
 
-					<td class="bookTitle"><a href="./select.do?empno=${rent.bookTitle}">${rent.bookTitle}</a></td>
+					<td class="bookTitle"><a href="/lib/bookDetail.do?bookCode=${rent.bookCode}">${rent.bookTitle}</a></td>
 					
 					<td class="author" style="display: table-cell;">${rent.author}</td>
 					<td class="bookNo" style="display: table-cell;">${rent.bookNo}</td>

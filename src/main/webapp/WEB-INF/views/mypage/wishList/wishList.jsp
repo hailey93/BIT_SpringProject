@@ -89,11 +89,12 @@ table {
 				<tr>
 					<td class="num footable-first-column"><input type="checkbox" name="check" 
 					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
-					data-resStatus="${myWishList.reserveStatus }" value="${myWishList.rentStatus }"></td>
+					data-resStatus="${myWishList.reserveStatus }" data-rentStatus="${myWishList.rentStatus }"></td>
 
-					<td class="image"><a href="/lib/bookDetail.do?bookTitle=${myWishList.bookTitle }"><img src="${myWishList.imagePath }" width="75" height="103" /></a></td>
+					<td class="image"><a href="/lib/bookDetail.do?bookCode=${myWishList.bookCode }">
+					<img src="${myWishList.imagePath }" width="75" height="103" /></a></td>
 
-					<td class="bookTitle"><a href="/lib/bookDetail.do?bookTitle=${myWishList.bookTitle }">${myWishList.bookTitle }</a></td>
+					<td class="bookTitle"><a href="/lib/bookDetail.do?bookCode=${myWishList.bookCode }">${myWishList.bookTitle }</a></td>
 					
 					<td class="bookStatus">
 				    <c:choose>
@@ -104,7 +105,7 @@ table {
 					<td class="footable-last-column">
 				    <c:choose>
 						<c:when test="${myWishList.reserveStatus==1 }">예약불가능</c:when>
-						<c:otherwise>예약없음</c:otherwise>
+						<c:otherwise>예약가능</c:otherwise>
 					</c:choose></td>
 					
 				</tr>
@@ -145,10 +146,11 @@ table {
 					var count = $("input[name=check]:checked").length;
 		
 					var code=new Array();
-					$("input[name=check]:checked").each(function() {//체크된 것만 선택하기
-						code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+					$("input[name=check]:checked").each(function() {
+						//체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+						code.push($(this).attr("data-wishListCode")); 
 					});
- 
+ 					console.log(code);
 					if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 						alert("선택된 위시리스트가 없습니다.")
 					} else {//선택된 것이 있으면 controller로 값 넘겨주기
@@ -178,18 +180,22 @@ table {
 						alert("대여 한도 권수가 초과되었습니다.")
 					}else{
 						
-						$("input[name=check]:checked").each(function() {//체크된 것만 선택하기	 
-								if(this.value!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
+						$("input[name=check]:checked").each(function() { 
+								if($(this).attr("data-rentStatus")!="2"){
+									//대여상태가 반납(2)이 아닌 책들은 대여 불가
 									alert('선택하신 도서는 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
 								} else{
-									if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
+									if($(this).attr("data-resStatus") != "0"){
+										//예약상태가 예약중(1)인 책은 예약 불가
 										alert("예약도서는 대여가 불가능합니다.")
 									} else{																
 										var code=new Array();
-										code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+										//체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+										code.push($(this).attr("data-wishListCode")); 
 						
 										var no=new Array();
-										no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+										//체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+										no.push($(this).attr("data-bookNo")); 
 					
 										//선택된 것이 있으면 controller로 값 넘겨주기
 										$.ajaxSettings.traditional = true;
@@ -215,17 +221,21 @@ table {
 					}
 			
 					$("input[name=check]:checked").each(function() {	 
-						if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
+						if($(this).attr("data-resStatus") != "0"){
+							//예약상태가 예약중(1)인 책은 예약 불가
 							alert("다른 사용자가 예약중이라 예약이 불가능합니다.")
 						} else{
-							if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
+							if($(this).attr("data-rentStatus")=="2"){
+							//대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
 							alert('선택하신 도서는 바로 대여가능합니다. 대여버튼을 눌러주세요!')
 							} else{
 								var code=new Array();
-								code.push($(this).attr("data-wishListCode")); //체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+								//체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
+								code.push($(this).attr("data-wishListCode")); 
 				
 								var no=new Array();
-								no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+								//체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
+								no.push($(this).attr("data-bookNo")); 
 
 								//선택된 것이 있으면 controller로 값 넘겨주기
 								$.ajaxSettings.traditional = true;

@@ -36,6 +36,10 @@
 	color:white;
 	background-color: skyblue;
 }
+table{
+	width : 750px;
+	height : 5px;
+}
 </style>
 </head>
 <body>
@@ -126,7 +130,7 @@
 								    </c:when>
 								    <c:otherwise>						<!--  도서상태가 반납이 아니고 예약없음 상태가 아니라면 -->
 								      <c:set var="bookstat" value="대여중" />
-								      <c:set var="reservestat" value="예약도서" />
+								      <c:set var="reservestat" value="예약불가" />
 								    </c:otherwise>
 								    </c:choose>    
 								   </c:otherwise>
@@ -178,7 +182,7 @@
 			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
-					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
+					alert("대여가 불가능합니다.") 
 				} else {
 					 if ($(this).attr("data-reservest") != "0") {
 						alert("예약도서는 대여가 불가능합니다.")
@@ -250,7 +254,7 @@
 			$("input[name=check]:checked").each(function() {
 				no.push($(this).attr("data-bookNo")); 
 			});
-
+			console.log(no);
 			if (count == 0) { 
 				alert("선택된 도서가 없습니다.")
 			} else {

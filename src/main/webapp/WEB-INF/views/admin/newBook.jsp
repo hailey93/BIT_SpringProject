@@ -21,7 +21,7 @@
 		<div>
 		
 			<h2 class="logo">
-				<a title="비트 도서관">
+				<a href="/lib/main.do" title="비트 도서관">
 				<img src="webimg/bitlogo.png" />
 				</a>
 			</h2>

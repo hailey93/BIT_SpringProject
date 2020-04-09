@@ -16,19 +16,7 @@ public class AdminController {
 	
 	@Autowired
 	AdminService adminService;
-	
-	@RequestMapping("admLogin.do")
-	public String login() {
 		
-		return "admin/login";
-	}
-	
-	@PostMapping(value = "admLoginProc.do")
-	public String getLogin(User user) {
-		
-		return adminService.loginProc(user)? "admin/adminMain":"admin/login";
-	}
-	
 	@RequestMapping("newBook.do")
 	public String getNewBook() {
 		return "admin/newBook";

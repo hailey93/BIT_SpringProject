@@ -36,7 +36,7 @@
 	<div class="headerBtm">
 		<div>
 			<h2 class="logo">
-				<a href="/lib/main" title="비트 도서관"> <img
+				<a href="/lib/main.do" title="비트 도서관"> <img
 					src="webimg/bitlogo.png" />
 				</a>
 			</h2>
@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form action="mainSearch" method="get" id="mainSearch">
+				<form action="mainSearch.do" method="get" id="mainSearch">
 					<!-- 검색어 넘겨주기 -->
 					<fieldset>
 						<legend>검색</legend>
@@ -118,7 +118,7 @@
 
 																<dt class="title">제목</dt>
 																<dd class="title">
-																	<a href="/lib/bookDetail.do?bookCode=${searchBook.bookCode }"> ${searchBook.bookCode } </a> <input
+																	<a href="/lib/bookDetail.do?bookCode=${searchBook.bookCode }"> ${searchBook.bookTitle } </a> <input
 																		type="button" class="addItem btnType2" onclick=""
 																		title="추가" value="추가" style="display: none;">
 																</dd>
@@ -140,39 +140,54 @@
 												
 												<div class="paging">
 												
-													<span><%-- 
+													<span> 
+													
 														<c:if test="${paging.prev == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.page/(paging.pageSize+1) }&range=-5" class="page" >
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1" class="page" >
+															<img src="webimg/firstPage.gif">
+															</a>
+														</c:if> 
+													
+													
+														<c:if test="${paging.prev == true }">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=5&range=${paging.range-5}" class="page" >
 															<img src="webimg/prevPage.gif">
 															</a>
 														</c:if> 
-														<c:forEach begin="1" end="${paging.pageSize }" var="page">
 														
-															<c:choose>															
-																														
-																<c:when test="${paging.page+paging.range == page+paging.range}">
-																	<span>${page+paging.range }</span>
+														<c:forEach begin="1" end="${paging.pageSize }" varStatus="page" >
+														
+															<c:choose>
+																
+																<c:when test="${paging.page+paging.range == page.count+paging.range}">
+																	<span>${paging.page+paging.range}</span>
 																</c:when>
-
-																<c:when test="${page+paging.range <= paging.pageCnt}">
-																	<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page}">
-																	${page+paging.range}</a>
+																
+																<c:when test="${page.count+paging.range <= paging.pageCnt}">
+																	<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page.count}&range=${paging.range}">
+																	${page.count+paging.range}</a>
 																</c:when>
 																
 																<c:otherwise>
-																공백처리??
+																<%-- 공백처리 --%>
 																</c:otherwise>
 																
 																
 															</c:choose>
-
+															
 														</c:forEach>
 														
 														<c:if test="${paging.next == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.page/5 }&range=5" class="page" > 
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1&range=${paging.range+5}" class="page" > 
 															<img src="webimg/nextPage.gif">
 															</a>
-														</c:if> --%>
+														</c:if> 
+														
+														<c:if test="${paging.next == true }">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.pageCnt%paging.pageSize }&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
+															<img src="webimg/lastPage.gif">
+															</a>
+														</c:if> 
 
 													</span>
 												</div>
