@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bit.lib.dao.BookDetailDAO">
 
+	<!-- bookDetail page -->
 	<select id="bookDetail" resultType="com.bit.lib.dto.BookDetailDTO">
 		select * from library.book where bookCode=#{bookCode};
 	</select>
@@ -10,7 +11,7 @@
 		select reserveStatus, bookNo, rentStatus from library.bookstatus where bookCode=#{bookCode}
 	</select>
 	
-		<!-- 대여권수 조회 -->
+	<!-- 대여권수 조회 -->
 	<select id="rentCount" resultType="int" >
 		select count(*) from renthistory where id=#{id} and returnDate is null;
 	</select> 

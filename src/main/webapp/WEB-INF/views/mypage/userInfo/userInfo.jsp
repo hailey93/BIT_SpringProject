@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,6 +14,7 @@
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="UTF-8">
+
 <title>회원정보</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/main.css">
@@ -23,6 +25,12 @@
 	href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypagetable.css">
+
+<style>
+table {
+	width: 100%;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/top.jsp" flush="false" />
@@ -54,8 +62,10 @@
 					</div>
 				</div>
 			</div>
-			
+			<!-- divContent 시작-->
+			<div id="divContent">
 				<form action="viewUser.do" method="post">
+<<<<<<< HEAD
 				<table border="1" width="66%" align="center">
 					<tr>
 						<th scope="row" bgcolor="lightgray">아이디</th>
@@ -82,15 +92,51 @@
 						<th scope="row" bgcolor="lightgray">휴대폰번호</th>
 						<td>${user.phone}
 						</td>
+=======
+					<table align="center">
+						<tr>
+							<th scope="row" bgcolor="lightgray">아이디</th>
+							<td>${user.id}</td>
+
 						</tr>
+						<tr>
+							<th scope="row" bgcolor="lightgray">이름</th>
+							<td>${user.name}</td>
+
+>>>>>>> e943eec646d1e8f3d0a9ea5cde53fb6f3cbd769e
+						</tr>
+						<tr>
+							<th scope="row" bgcolor="lightgray">비밀번호</th>
+							<td>${user.pw}</td>
+
+						</tr>
+						<tr>
+							<th scope="row" bgcolor="lightgray">생년월일</th>
+							<td><fmt:formatDate value="${user.birth}"
+									pattern="yyyy-MM-dd" /></td>
+
+						</tr>
+						<tr>
+							<th scope="row" bgcolor="lightgray">성별</th>
+							<td>${user.gender}</td>
+
+						</tr>
+						<tr>
+							<th scope="row" bgcolor="lightgray">휴대폰번호</th>
+							<td>${user.phone}</td>
+						</tr>
+
+					</table>
+					<br>
 					
-</table><br>
-<div align="center">
-					<input type="button" style="WIDTH: 50pt; HEIGHT: 28pt" value="수정"
-						onclick="location.href='updateUser.do'">
-</div>
+					<div class="buttons">
+				<input type="button" value="회원정보수정"
+							onclick="location.href='updateUser.do'"></input>
+					</div>
+				
+						
 				</form>
-			
+			</div>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />

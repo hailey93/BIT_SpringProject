@@ -42,7 +42,7 @@
 		update renthistory as r
 		inner join bookstatus as bs on r.bookno=bs.bookno
 		inner join reserve as rs on rs.bookno=bs.bookno
-		set r.returndate=curdate(),rs.reservefindate=date_add(returnduedate, interval 3 day), bs.rentstatus=2 where r.bookno=#{bookno}
+		set r.returndate=curdate(),rs.reservefindate=date_add(bs.returnduedate, interval 3 day), bs.rentstatus=2 where r.bookno=#{bookno}
 	</update>
 	
 	<!-- 도서 대여 Mapper -->

@@ -21,19 +21,6 @@
 table {
 	width: 100%;
 }
-#button {
-	margin: -1px;
-	border: 1px solid rgba(0, 155, 255, 0.9);
-	background-color: rgba(0, 0, 0, 0);
-	color: rgba(0, 155, 255, 0.9);
-	padding: 3px;
-	border-radius: 5px;
-	font-size: 24px;
-}
-#button:hover{
-	color:white;
-	background-color: skyblue;
-}
 </style>
 </head>
 <body>
@@ -113,12 +100,12 @@ table {
 			</c:forEach>
 		</tbody>
 	</table>
-	
-	<button id="button" type="button" class="delete">삭제</button>
-	<button id="button" type="button" class="rent">대여하기</button>
-	<input type="hidden" id="historycount" value="${history}"/>
-	<button id="button" type="button" class="reserve">예약하기</button>
-	
+				<div class="buttons">
+				<input class="delete" type="button" value="도서삭제"></input>
+				<input class="rent" type="button" value="대여하기"></input>
+				<input type="hidden" id="historycount" value="${history}"/>
+				<input class="reserve" type="button" value="예약하기"></input>
+				</div>
 	</div>
 	</div>
 </div>	
