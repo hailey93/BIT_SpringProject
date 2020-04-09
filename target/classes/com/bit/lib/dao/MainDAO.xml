@@ -31,7 +31,7 @@
 	
 	<select id="mainView" resultType="book">
 
-		SELECT * FROM library.book
+		SELECT * FROM library.book order by rand() limit 6
 	
 	</select>
 	
