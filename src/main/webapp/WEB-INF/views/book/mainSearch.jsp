@@ -142,7 +142,7 @@
 												
 													<span> 
 														<c:if test="${paging.prev == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1&range=${paging.range-5}" class="page" >
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=5&range=${paging.range-5}" class="page" >
 															<img src="webimg/prevPage.gif">
 															</a>
 														</c:if> 

@@ -89,7 +89,7 @@ table {
 				<tr>
 					<td class="num footable-first-column"><input type="checkbox" name="check" 
 					id="check" data-wishListCode="${myWishList.wishListCode}" data-bookNo="${myWishList.bookNo}"
-					data-resStatus="${myWishList.reserveStatus }" value="${myWishList.rentStatus }"></td>
+					data-resStatus="${myWishList.reserveStatus }" data-rentStatus="${myWishList.rentStatus }"></td>
 
 					<td class="image"><a href="/lib/bookDetail.do?bookCode=${myWishList.bookCode }"><img src="${myWishList.imagePath }" width="75" height="103" /></a></td>
 
@@ -104,7 +104,7 @@ table {
 					<td class="footable-last-column">
 				    <c:choose>
 						<c:when test="${myWishList.reserveStatus==1 }">예약불가능</c:when>
-						<c:otherwise>예약없음</c:otherwise>
+						<c:otherwise>예약가능</c:otherwise>
 					</c:choose></td>
 					
 				</tr>
@@ -179,7 +179,7 @@ table {
 					}else{
 						
 						$("input[name=check]:checked").each(function() {//체크된 것만 선택하기	 
-								if(this.value!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
+								if($(this).attr("data-rentStatus")!="2"){ //대여상태가 반납(2)이 아닌 책들은 대여 불가
 									alert('선택하신 도서는 대여불가 상태입니다. 대여가능책만 대여하실 수 있습니다!')
 								} else{
 									if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
@@ -218,7 +218,7 @@ table {
 						if($(this).attr("data-resStatus") != "0"){//예약상태가 예약중(1)인 책은 예약 불가
 							alert("다른 사용자가 예약중이라 예약이 불가능합니다.")
 						} else{
-							if(this.value=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
+							if($(this).attr("data-rentStatus")=="2"){ //대여상태가 반납(2)인 책들은 예약 불가, 바로 대여
 							alert('선택하신 도서는 바로 대여가능합니다. 대여버튼을 눌러주세요!')
 							} else{
 								var code=new Array();
