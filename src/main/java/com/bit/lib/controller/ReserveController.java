@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.lib.service.BookDetailService;
 import com.bit.lib.service.ReserveService;
 
 @Controller
@@ -19,6 +20,9 @@ public class ReserveController {
 
 	@Autowired
 	private ReserveService reserveService;
+	
+	@Autowired
+	private BookDetailService bookDetailService;
 
 	// 도서 예약
 
@@ -37,13 +41,16 @@ public class ReserveController {
 	}
 
 	// 도서 예약 목록
-	@RequestMapping(value = "/reserveList.do")
+	@RequestMapping(value = "/reserveList.do", method=RequestMethod.GET)
 	public String getReserveList(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 
 		model.addAttribute("rentst", reserveService.getReserveList(id));
+		model.addAttribute("history", bookDetailService.rentCount(id)); 
+		System.out.println("hitorycount Ok");
 
 		System.out.println(reserveService.getReserveList(id));
+		 System.out.println(bookDetailService.rentCount(id)); 
 
 		return "mypage/reserve/reserveList";
 	}

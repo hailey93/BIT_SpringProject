@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,14 +93,16 @@ table {
 		</c:forEach>
 	   </tbody>	
 	  </table>
+
 	  	</div>
 	  
 	  <div class="buttons">
 				<input class="rent" type="button" value="도서대여"></input>
+				<input type="hidden" id="historycount" value="${history}"/>
 				<input class="delete" type="button" value="예약취소"></input>
 				</div>
+
    </div>
-  </div>
 
 	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 
@@ -146,13 +148,14 @@ table {
 			var count = $("input[name=check]:checked").length;
 			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택된 도서가 없습니다.")
-			}
+			}else{
 			if (document.getElementById("historycount").value >= 5){
 				alert("대여 한도 권수가 초과되었습니다.")
 			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
 					alert("대여가 불가능합니다.") 
+				} else { 
 					var no = new Array;
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					
@@ -166,6 +169,7 @@ table {
 							success : function(data) {
 								alert('선택하신 도서가 대여되었습니다!');
 								location.reload();
+								console.log(attr("data-historycount"));
 							},
 							error : function(request, status, error){
 								alert("code:" + request.status + "\n"
@@ -176,6 +180,8 @@ table {
 						});
 					}
 			});
+				
+		};
 			}
 		});
 	</script>

@@ -100,10 +100,10 @@ table {
 			</c:forEach>
 		</tbody>
 	</table>
-	<div class="buttons">
+				<div class="buttons">
 				<input class="delete" type="button" value="도서삭제"></input>
 				<input class="rent" type="button" value="대여하기"></input>
-					<input type="hidden" id="historycount" value="${history}"/>
+				<input type="hidden" id="historycount" value="${history}"/>
 				<input class="reserve" type="button" value="예약하기"></input>
 				</div>
 	</div>
