@@ -254,7 +254,7 @@ table{
 			$("input[name=check]:checked").each(function() {
 				no.push($(this).attr("data-bookNo")); 
 			});
-
+			console.log(no);
 			if (count == 0) { 
 				alert("선택된 도서가 없습니다.")
 			} else {

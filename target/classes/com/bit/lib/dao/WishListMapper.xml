@@ -3,7 +3,8 @@
 <mapper namespace="com.bit.lib.dao.WishListDAO">
 
 <select id="selectWishList" parameterType="String" resultType="wishListDTO">
-select w.wishListCode, w.bookNo, w.id, b.bookTitle, b.imagePath, bs.bookCode, bs.rentStatus, bs.reserveStatus from wishlist w
+select w.wishListCode, w.bookNo, w.id, b.bookTitle, b.imagePath, 
+bs.bookCode, bs.rentStatus, bs.reserveStatus from wishlist w
 inner join bookStatus bs on w.bookNo=bs.bookNo
 inner join book b on bs.bookCode=b.bookCode
 where w.id=#{id}
