@@ -82,29 +82,26 @@
 			$(document).scroll(function() {
 				var maxHeight = $(document).height();
 				var currentScroll = $(window).scrollTop() + $(window).height();
-				if (maxHeight <= currentScroll + 100) {
+				if (maxHeight <= currentScroll + 200) {
 					$.ajax({
 
 						url:"/lib/mainSub.do",
-						
 						type:"GET",
-							
-						dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+						dataType:"JSON",
 												
 						success : function(data) {
 							
-							console.log(data);
-							/* 
-							var addContent = '<p>' + 
-							'<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
+							var mainView = data.mainView;
+							var addContent = '\n';
 							
-							+ '</p>';	
+							$.each(mainView, function(index, value) {
+								//console.log(index + " " + value.bookCode);
+								addContent =  addContent + '<img src="'+value.imagePath+'" width="300" height="400" vspace="20" hspace="50"/>'
+						
+							});
+							addContent = '<p>' + addContent + '</p>';
 							
 							$('.block').append(addContent);
-							 */
-						
-						
-						
 						},
 					
 						/* complete : function(data) {
@@ -115,7 +112,7 @@
 
 						error : function(xhr, status, error) {
 							
-							alert("오류");
+							alert("실패!");
 						}
 					})//Ajax 종료
 				}//스크롤 판단식

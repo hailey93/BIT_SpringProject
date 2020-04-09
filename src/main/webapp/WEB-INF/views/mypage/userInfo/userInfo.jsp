@@ -66,10 +66,16 @@ table {
 			
 			<!-- divContent 시작-->
 			<div id="divContent">
+<<<<<<< HEAD
+				<form action="viewUser.do" method="post">
+
+				<table border="1" width="66%" align="center">
+=======
 
 				<form class="detailTable" action="viewUser.do" method="post">
 
 				<table align="center">
+>>>>>>> 7a6f0e2c5359cd4371637b4a1e68f16521cf760d
 					<tr>
 						<th scope="row" bgcolor="lightgray">아이디</th>
 						<td>${user.id}</td>
@@ -95,9 +101,16 @@ table {
 						<th scope="row" bgcolor="lightgray">휴대폰번호</th>
 						<td>${user.phone}
 						</td>
+<<<<<<< HEAD
+
+					
+					</table>
+					<br>
+=======
 					</tr>
 
 					</table>					
+>>>>>>> 7a6f0e2c5359cd4371637b4a1e68f16521cf760d
 					
 					<div class="buttons">
 				     	<input type="button" value="회원정보수정"
