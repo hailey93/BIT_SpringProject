@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypagemenu.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/mypagetable.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/detail.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/write.css">
 </head>
 <body>
 <div class="headerBtm">
@@ -29,25 +35,56 @@
 		</div>
 	</div>
 <div id="divContentsW">
+	<div id="divContent">
 	<div id="row">
 	<h1 align="center">도서등록페이지입니다.</h1>
 	</div>
-	
-	<div id="divContents">
-		<form action="addBook.do" method="post" enctype="multipart/form-data">
-		책이름: <input type="text" name="bookTitle"><br>
-		작가: <input type="text" name="author"><br>
-		장르: <input type="text" name="type"><br>
-		출판사: <input type="text" name="publisher"><br>
-		출판년도: <input type="text" name="pubYear"><br>
-		이미지 첨부: <input type="file" name="file" ><br>
-		책 수량: <input type="number" name="bookQty"><br>
-		<input type="submit" value="등록하기">
-		</form>
-		
-	</div>
+		<form class="detailTable" action="addBook.do" method="post" enctype="multipart/form-data">
+		<fieldset>
+					<div class="writeTable">
+					<table>
+						<tbody>
+							<tr>
+								<th scope="row">책이름</th>
+								<td colspan="3"><input class="inputTextType1" type="text" name="bookTitle"></td>
+							</tr>
+							<tr>
+								<th>작가</th>
+								<td colspan="3"><input class="inputTextType1" type="text" name="author"></td>
+							</tr>
+							<tr>
+								<th>장르</th>
+								<td colspan="3"><input class="inputTextType1" type="text" name="type"></td>
+							</tr>
+							<tr>
+								<th>출판사</th>
+								<td colspan="3"><input class="inputTextType1" type="text" name="publisher"></td>
+							</tr>
+							<tr>
+								<th>출판년도</th>
+								<td colspan="3"><input class="inputTextType1" type="text" name="pubYear"></td>
+							</tr>
+							<tr>
+								<th>이미지 첨부</th>
+								<td colspan="3"><input class="inputTextType1" type="file" name="file"></td>
+							</tr>
+							<tr>
+								<th>책 수량</th>
+								<td colspan="3"><input class="inputTextType1" type="number" name="bookQty"></td>
+							</tr>
+							
+							</tbody>
+					</table>
+					
+					</div> <!-- writeTable end -->
+					</fieldset>
+					<div align="center" class="buttons">
+						<input type="submit" value="등록하기">
+					</div>
+					
+				</form>
+			</div><!-- divcontent end -->
 </div>
-
-
+							
 </body>
 </html>
