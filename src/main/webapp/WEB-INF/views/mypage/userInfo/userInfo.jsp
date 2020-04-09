@@ -66,10 +66,7 @@ table {
 			
 			<!-- divContent 시작-->
 			<div id="divContent">
-<<<<<<< HEAD
 
-=======
->>>>>>> 0d963d5b36f7c4b4687e3671790e46b223996285
 
 				<form class="detailTable" action="viewUser.do" method="post">
 
