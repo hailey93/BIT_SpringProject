@@ -24,6 +24,10 @@
 	href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypagetable.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/detail.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/write.css">
 
 </head>
 <body>
@@ -42,11 +46,11 @@
 						<ul class="mTSContainer" id="mTS_2_container"
 							style="position: relative; top: 0px; left: 0px; width: 100%;">
 
-							<li class="mTSThumbContainer"><a href="">대여현황</a></li>
+							<li class="mTSThumbContainer"><a href="rentNow.do">대여현황</a></li>
 
-							<li class="mTSThumbContainer"><a href="">예약목록</a></li>
+							<li class="mTSThumbContainer"><a href="reserveList.do">예약목록</a></li>
 
-							<li class="mTSThumbContainer"><a href="">대여이력</a></li>
+							<li class="mTSThumbContainer"><a href="rentHistory.do">대여이력</a></li>
 
 							<li class="mTSThumbContainer"><a href="wishList.do">위시리스트</a></li>
 
@@ -56,61 +60,75 @@
 					</div>
 				</div>
 			</div>
-			<form action="updateUser.do" method="post" onsubmit="return check()">
-				<table border="1" width="66%" align="center">
+			
+		<div id="divContent">
+				<form class="detailTable" action="updateUser.do" method="post"
+					onsubmit="return check()">
+					<fieldset>
+					<div class="writeTable">
+					<table>
+						<tbody>
+							<tr>
+								<th scope="row">아이디</th>
+								<td colspan="3">
+								<input class="inputTextType1" type="text" id="id" name="id"
+									value="${id}" readonly="readonly"></td>
+							</tr>
+
+							<tr>
+								<th>이름</th>
+								<td colspan="3"><input class="inputTextType1" type="text" id="name" name="name"></td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td colspan="3"><input class="inputTextType1" type="password" id="pw" name="pw"></td>
+							</tr>
+							<tr>
+
+								<th>비밀번호 확인</th>
+								<td colspan="3"><input class="inputTextType1" type="password" name="pwCheck"
+									id="pwCheck"></td>
+							</tr>
+							<tr>
+								<th>생년월일</th>
+								<td colspan="3"><input class="inputTextType1" type="date" id="birth" name="birth">
+								</td>
+							</tr>
+							<tr>
+								<th>성별</th>
+								<td colspan="3"><input type="radio" name="gender"
+									value="남자" checked="checked"> 남자 <input type="radio"
+									id="gender" name="gender" value="여자"> 여자</td>
+							</tr>
+							<tr>
+								<th>휴대폰번호</th>
+								<td colspan="3"><input class="inputTextType1" type="text" id="phone" name="phone"></td>
+							</tr>
+
+						</tbody>
+					</table>
+					
+					</div> <!-- writeTable end -->
+					</fieldset>
+					<div align="center" class="buttons">
+						<input type="submit" id="updateOk" value="수정완료">
+						<input type="button" onclick="location.href='viewUser.do'" value="회원정보">
+					</div>
+					<!-- 	<div class="buttons">
+				<input class="renew" type="button" value="도서연장"></input>
+				<input class="return" type="button" value="도서반납"></input>
+				</div> -->
+				</form>
+			</div><!-- divcontent end -->
+			
+		</div><!-- divContents end -->
+		
+	</div> <!-- divcontentsW end -->
 
 
-					<tbody>
-						<tr>
-							<th scope="row" bgcolor="lightgray">아이디</th>
-							<td colspan="3"><input type="text" id="id" name="id"
-								value="${id}" readonly="readonly"></td>
-						</tr>
-
-						<tr>
-							<th bgcolor="lightgray">이름</th>
-							<td colspan="3"><input type="text" id="name" name="name"></td>
-						</tr>
-						<tr>
-							<th bgcolor="lightgray">비밀번호</th>
-							<td colspan="3"><input type="password" id="pw" name="pw"></td>
-						</tr>
-						<tr>
-
-							<th bgcolor="lightgray">비밀번호 확인</th>
-							<td colspan="3"><input type="password" name="pwCheck"
-								id="pwCheck"></td>
-						</tr>
-						<tr>
-							<th bgcolor="lightgray">생년월일</th>
-							<td colspan="3"><input type="date" id="birth" name="birth">
-							</td>
-						</tr>
-						<tr>
-							<th bgcolor="lightgray">성별</th>
-							<td colspan="3">남자<input type="radio" name="gender"
-								value="남자" checked="checked"> 여자<input type="radio"
-								id="gender" name="gender" value="여자"></td>
-						</tr>
-						<tr>
-							<th bgcolor="lightgray">휴대폰번호</th>
-							<td colspan="3"><input type="text" id="phone" name="phone"></td>
-						</tr>
-
-					</tbody>
-				</table>
-				<br>
-				<div align="center">
-					<button type="submit" id="updateOk"
-						style="WIDTH: 60pt; HEIGHT: 28pt">수정완료</button>
-					&nbsp; <input type="button" style="WIDTH: 50pt; HEIGHT: 28pt"
-						onclick="location.href='viewUser.do'" value="회원정보">
-				</div>
-			</form>
-		</div>
-	</div>
 	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 </body>
+
 <script type="text/javascript">
 	$(document).ready(function(e) {
 

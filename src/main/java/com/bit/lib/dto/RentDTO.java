@@ -2,8 +2,6 @@ package com.bit.lib.dto;
 
 import java.sql.Date;
 
-import com.bit.lib.domain.RentHistory;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,5 +22,6 @@ public class RentDTO {
 	private Date returnDueDate;
 	private long datedif;
 	private String id;
+	private Date reserveFinDate;
 }
 

@@ -24,14 +24,13 @@
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypagemenu.css">
-<link rel="stylesheet" 
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypagetable.css">
 
 <style>
 table {
 	width: 100%;
 }
-
 </style>
 </head>
 
@@ -105,8 +104,7 @@ table {
 										type="checkbox" name="check" class="check"
 										data-bookNo="${rent.bookNo}"
 										data-reserveStatus="${rent.reserveStatus}"
-										data-datedif="${rent.datedif }"
-										value="${rent.rentStatus}"></td>
+										data-datedif="${rent.datedif }" value="${rent.rentStatus}"></td>
 									<td class="No">${status.count}</td>
 									<td class="bookTitle">
 										<!-- bookDetail 페이지로 넘기기 --> <a
@@ -143,15 +141,15 @@ table {
 				<!-- Content Buttons -->
 				<!-- <div class="buttons"> -->
 				<div class="buttons">
-				<input class="renew" type="button" value="도서연장"></input>
-				<input class="return" type="button" value="도서반납"></input>
+					<input class="renew" type="button" value="도서연장"></input> <input
+						class="return" type="button" value="도서반납"></input>
 				</div>
 				<!-- 	</div> -->
 
-				
+
 				<!-- divContent 끝-->
 			</div>
-<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
+			<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 			<!--//divContents-->
 		</div>
 
@@ -175,7 +173,7 @@ table {
 	<script>
 		$(".renew").click(function() {
 			var count = $("input[name=check]:checked").length;
-			if(count==0){ //아무것도 선택된 것이 없을때 alert 띄워주기
+			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택한 연장 가능 목록이 없습니다.");
 			}
 			$("input[name=check]:checked").each(function() {
@@ -184,62 +182,60 @@ table {
 				} else {
 					if ($(this).attr("data-reserveStatus") == 1) { // 예약중(1)인 책들
 						alert('선택하신 도서는 예약중입니다.');
-					} else if($(this).attr("data-datedif") >0 ){ // 연체일이 0보다 클 때
+					} else if ($(this).attr("data-datedif") > 0) { // 연체일이 0보다 클 때
 						alert('연체중입니다');
-					}
-					else{
+					} else {
 						var no = new Array();
 						no.push($(this).attr("data-bookNo"));
 
-						console.error(no+"///bookNo");
-						
+						console.error(no + "///bookNo");
+
 						$.ajaxSettings.traditional = true;
 						$.ajax({
 							url : "renew.do",// 클라이언트가 http요청을 보낼 서버의 URL 주소 
 							type : "post",// 서버에서 보내줄 데이터 타입
-							data : {count : no},// HTTP 요청과 함께 서버로 보낼 데이터
+							data : {
+								count : no
+							},// HTTP 요청과 함께 서버로 보낼 데이터
 							success : function(data) { //성공시 success메소드로 요청한 데이터가 전달됨
-								console.error(data +"///func");
+								console.log(data + "///func");
 								alert('선택하신 도서가 연장되었습니다!');
 								location.reload();
-								},
-							});
-						
-						} //last else end
+							},
+						});
+
+					} //last else end
 				} //first else end
 			}); //each fuc end
 		});
-
 	</script>
 
 	<script>
 		$(".return").click(function() {
 			var count = $("input[name=check]:checked").length;
-			if(count==0){ //아무것도 선택된 것이 없을때 alert 띄워주기
+			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택된 반납 가능 목록이 없습니다.")
 			}
 			$("input[name=check]:checked").each(function() {
-					var no = new Array();
-					no.push($(this).attr("data-bookNo"));
-						
-					console.error(no);
-						//선택된 것이 있으면 controller로 값 넘겨주기
-						$.ajaxSettings.traditional = true;
-						$.ajax({
-							url : "return.do",
-							type : "post",
-							data : {count : no},
-							success : function(data) {
-								console.error($(this).attr("data-datedif"));
-								if($("input[name=check]:checked").attr("data-datedif")>0) { //연체일수가0보다 크면 연체 alert
-									alert('선택하신 도서는 연체중입니다.');
-								}
-								else {
-									alert('반납되었습니다.');
-								}
-								location.reload();
-							},
-						}); //ajax end
+				var no = new Array();
+				no.push($(this).attr("data-bookNo"));
+
+				//선택된 것이 있으면 controller로 값 넘겨주기
+				$.ajaxSettings.traditional = true;
+				$.ajax({
+					url : "return.do",
+					type : "post",
+					data : { count : no	},
+					success : function(data) {
+						alert('반납되었습니다.');
+					
+						location.reload(true);
+					},
+					 error:function(request,status,error){
+						    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						   }
+
+				});//ajax end
 			}); //check each fuc end
 		});
 	</script>
