@@ -59,12 +59,10 @@ table{
 
 					 </ul>
 					  <div class="profile">
-					   <c:forEach var="bookdt" items="${bookdt}">
 						<div class="profileHeader">
-							<h1>${bookdt.bookTitle}</h1>
-							<h3>${bookdt.author}</h3>
+							<h1>${bookdt[0].bookTitle}</h1>
+							<h3>${bookdt[0].author}</h3>
 						</div>
-					   </c:forEach>
 						<div class="profileContent">
 							<div class="briefInfo">
 							 <dl>
@@ -106,9 +104,9 @@ table{
 								  <th>도서상태</th>
 								  <th>예약여부</th>
 								 </tr>
-								 <c:forEach var="bookdtList" items="${bookdtList }">
-								  <c:set var="reservest" value="${bookdtList.reserveStatus}" />
-								  <c:set var="bookst" value="${bookdtList.rentStatus}" />
+								 <c:forEach var="bookdt" items="${bookdt}">
+								  <c:set var="reservest" value="${bookdt.reserveStatus}" />
+								  <c:set var="bookst" value="${bookdt.rentStatus}" />
 								   <c:choose>
 								    <c:when test="${bookst == 2}">	<!-- 도서상태가 2=반납상태라면 -->
 								     <c:choose>
@@ -140,10 +138,10 @@ table{
 									  <td class="num footable-first-column"><input
 										  type="checkbox" name="check" id="check"
 										  data-reservest="${reservest}"
-										  data-bookNo="${bookdtList.bookNo}" 
+										  data-bookNo="${bookdt.bookNo}" 
 										  value="${bookst}"
 										  onclick="check_only(this)"></td>
-									  <td>${bookdtList.bookNo}</td>
+									  <td>${bookdt.bookNo}</td>
 									  <td><c:out value="${bookstat}" /></td>
 									  <td><c:out value="${reservestat}" /></td>
 									 </tr>

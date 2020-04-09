@@ -8,8 +8,6 @@ public interface BookDetailDAO {
 
 	List<BookDetailDTO> bookDetail(int bookCode);
 	
-	List<BookDetailDTO> bookPage(int bookCode);
-	
 	int rentCount(String id);
 
 }
