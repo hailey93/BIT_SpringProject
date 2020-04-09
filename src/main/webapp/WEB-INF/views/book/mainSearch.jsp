@@ -36,7 +36,7 @@
 	<div class="headerBtm">
 		<div>
 			<h2 class="logo">
-				<a href="/lib/main" title="비트 도서관"> <img
+				<a href="/lib/main.do" title="비트 도서관"> <img
 					src="webimg/bitlogo.png" />
 				</a>
 			</h2>
@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form action="mainSearch" method="get" id="mainSearch">
+				<form action="mainSearch.do" method="get" id="mainSearch">
 					<!-- 검색어 넘겨주기 -->
 					<fieldset>
 						<legend>검색</legend>

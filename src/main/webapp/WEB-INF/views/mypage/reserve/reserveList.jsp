@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,20 +27,6 @@
 <style>
 table {
 	width: 100%;
-}
-
-#button {
-	margin: -1px;
-	border: 1px solid rgba(0, 155, 255, 0.9);
-	background-color: rgba(0, 0, 0, 0);
-	color: rgba(0, 155, 255, 0.9);
-	padding: 3px;
-	border-radius: 5px;
-	font-size: 24px;
-}
-#button:hover{
-	color:white;
-	background-color: skyblue;
 }
 </style>
 </head>
@@ -107,11 +93,16 @@ table {
 		</c:forEach>
 	   </tbody>	
 	  </table>
-		<button id="button" type="button" class="rent">대여</button>
-		<button id="button" type="button" class="delete">예약취소</button>
-	</div>
+
+	  	</div>
+	  
+	  <div class="buttons">
+				<input class="rent" type="button" value="도서대여"></input>
+				<input type="hidden" id="historycount" value="${history}"/>
+				<input class="delete" type="button" value="예약취소"></input>
+				</div>
+
    </div>
-  </div>
 
 	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 
@@ -157,11 +148,14 @@ table {
 			var count = $("input[name=check]:checked").length;
 			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택된 도서가 없습니다.")
-			}
+			}else{
+			if (document.getElementById("historycount").value >= 5){
+				alert("대여 한도 권수가 초과되었습니다.")
+			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
-					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
-				} else {
+					alert("대여가 불가능합니다.") 
+				} else { 
 					var no = new Array;
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					
@@ -175,6 +169,7 @@ table {
 							success : function(data) {
 								alert('선택하신 도서가 대여되었습니다!');
 								location.reload();
+								console.log(attr("data-historycount"));
 							},
 							error : function(request, status, error){
 								alert("code:" + request.status + "\n"
@@ -185,6 +180,9 @@ table {
 						});
 					}
 			});
+				
+		};
+			}
 		});
 	</script>
 </body>

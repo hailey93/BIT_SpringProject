@@ -50,7 +50,7 @@ table{
 		<div id="divContent">
 			<div class="searchDetail">
 				<div class="searchLink">
-					<form name="frmMylist" action="/mylist/writeitem" method="post" />
+					<form name="frmMylist" action="/mylist/writeitem" method="post"/>
 					 <ul class="searchLinkBtn">
 						<button id="button" type="button" class="rent">대여</button>
 						<input type="hidden" id="historycount" value="${history}"/>
@@ -159,6 +159,7 @@ table{
 					  </div>
 				    </div>
 				  </div>
+				 </div>
 	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		function check_only(check) {
@@ -176,13 +177,13 @@ table{
 			var count = $("input[name=check]:checked").length;
 			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택된 도서가 없습니다.")
-			}
+			}else{
 			if (document.getElementById("historycount").value >= 5){
 				alert("대여 한도 권수가 초과되었습니다.")
 			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
-					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
+					alert("대여가 불가능합니다.") 
 				} else {
 					 if ($(this).attr("data-reservest") != "0") {
 						alert("예약도서는 대여가 불가능합니다.")
@@ -213,6 +214,7 @@ table{
 			}
 				}
 		)};
+			}
 		});
 
 		$(".reserve").click(function() {
@@ -254,7 +256,7 @@ table{
 			$("input[name=check]:checked").each(function() {
 				no.push($(this).attr("data-bookNo")); 
 			});
-
+			console.log(no);
 			if (count == 0) { 
 				alert("선택된 도서가 없습니다.")
 			} else {
