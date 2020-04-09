@@ -31,7 +31,7 @@ public class UserController {
 	public String loginProc(User user, HttpSession session) {
 		session.setAttribute("id", user.getId());
 		session.setAttribute("user", user);  
-		String nextPage = userService.loginProc(user)? "redirect:/main":"user/login";
+		String nextPage = userService.loginProc(user)? "redirect:/main.do":"user/login";
 		return nextPage;
 	}
 	@RequestMapping("logout.do")

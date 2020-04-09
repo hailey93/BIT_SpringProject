@@ -28,7 +28,7 @@
 	<div class="headerBtm">
 		<div>
 			<h2 class="logo">
-				<a href="/lib/main" title="비트 도서관"> <img
+				<a href="/lib/main.do" title="비트 도서관"> <img
 					src="webimg/bitlogo.png" />
 				</a>
 			</h2>
@@ -41,7 +41,7 @@
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form action="mainSearch" method="get" >
+				<form action="mainSearch.do" method="get" >
 					<fieldset>
 						<div class="search">
 							<p class="searchBox">
@@ -65,7 +65,7 @@
 		<article>
 			<div class="block">
 				<p>
-				<c:forEach items="${mainView }" var="mainView" begin="0" end="5" >			
+				<c:forEach items="${mainView }" var="mainView" >			
 					<a href="/lib/bookDetail.do?bookCode=${mainView.bookCode }"> 
 					<img src="${mainView.imagePath }" width="300" height="400"
 					vspace="20" hspace="50" /></a>
@@ -74,43 +74,51 @@
 			</div>
 			<!-- 반복 -->
 		</article>
-		
-		
+
+
+
 		<script>
-			var count = 6;
-			window.onscroll = function(e) {
-				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+		$(document).ready(function() {
+			$(document).scroll(function() {
+				var maxHeight = $(document).height();
+				var currentScroll = $(window).scrollTop() + $(window).height();
+				if (maxHeight <= currentScroll + 200) {
+					$.ajax({
+
+						url:"/lib/mainSub.do",
+						type:"GET",
+						dataType:"JSON",
+												
+						success : function(data) {
+							
+							var mainView = data.mainView;
+							var addContent = '\n';
+							
+							$.each(mainView, function(index, value) {
+								//console.log(index + " " + value.bookCode);
+								addContent =  addContent + '<img src="'+value.imagePath+'" width="300" height="400" vspace="20" hspace="50"/>'
+						
+							});
+							addContent = '<p>' + addContent + '</p>';
+							
+							$('.block').append(addContent);
+						},
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					/* if (count < ${mainViewCount }) {						
-						var addContent = '<p>'
-								+ '<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>' +
-								'</p>';
-						$('.block').append(addContent);					
-					}
-					else {
-						alert('여기까지가 끝인가보오.'); */
-					}
-				}
-			};
+						/* complete : function(data) {
+							
+						
+						}, 
+						*/
+
+						error : function(xhr, status, error) {
+							
+							alert("실패!");
+						}
+					})//Ajax 종료
+				}//스크롤 판단식
+			})
+		});
+
 		</script>
 
 

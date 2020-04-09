@@ -28,20 +28,6 @@
 table {
 	width: 100%;
 }
-
-#button {
-	margin: -1px;
-	border: 1px solid rgba(0, 155, 255, 0.9);
-	background-color: rgba(0, 0, 0, 0);
-	color: rgba(0, 155, 255, 0.9);
-	padding: 3px;
-	border-radius: 5px;
-	font-size: 24px;
-}
-#button:hover{
-	color:white;
-	background-color: skyblue;
-}
 </style>
 </head>
 <body>
@@ -107,12 +93,16 @@ table {
 		</c:forEach>
 	   </tbody>	
 	  </table>
-		<button id="button" type="button" class="rent">대여</button>
-		<input type="hidden" id="historycount" value="${history}"/>
-		<button id="button" type="button" class="delete">예약취소</button>
-	</div>
+
+	  	</div>
+	  
+	  <div class="buttons">
+				<input class="rent" type="button" value="도서대여"></input>
+				<input type="hidden" id="historycount" value="${history}"/>
+				<input class="delete" type="button" value="예약취소"></input>
+				</div>
+
    </div>
-  </div>
 
 	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 

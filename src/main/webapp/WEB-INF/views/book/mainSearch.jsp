@@ -36,7 +36,7 @@
 	<div class="headerBtm">
 		<div>
 			<h2 class="logo">
-				<a href="/lib/main" title="비트 도서관"> <img
+				<a href="/lib/main.do" title="비트 도서관"> <img
 					src="webimg/bitlogo.png" />
 				</a>
 			</h2>
@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 			<div id="divSearch">
-				<form action="mainSearch" method="get" id="mainSearch">
+				<form action="mainSearch.do" method="get" id="mainSearch">
 					<!-- 검색어 넘겨주기 -->
 					<fieldset>
 						<legend>검색</legend>
@@ -141,6 +141,14 @@
 												<div class="paging">
 												
 													<span> 
+													
+														<c:if test="${paging.prev == true }">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1" class="page" >
+															<img src="webimg/firstPage.gif">
+															</a>
+														</c:if> 
+													
+													
 														<c:if test="${paging.prev == true }">
 															<a href="/lib/mainSearch?keyWord=${keyWord}&page=5&range=${paging.range-5}" class="page" >
 															<img src="webimg/prevPage.gif">
@@ -172,6 +180,12 @@
 														<c:if test="${paging.next == true }">
 															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1&range=${paging.range+5}" class="page" > 
 															<img src="webimg/nextPage.gif">
+															</a>
+														</c:if> 
+														
+														<c:if test="${paging.next == true }">
+															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.pageCnt%paging.pageSize }&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
+															<img src="webimg/lastPage.gif">
 															</a>
 														</c:if> 
 
