@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import com.bit.lib.dao.RentDAO;
 import com.bit.lib.dto.RentDTO;
 
-
 @Service("rentService")
 public class RentServiceImpl implements RentService {
-	
+
 	@Autowired
 	private RentDAO rentDAO;
 
@@ -28,29 +27,41 @@ public class RentServiceImpl implements RentService {
 
 	@Override
 	public void renew(List<String> chknos) {
-		
-		for(String chkno:chknos) {
-			System.out.println(chkno +"////chkno");
-			String bookNo=chkno;
-			System.out.println(bookNo +"////bookNo");
+
+		for (String chkno : chknos) {
+			System.out.println(chkno + "////chkno");
+			String bookNo = chkno;
+			System.out.println(bookNo + "////bookNo");
 			rentDAO.renew(bookNo);
 		}
 	}
+		
 	@Override
-	public void bookReturn(List<String> chknos) {
-		for(String chkno:chknos) {
-			System.out.println(chkno);
-			String bookNo=chkno;
-			System.out.println(bookNo);
+	public void bookReturn(List<String> chknos) { 
+
+		for (String chkno : chknos) {
+			System.out.println(chkno + "////chkno");
+			String bookNo = chkno;
+			System.out.println(bookNo + "////bookNo");
 			rentDAO.bookReturn(bookNo);
 		}
-	}	
+	}
+	@Override
+	public void updateReserveFin(List<String> chknos) {
+		for (String chkno : chknos) {
+			System.out.println(chkno + "////chkno");
+			String bookNo = chkno;
+			System.out.println(bookNo + "////bookNo");
+			rentDAO.updateReserveFin(bookNo);
+		}
 
+	}
+	
 	@Override
 	public void bookRent(List<String> chknos, String id) {
 		// TODO Auto-generated method stub
 		String bookNo = chknos.get(0).toString();
-		System.out.println(bookNo+"///"+id+"rent");
+		System.out.println(bookNo + "///" + id + "rent");
 		rentDAO.bookRent(bookNo, id);
 	}
 
@@ -58,17 +69,17 @@ public class RentServiceImpl implements RentService {
 	public void bookstUpdate(List<String> chknos) {
 		// TODO Auto-generated method stub
 		String bookNo = chknos.get(0).toString();
-		System.out.println(bookNo+"rentup");
+		System.out.println(bookNo + "rentup");
 		rentDAO.bookstUpdate(bookNo);
 	}
-	
+
 	@Override
 	public void reserveCancel(List<String> chknos) {
 		String bookNo = chknos.get(0).toString();
-		
+
 		rentDAO.reserveCancel(bookNo);
 	}
 
 	
-	
+
 }

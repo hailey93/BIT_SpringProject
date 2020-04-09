@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bit.lib.domain.User;
 import com.bit.lib.dto.NewBookDTO;
 import com.bit.lib.service.AdminService;
 
@@ -30,6 +29,6 @@ public class AdminController {
 		book.setImagePath(path); //DTO에 넣어주고
 		adminService.addBook(book); //DB에 경로를 넣어주기 위해 service로 보낸다.
 		
-		return "admin/adminMain";
+		return "admin/newBookSuccess";
 	}
 }

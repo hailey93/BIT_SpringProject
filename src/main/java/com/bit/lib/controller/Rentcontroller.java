@@ -66,5 +66,7 @@ public class Rentcontroller {
 	public void bookReturn(@RequestParam List<String> count) {
 		System.out.println(count + "//controller에서 count");
 		rentService.bookReturn(count);
+		rentService.updateReserveFin(count);
+		
 	}
 }
