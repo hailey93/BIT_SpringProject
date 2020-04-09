@@ -81,7 +81,7 @@ table {
 			<tr>
 			 <td class="num footable-first-column"><input
 				 type="checkbox" name="check" id="check"
-				 data-bookNo="${rentst.bookNo}" value="${rentst}"
+				 data-bookNo="${rentst.bookNo}" value="${rents}"
 				 onclick="check_only(this)"></td>
 			 <td>${rentst.bookNo}</td>
 			 <td>${rentst.bookTitle}</td>
