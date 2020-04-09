@@ -28,7 +28,7 @@
 	<div class="headerBtm">
 		<div>
 			<h2 class="logo">
-				<a href="/lib/main" title="비트 도서관"> <img
+				<a href="/lib/main.do" title="비트 도서관"> <img
 					src="webimg/bitlogo.png" />
 				</a>
 			</h2>
