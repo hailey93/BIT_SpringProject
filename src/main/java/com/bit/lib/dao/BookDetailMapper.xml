@@ -4,7 +4,8 @@
 
 	<!-- bookDetail page -->
 	<select id="bookDetail" resultType="com.bit.lib.dto.BookDetailDTO">
-	select b.bookTitle, b.author, b.type, b.publisher, b.pubYear, b.imagePath, bst.bookNo, bst.rentStatus, bst.reserveStatus
+	select b.bookTitle, b.author, b.type, b.publisher, b.pubYear, b.imagePath, 
+		bst.bookNo, bst.rentStatus, bst.reserveStatus
 		from book b inner join bookStatus bst
 		on b.bookCode = bst.bookCode
     	where b.bookCode=#{bookCode};
