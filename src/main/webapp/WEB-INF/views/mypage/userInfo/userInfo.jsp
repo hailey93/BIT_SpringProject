@@ -60,28 +60,23 @@
 					<tr>
 						<th scope="row" bgcolor="lightgray">아이디</th>
 						<td>${user.id}</td>
-						
 					</tr>
 					<tr>
 						<th scope="row" bgcolor="lightgray">이름</th>
-						<td>${user.name}</td>
-						
+						<td>${user.name}</td>	
 					</tr>
 					<tr>
 						<th scope="row" bgcolor="lightgray">비밀번호</th>
-						<td>${user.pw}</td>
-						
+						<td><input type="password"  value="${user.pw}" readonly="readonly"></td>	
 					</tr>
 					<tr>
 						<th scope="row" bgcolor="lightgray">생년월일</th>
 						<td><fmt:formatDate value="${user.birth}"
 								pattern="yyyy-MM-dd" /></td>
-						
 					</tr>
 					<tr>
 						<th scope="row" bgcolor="lightgray">성별</th>
 						<td>${user.gender}</td>
-						
 					</tr>
 					<tr>
 						<th scope="row" bgcolor="lightgray">휴대폰번호</th>
