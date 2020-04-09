@@ -41,9 +41,6 @@ public class MainController {
 		int listCnt = mainDAO.getSearchBook(keyWord);		
 		paging.pageInfo(page, range, listCnt);
 		
-		System.out.println(page + "====" + range);
-		System.out.println(paging);
-		
 		model.addAttribute("searchBook", mainDAO.searchBook(keyWord, paging.getStartList(),paging.getListSize()));	//검색	
 		model.addAttribute("paging", paging); // 페이지 값 넘기기
 		model.addAttribute("keyWord", keyWord); 
