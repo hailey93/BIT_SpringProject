@@ -25,7 +25,8 @@
 	href="${pageContext.request.contextPath}/css/mypagemenu.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/mypagetable.css">
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/detail.css">
 <style>
 table {
 	width: 100%;
@@ -62,54 +63,54 @@ table {
 					</div>
 				</div>
 			</div>
+			
 			<!-- divContent 시작-->
 			<div id="divContent">
-				<form action="viewUser.do" method="post">
-					<table align="center">
-						<tr>
-							<th scope="row" bgcolor="lightgray">아이디</th>
-							<td>${user.id}</td>
+					<form class="detailTable" action="viewUser.do" method="post">
+						<table align="center">
+							<tr>
+								<th scope="row">아이디</th>
+								<td>${user.id}</td>
+							</tr>
+							<tr>
+								<th scope="row">이름</th>
+								<td>${user.name}</td>
 
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">이름</th>
-							<td>${user.name}</td>
+							</tr>
+							<tr>
+								<th scope="row">비밀번호</th>
+								<td>${user.pw}</td>
 
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">비밀번호</th>
-							<td>${user.pw}</td>
+							</tr>
+							<tr>
+								<th scope="row">생년월일</th>
+								<td><fmt:formatDate value="${user.birth}"
+										pattern="yyyy-MM-dd" /></td>
 
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">생년월일</th>
-							<td><fmt:formatDate value="${user.birth}"
-									pattern="yyyy-MM-dd" /></td>
+							</tr>
+							<tr>
+								<th scope="row">성별</th>
+								<td>${user.gender}</td>
 
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">성별</th>
-							<td>${user.gender}</td>
+							</tr>
+							<tr>
+								<th scope="row">휴대폰번호</th>
+								<td>${user.phone}</td>
+							</tr>
 
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">휴대폰번호</th>
-							<td>${user.phone}</td>
-						</tr>
+						</table>
+						<br>
+						<div class="buttons">
+							<input type="button" value="회원정보수정"
+								onclick="location.href='updateUser.do'"></input>
+						</div>
 
-					</table>
-					<br>
-					
-					<div class="buttons">
-				<input type="button" value="회원정보수정"
-							onclick="location.href='updateUser.do'"></input>
-					</div>
-				
-						
-				</form>
+
+					</form>
+				</div>
+
 			</div>
 		</div>
-	</div>
 	<jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 </body>
 </html>
