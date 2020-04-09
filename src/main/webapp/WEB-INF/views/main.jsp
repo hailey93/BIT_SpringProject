@@ -65,7 +65,7 @@
 		<article>
 			<div class="block">
 				<p>
-				<c:forEach items="${mainView }" var="mainView" begin="0" end="5" >			
+				<c:forEach items="${mainView }" var="mainView" >			
 					<a href="/lib/bookDetail.do?bookCode=${mainView.bookCode }"> 
 					<img src="${mainView.imagePath }" width="300" height="400"
 					vspace="20" hspace="50" /></a>
@@ -74,43 +74,54 @@
 			</div>
 			<!-- 반복 -->
 		</article>
-		
-		
+
+
+
 		<script>
-			var count = 6;
-			window.onscroll = function(e) {
-				if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+		$(document).ready(function() {
+			$(document).scroll(function() {
+				var maxHeight = $(document).height();
+				var currentScroll = $(window).scrollTop() + $(window).height();
+				if (maxHeight <= currentScroll + 100) {
+					$.ajax({
+
+						url:"/lib/mainSub.do",
+						
+						type:"GET",
+							
+						dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+												
+						success : function(data) {
+							
+							console.log(data);
+							/* 
+							var addContent = '<p>' + 
+							'<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>'
+							
+							+ '</p>';	
+							
+							$('.block').append(addContent);
+							 */
+						
+						
+						
+						},
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					/* if (count < ${mainViewCount }) {						
-						var addContent = '<p>'
-								+ '<img src="/'+ count++ +'.PNG" width="300" height="400" vspace="20" hspace="50"/>' +
-								'</p>';
-						$('.block').append(addContent);					
-					}
-					else {
-						alert('여기까지가 끝인가보오.'); */
-					}
-				}
-			};
+						/* complete : function(data) {
+							
+						
+						}, 
+						*/
+
+						error : function(xhr, status, error) {
+							
+							alert("오류");
+						}
+					})//Ajax 종료
+				}//스크롤 판단식
+			})
+		});
+
 		</script>
 
 
