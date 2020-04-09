@@ -182,7 +182,7 @@ table{
 			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
-					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
+					alert("대여가 불가능합니다.") 
 				} else {
 					 if ($(this).attr("data-reservest") != "0") {
 						alert("예약도서는 대여가 불가능합니다.")

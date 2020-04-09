@@ -95,7 +95,7 @@ table {
 			<tr>
 			 <td class="num footable-first-column"><input
 				 type="checkbox" name="check" id="check"
-				 data-bookNo="${rentst.bookNo}" value="${rents}"
+				 data-bookNo="${rentst.bookNo}" value="${rentst}"
 				 onclick="check_only(this)"></td>
 			 <td>${rentst.bookNo}</td>
 			 <td>${rentst.bookTitle}</td>
@@ -158,10 +158,12 @@ table {
 			if (count == 0) { //아무것도 선택된 것이 없을때 alert 띄워주기
 				alert("선택된 도서가 없습니다.")
 			}
+			if (document.getElementById("historycount").value >= 5){
+				alert("대여 한도 권수가 초과되었습니다.")
+			}else{
 			$("input[name=check]:checked").each(function() {
 				if (this.value != "2") { //대여불가
-					alert("대여가 불가능합니다.") // 4/4 오후 9시 여기까지 현재 가능.
-				} else {
+					alert("대여가 불가능합니다.") 
 					var no = new Array;
 						no.push($(this).attr("data-bookNo")); //체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 					
@@ -185,6 +187,7 @@ table {
 						});
 					}
 			});
+			}
 		});
 	</script>
 </body>
