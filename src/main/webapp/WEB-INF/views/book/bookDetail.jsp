@@ -36,6 +36,10 @@
 	color:white;
 	background-color: skyblue;
 }
+table{
+	width : 750px;
+	height : 5px;
+}
 </style>
 </head>
 <body>
