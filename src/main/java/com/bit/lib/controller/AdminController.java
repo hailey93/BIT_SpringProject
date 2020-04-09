@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.bit.lib.domain.User;
 import com.bit.lib.dto.NewBookDTO;
 import com.bit.lib.service.AdminService;
 
