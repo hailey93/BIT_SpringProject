@@ -38,18 +38,24 @@ public class RentServiceImpl implements RentService {
 		
 	@Override
 	public void bookReturn(List<String> chknos) { 
-		String bookNo = chknos.get(0).toString();
-		rentDAO.bookReturn(bookNo);
-	}
 
+		for (String chkno : chknos) {
+			System.out.println(chkno + "////chkno");
+			String bookNo = chkno;
+			System.out.println(bookNo + "////bookNo");
+			rentDAO.bookReturn(bookNo);
+		}
+	}
 	@Override
 	public void updateReserveFin(List<String> chknos) {
-		String bookNo = chknos.get(0).toString();
-		rentDAO.updateReserveFin(bookNo);
+		for (String chkno : chknos) {
+			System.out.println(chkno + "////chkno");
+			String bookNo = chkno;
+			System.out.println(bookNo + "////bookNo");
+			rentDAO.updateReserveFin(bookNo);
+		}
+
 	}
-		
-
-
 	
 	@Override
 	public void bookRent(List<String> chknos, String id) {
@@ -73,5 +79,7 @@ public class RentServiceImpl implements RentService {
 
 		rentDAO.reserveCancel(bookNo);
 	}
+
+	
 
 }

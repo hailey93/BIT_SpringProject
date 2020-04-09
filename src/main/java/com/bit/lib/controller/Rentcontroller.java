@@ -63,9 +63,10 @@ public class Rentcontroller {
 
 	@RequestMapping(value = "return.do", produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public void bookReturn(@RequestParam List<String> chknos) {
-		System.out.println(chknos + "//controller에서 count");
-		rentService.bookReturn(chknos);
-		rentService.updateReserveFin(chknos);
+	public void bookReturn(@RequestParam List<String> count) {
+		System.out.println(count + "//controller에서 count");
+		rentService.bookReturn(count);
+		rentService.updateReserveFin(count);
+		
 	}
 }
