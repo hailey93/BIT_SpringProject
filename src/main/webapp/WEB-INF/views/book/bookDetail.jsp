@@ -126,7 +126,7 @@
 								    </c:when>
 								    <c:otherwise>						<!--  도서상태가 반납이 아니고 예약없음 상태가 아니라면 -->
 								      <c:set var="bookstat" value="대여중" />
-								      <c:set var="reservestat" value="예약도서" />
+								      <c:set var="reservestat" value="예약불가" />
 								    </c:otherwise>
 								    </c:choose>    
 								   </c:otherwise>
