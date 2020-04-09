@@ -65,7 +65,7 @@ table {
 			<!-- divContent 시작-->
 			<div id="divContent">
 				<form action="viewUser.do" method="post">
-<<<<<<< HEAD
+
 				<table border="1" width="66%" align="center">
 					<tr>
 						<th scope="row" bgcolor="lightgray">아이디</th>
@@ -92,40 +92,8 @@ table {
 						<th scope="row" bgcolor="lightgray">휴대폰번호</th>
 						<td>${user.phone}
 						</td>
-=======
-					<table align="center">
-						<tr>
-							<th scope="row" bgcolor="lightgray">아이디</th>
-							<td>${user.id}</td>
 
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">이름</th>
-							<td>${user.name}</td>
-
->>>>>>> e943eec646d1e8f3d0a9ea5cde53fb6f3cbd769e
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">비밀번호</th>
-							<td>${user.pw}</td>
-
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">생년월일</th>
-							<td><fmt:formatDate value="${user.birth}"
-									pattern="yyyy-MM-dd" /></td>
-
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">성별</th>
-							<td>${user.gender}</td>
-
-						</tr>
-						<tr>
-							<th scope="row" bgcolor="lightgray">휴대폰번호</th>
-							<td>${user.phone}</td>
-						</tr>
-
+					
 					</table>
 					<br>
 					
