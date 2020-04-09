@@ -91,11 +91,12 @@
 												
 						success : function(data) {
 							
+							console.log(data);
 							var mainView = data.mainView;
 							var addContent = '\n';
 							
 							$.each(mainView, function(index, value) {
-								//console.log(index + " " + value.bookCode);
+								
 								addContent =  addContent + '<a href="/lib/bookDetail.do?bookCode='+value.bookCode+'">'
 								+ '<img src="'+value.imagePath+'" width="300" height="400" vspace="20" hspace="50"/></a>'
 						

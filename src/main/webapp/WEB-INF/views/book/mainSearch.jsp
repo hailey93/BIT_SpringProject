@@ -143,14 +143,14 @@
 													<span> 
 													
 														<c:if test="${paging.prev == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1" class="page" >
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=1" class="page" >
 															<img src="webimg/firstPage.gif">
 															</a>
 														</c:if> 
 													
 													
 														<c:if test="${paging.prev == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=5&range=${paging.range-5}" class="page" >
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=5&range=${paging.range-5}" class="page" >
 															<img src="webimg/prevPage.gif">
 															</a>
 														</c:if> 
@@ -164,7 +164,7 @@
 																</c:when>
 																
 																<c:when test="${page.count+paging.range <= paging.pageCnt}">
-																	<a href="/lib/mainSearch?keyWord=${keyWord}&page=${page.count}&range=${paging.range}">
+																	<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=${page.count}&range=${paging.range}">
 																	${page.count+paging.range}</a>
 																</c:when>
 																
@@ -178,13 +178,13 @@
 														</c:forEach>
 														
 														<c:if test="${paging.next == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=1&range=${paging.range+5}" class="page" > 
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=1&range=${paging.range+5}" class="page" > 
 															<img src="webimg/nextPage.gif">
 															</a>
 														</c:if> 
 														
 														<c:if test="${paging.next == true }">
-															<a href="/lib/mainSearch?keyWord=${keyWord}&page=${paging.pageCnt%paging.pageSize }&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=${paging.pageCnt%paging.pageSize }&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
 															<img src="webimg/lastPage.gif">
 															</a>
 														</c:if> 
