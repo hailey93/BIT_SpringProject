@@ -179,11 +179,11 @@ table {
 										var code=new Array();
 										//체크된 것의 data-wishListCode 값을 뽑아서 배열에 넣기
 										code.push($(this).attr("data-wishListCode")); 
-						
+										console.log(code);
 										var no=new Array();
 										//체크된 것의 data-bookNo 값을 뽑아서 배열에 넣기
 										no.push($(this).attr("data-bookNo")); 
-					
+										console.log(no);
 										//선택된 것이 있으면 controller로 값 넘겨주기
 										$.ajaxSettings.traditional = true;
 										$.ajax({
