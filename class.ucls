@@ -147,7 +147,7 @@
   </class>  
   <interface id="17" language="java" name="com.bit.lib.dao.ReserveDAO" project="lib" 
     file="/lib/src/main/java/com/bit/lib/dao/ReserveDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4254" y="442"/>    
+    <position height="-1" width="-1" x="4252" y="561"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -201,7 +201,7 @@
   </interface>  
   <interface id="23" language="java" name="com.bit.lib.dao.BookDetailDAO" project="lib" 
     file="/lib/src/main/java/com/bit/lib/dao/BookDetailDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4536" y="501"/>    
+    <position height="-1" width="-1" x="4520" y="570"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -246,7 +246,7 @@
   </class>  
   <interface id="28" language="java" name="com.bit.lib.service.ReserveService" project="lib" 
     file="/lib/src/main/java/com/bit/lib/service/ReserveService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="57" width="114" x="4335" y="466"/>    
+    <position height="57" width="114" x="4322" y="545"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -327,7 +327,7 @@
   </interface>  
   <interface id="37" language="java" name="com.bit.lib.service.BookDetailService" project="lib" 
     file="/lib/src/main/java/com/bit/lib/service/BookDetailService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4690" y="505"/>    
+    <position height="-1" width="-1" x="4665" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
