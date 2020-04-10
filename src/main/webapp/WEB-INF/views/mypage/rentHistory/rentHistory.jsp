@@ -95,12 +95,71 @@ table {
 				</tr>
 
 			</c:forEach>
-		</tbody>
+
+	</tbody>
 	</table>
 	
 	</div>
 	</div>
-</div>	
+</div>			
+			<div class="paging">
+												
+													<span> 
+													
+														<c:if test="${paging.prev == true }">
+															<a href="/lib/rentHistory.do?page=1" class="page" >
+															<img src="webimg/firstPage.gif">
+															</a>
+														</c:if> 
+													
+													
+														<c:if test="${paging.prev == true }">
+															<a href="/lib/rentHistory.do?page=${paging.pageSize}&range=${paging.range-paging.pageSize}" class="page" >
+															<img src="webimg/prevPage.gif">
+															</a>
+														</c:if> 
+														
+														<c:forEach begin="1" end="${paging.pageSize }" varStatus="page" >
+														
+															<c:choose>
+																
+																<c:when test="${paging.page+paging.range == page.count+paging.range}">
+																	<span>${paging.page+paging.range}</span>
+																</c:when>
+																
+																<c:when test="${page.count+paging.range <= paging.pageCnt}">
+																	<a href="/lib/rentHistory.do?page=${page.count}&range=${paging.range}">
+																	${page.count+paging.range}</a>
+																</c:when>
+																
+																<c:otherwise>
+																<%-- 공백처리 --%>
+																</c:otherwise>
+																
+																
+															</c:choose>
+															
+														</c:forEach>
+														
+														<c:if test="${paging.next == true }">
+															<a href="/lib/rentHistory.do?page=1&range=${paging.range+paging.pageSize}" class="page" > 
+															<img src="webimg/nextPage.gif">
+															</a>
+														</c:if> 
+														
+														<c:if test="${paging.next == true }">
+															<a href="/lib/rentHistory.do?page=${paging.pageCnt%paging.pageSize }
+															&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
+															<img src="webimg/lastPage.gif">
+															</a>
+														</c:if> 
+
+													</span>
+												</div>
+			
+			
+			
+		
 	
 <jsp:include page="/WEB-INF/views/bot.jsp" flush="false" />
 

@@ -8,8 +8,11 @@ import com.bit.lib.dto.RentDTO;
 
 public interface RentDAO {
 
-	public List<RentDTO> getRentHistoryList(String id);
-
+	public List<RentDTO> getRentHistoryList(@Param("id")String id, 
+											@Param("startList")int startList);
+	
+	public int getRentHistoryListCnt(String id);
+	
 	public List<RentDTO> selectRentNow(String id);
 
 	void bookRent(@Param("bookNo") String bookNo, @Param("id")String id);

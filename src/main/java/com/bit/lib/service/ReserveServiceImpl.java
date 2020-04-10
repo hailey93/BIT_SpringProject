@@ -15,9 +15,6 @@ public class ReserveServiceImpl implements ReserveService {
 	@Autowired(required=false)
 	private ReserveDAO reserveDao;
 	
-
-	
-	
 	public List<ReserveListDTO> getReserveList(String id) {
 		return reserveDao.getReserveList(id);
 	}
