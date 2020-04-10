@@ -141,8 +141,8 @@ table {
 				<!-- Content Buttons -->
 				<!-- <div class="buttons"> -->
 				<div class="buttons">
-					<input class="renew" type="button" value="도서연장"></input> <input
-						class="return" type="button" value="도서반납"></input>
+					<input class="renew" type="button" value="도서연장"></input>
+					 <input class="return" type="button" value="도서반납"></input>
 				</div>
 				<!-- 	</div> -->
 
@@ -193,11 +193,9 @@ table {
 						$.ajaxSettings.traditional = true;
 						$.ajax({
 							url : "renew.do",// 클라이언트가 http요청을 보낼 서버의 URL 주소 
-							type : "post",// 서버에서 보내줄 데이터 타입
-							data : {
-								count : no
-							},// HTTP 요청과 함께 서버로 보낼 데이터
-							success : function(data) { //성공시 success메소드로 요청한 데이터가 전달됨
+							type : "post", // 서버에서 보내줄 데이터 타입
+							data : {count : no},														// HTTP 요청과 함께 서버로 보낼 데이터
+							success : function(data) {  //성공시 success메소드로 요청한 데이터가 전달됨
 								console.log(data + "///func");
 								alert('선택하신 도서가 연장되었습니다!');
 								location.reload();
@@ -220,7 +218,6 @@ table {
 				var no = new Array();
 				no.push($(this).attr("data-bookNo"));
 
-				//선택된 것이 있으면 controller로 값 넘겨주기
 				$.ajaxSettings.traditional = true;
 				$.ajax({
 					url : "return.do",
@@ -228,11 +225,11 @@ table {
 					data : { count : no	},
 					success : function(data) {
 						alert('반납되었습니다.');
-					
 						location.reload(true);
 					},
 					 error:function(request,status,error){
-						    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+						    alert("code:"+request.status+"\n"+"message:"
+						    		+request.responseText+"\n"+"error:"+error);
 						   }
 
 				});//ajax end
