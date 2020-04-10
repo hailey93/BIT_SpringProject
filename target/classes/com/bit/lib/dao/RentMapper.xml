@@ -4,8 +4,7 @@
 <mapper namespace="com.bit.lib.dao.RentDAO">
 
 
-	<select id="getRentHistoryList" parameterType="String"
-		resultType="RentDTO">
+	<select id="getRentHistoryList" resultType="RentDTO">
 
 		select b.bookTitle, b.author, r.bookNo, r.rentDate,
 		r.returnDate, bs.bookCode
@@ -16,8 +15,25 @@
 		inner join book as b on b.bookcode=bs.bookCode
 		where
 		r.id=#{id} and not r.rentDate is null
+		limit #{startList}, 6
 
 	</select>
+	
+	<select id="getRentHistoryListCnt" parameterType="String"
+		resultType="int">
+
+		select count(*)
+		from renthistory as r
+		inner join bookstatus as
+		bs on
+		r.bookNo=bs.bookNo
+		inner join book as b on b.bookcode=bs.bookCode
+		where
+		r.id=#{id} and not r.rentDate is null
+
+	</select>
+	
+	
 
 	<!-- 대여현황 -->
 	<select id="selectRentNow" parameterType="String"

@@ -15,8 +15,13 @@ public class RentServiceImpl implements RentService {
 	private RentDAO rentDAO;
 
 	@Override
-	public List<RentDTO> getRentHistoryList(String id) {
-		return rentDAO.getRentHistoryList(id);
+	public List<RentDTO> getRentHistoryList(String id, int startList) {
+		return rentDAO.getRentHistoryList(id, startList);
+	}
+	
+	@Override
+	public int getRentHistoryListCnt(String id) {
+		return rentDAO.getRentHistoryListCnt(id);
 	}
 
 	@Override
