@@ -67,6 +67,7 @@ table {
 			<!-- divContent 시작-->
 			<div id="divContent">
 
+
 				<form class="detailTable" action="viewUser.do" method="post">
 
 				<table align="center">
