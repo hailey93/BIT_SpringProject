@@ -150,7 +150,7 @@
 													
 													
 														<c:if test="${paging.prev == true }">
-															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=5&range=${paging.range-5}" class="page" >
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=${paging.pageSize}&range=${paging.range-paging.pageSize}" class="page" >
 															<img src="webimg/prevPage.gif">
 															</a>
 														</c:if> 
@@ -178,13 +178,15 @@
 														</c:forEach>
 														
 														<c:if test="${paging.next == true }">
-															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=1&range=${paging.range+5}" class="page" > 
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=1&range=${paging.range+paging.pageSize}" class="page" > 
 															<img src="webimg/nextPage.gif">
 															</a>
 														</c:if> 
 														
 														<c:if test="${paging.next == true }">
-															<a href="/lib/mainSearch.do?keyWord=${keyWord}&page=${paging.pageCnt%paging.pageSize }&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
+															<a href="/lib/mainSearch.do?keyWord=${keyWord}
+															&page=${paging.pageCnt%paging.pageSize }
+															&range=${paging.pageCnt-paging.pageCnt%paging.pageSize}" class="page" > 
 															<img src="webimg/lastPage.gif">
 															</a>
 														</c:if> 
