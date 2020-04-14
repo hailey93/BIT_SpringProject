@@ -1,3 +1,4 @@
 *.MF
 *.class
 *.class~*
+target/m2e-wtp/web-resources/META-INF/maven/com.bit/lib/pom.properties
