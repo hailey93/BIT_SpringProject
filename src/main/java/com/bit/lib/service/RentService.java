@@ -8,7 +8,8 @@ import com.bit.lib.dto.RentDTO;
 
 public interface RentService {
 
-	 List<RentDTO> getRentHistoryList(@SessionAttribute("id") String id); 
+	 List<RentDTO> getRentHistoryList(String id, int startList); 
+	 int getRentHistoryListCnt(String id);
 	
 	 List<RentDTO> selectRentNow(@SessionAttribute("id") String id);
 	 

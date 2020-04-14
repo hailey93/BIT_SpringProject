@@ -31,8 +31,7 @@ public class Paging {
 		
 		this.page = page; // 페이지 넘버		
 		this.range = range; // 페이지 범위
-		
-		//페이지 계산은 (page + range)로 계산되며 링크로 항상 두개의 값을 받아옴
+	//페이지 계산은 (page + range)로 계산되며 링크로 항상 두개의 값을 받아옴
 		this.listCnt = listCnt; // 전체 게시물 갯수
 		
 		//전체 페이지수 

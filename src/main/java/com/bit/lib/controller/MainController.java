@@ -46,7 +46,7 @@ public class MainController {
 	
 	@GetMapping("/mainSearch.do")
 	public String mainSearch(Model model, 
-			@RequestParam("keyWord") String keyWord,
+			@RequestParam(required = false, defaultValue = "") String keyWord,
 			@RequestParam(required = false, defaultValue = "1")int page,
 			@RequestParam(required = false, defaultValue = "0")int range) {		
 		
